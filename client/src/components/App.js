@@ -7,29 +7,19 @@ class App extends React.Component {
     this.state = {
 
     }
-
   }
 
   //
   render() {
-
     return (
-    <div>
-      TSVT FTW 🌴 🏰 🧵 🌩️
+      <div>
+        TSVT FTW 🌴 🏰 🧵 🌩️
       <div>
 
       </div>
     </div>
-    )
-
+    );
   }
-
-
 }
 
-
 export default App;
-
-
-
-

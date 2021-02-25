@@ -15,7 +15,7 @@ class App extends React.Component {
 
     return (
     <div>
-      TSVT FTW 🌴 🏰 🧵 🌩️
+      TSVT FTW! 🌴 🏰 🧵 🌩️
       <div>
 
       </div>

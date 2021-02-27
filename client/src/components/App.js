@@ -12,9 +12,15 @@ class App extends React.Component {
   //
   render() {
     return (
-      <div>
-        TSVT FTW! 🌴 🏰 🧵 🌩️
-        <div />
+      <div className="container">
+        <div className="header">
+          <div>TSVT FTW! 🌴 🏰 🧵 🌩️</div>
+          <div>TSVT FTW! 🌎 🌍 🌏 </div>
+          <div>TSVT FTW! 👾 👾 👾</div>
+        </div>
+        <div className="aside">MENU</div>
+        <div className="main">CONTENT</div>
+        <div className="footer">FOOTER</div>
       </div>
     );
   }

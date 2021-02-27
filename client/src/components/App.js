@@ -13,7 +13,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        TSVT FTW! 🌴 🏰 🧵 🌩️
+        TSVT FTWw! 🌴 🏰 🧵 🌩️
         <div />
       </div>
     );

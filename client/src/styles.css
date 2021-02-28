@@ -31,6 +31,7 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
   grid-column: 1 / 2;
   grid-row: 2 / 3;
   background: green;
+
 }
 
 .main {
@@ -41,4 +42,12 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
 
 .footer {
   grid-column: span 12;
+}
+
+.products {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background: chartreuse;
 }

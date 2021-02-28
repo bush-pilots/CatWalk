@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,7 +12,6 @@ class App extends React.Component {
   //
   render() {
     return (
-<<<<<<< HEAD
       <div className="container">
         <div className="header">
           <div>TSVT FTW! 🌴 🏰 🧵 🌩️</div>
@@ -22,11 +21,6 @@ class App extends React.Component {
         <div className="aside">MENU</div>
         <div className="main">CONTENT</div>
         <div className="footer">FOOTER</div>
-=======
-      <div>
-        TSVT FTWw! 🌴 🏰 🧵 🌩️
-        <div />
->>>>>>> main
       </div>
     );
   }

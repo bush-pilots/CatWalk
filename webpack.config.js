@@ -7,7 +7,8 @@ module.exports = {
   entry: path.join(SRC_DIR, 'index.js'),
   output: {
     path: OUT_DIR,
-    filename: 'app.js'
+    filename: 'app.js',
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -17,6 +18,9 @@ module.exports = {
         use: 'babel-loader'
       }
     ]
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   mode: 'development',
   resolve: {

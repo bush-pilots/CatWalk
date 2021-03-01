@@ -36,6 +36,11 @@ class ApiCheck extends React.Component {
       api.getRelated(id, (err, results) => {
         this.setState({ related: results.data });
       });
+      // get Reviews
+
+      // getQuestions
+
+      // ...
     }
   }
 

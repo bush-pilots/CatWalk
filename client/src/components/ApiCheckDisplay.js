@@ -1,25 +1,17 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import axios from 'axios';
-import config from '/config.js';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
   withRouter,
-} from "react-router-dom";
-
-const api = require('/helpers/api.js');
+} from 'react-router-dom';
 
 class ApiCheckDisplay extends React.Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
-    }
+    };
   }
 
-  render () {
+  render() {
     return (
       <div>
         <h1>API DISPLAY:</h1>

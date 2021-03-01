@@ -1,15 +1,14 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
 const axios = require('axios');
 const config = require('../config.js');
 
-// broken down by widget to minimize toe-on-toe action
-
-// Sets default authorization in header to your config.TOKEN. This should mean you do not need to add it into your requests
 axios.defaults.headers.common.authorization = config.API_TOKEN;
+
+// broken down by widget to minimize toe-on-toe action
 
 // PRODUCTS DETAIL WIDGET HELPERS
 
-// eslint-disable-next-line no-unused-vars
 const amazingSampleHelper = (cb) => {
 // (just a sample, may need revision based on how this API actually behaves)
 

@@ -14,6 +14,7 @@ import {
   withRouter,
 } from 'react-router-dom';
 import ApiCheck from './ApiCheck';
+import ProductDetails from './ProductDetailsComponents/ProductDetails';
 
 const api = require('/helpers/api');
 >>>>>>> ad4629a849eddba3e51a3482777b068468f92d57
@@ -29,7 +30,7 @@ class App extends React.Component {
       reviews: {},
       reviewsMeta: {},
     };
-    this.updateData.bind(this);
+    this.updateData = this.updateData.bind(this);
   }
 
   componentDidMount() {
@@ -56,16 +57,22 @@ class App extends React.Component {
     }
   }
 
-  //
   render() {
     return (
       <div>
         TSVT FTW! 🌴 🏰 🧵 🌩️
         <div />
-        <Router>
-          <Route path="/:id" component={ApiCheck} />
-          <Route exact path="/" component={ApiCheck} />
-        </Router>
+        <ProductDetails
+          id={this.props.match.params.id}
+          productData={this.state.productData}
+          styles={this.state.styles}
+        />
+        <ApiCheck
+          updateData={this.updateData}
+          productData={this.state.productData}
+          styles={this.state.styles}
+          related={this.state.related}
+        />
       </div>
     );
   }

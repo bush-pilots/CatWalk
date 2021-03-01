@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import {
@@ -22,9 +23,8 @@ class ApiCheckDisplay extends React.Component {
         <h3>Related: </h3>
         <p>{JSON.stringify(this.props.related)}</p>
       </div>
-    )
+    );
   }
 }
-
 
 export default withRouter(ApiCheckDisplay);

@@ -18,30 +18,6 @@ class ApiCheck extends React.Component {
     super(props);
     this.state = {
     };
-    this.updateData.bind(this);
-  }
-
-  componentDidMount() {
-    this.updateData(this.props.match.params.id);
-  }
-
-  updateData(id) {
-    if (id !== '') {
-      api.getProductData(id, (err, results) => {
-        this.setState({ productData: results.data });
-      });
-      api.getStyles(id, (err, results) => {
-        this.setState({ styles: results.data });
-      });
-      api.getRelated(id, (err, results) => {
-        this.setState({ related: results.data });
-      });
-      // get Reviews
-
-      // getQuestions
-
-      // ...
-    }
   }
 
   render() {
@@ -57,22 +33,22 @@ class ApiCheck extends React.Component {
         </span>
         <ul>
           <li>
-            <Link to="/18445" onClick={() => this.updateData(18445)}>18445</Link>
+            <Link to="/18445" onClick={() => this.props.updateData(18445)}>18445</Link>
           </li>
           <li>
-            <Link to="/18079" onClick={() => this.updateData(18079)}>18079</Link>
+            <Link to="/18079" onClick={() => this.props.updateData(18079)}>18079</Link>
           </li>
           <li>
-            <Link to="/18080" onClick={() => this.updateData(18080)}>18080</Link>
+            <Link to="/18080" onClick={() => this.props.updateData(18080)}>18080</Link>
           </li>
           <li>
-            <Link to="/18201" onClick={() => this.updateData(18201)}>18201</Link>
+            <Link to="/18201" onClick={() => this.props.updateData(18201)}>18201</Link>
           </li>
           <li>
-            <Link to="/18078" onClick={() => this.updateData(18078)}>18078</Link>
+            <Link to="/18078" onClick={() => this.props.updateData(18078)}>18078</Link>
           </li>
         </ul>
-        <ApiCheckDisplay id={this.props.match.params.id} productData={this.state.productData} styles={this.state.styles} related={this.state.related} />
+        <ApiCheckDisplay id={this.props.match.params.id} productData={this.props.productData} styles={this.props.styles} related={this.props.related} />
       </div>
     );
   }

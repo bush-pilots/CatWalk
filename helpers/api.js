@@ -15,8 +15,8 @@ const amazingSampleHelper = (cb) => {
   const options = {
     url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products?page=1&count=5',
     headers: {
-      Authorization: `token ${config.API_TOKEN}`,
-    },
+      Authorization: `token ${config.API_TOKEN}`
+    }
   };
 
   axios.get(options.url, options.headers)
@@ -57,5 +57,5 @@ const getRelated = (id, cb) => {
 module.exports = {
   getProductData,
   getStyles,
-  getRelated,
+  getRelated
 };

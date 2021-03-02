@@ -36,11 +36,23 @@ const getRelated = (id, cb) => {
 // RATINGS/REVIEWS WIDGET HELPERS
 
 // Q/A WIDGET HELPERS
+const getQuestions = (id, count, cb) => {
+  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions?product_id=${id}&page=1&count=${count}&sort=helpful`;
+
+  axios.get(url)
+    .then((response) => cb(null, response.data.results))
+    .catch((err) => cb(err, null));
+};
 
 // RELATED ITEMS/OUTFIT WIDGET HELPERS
 
 module.exports = {
   getProductData,
   getStyles,
+<<<<<<< Updated upstream
   getRelated
+=======
+  getRelated,
+  getQuestions
+>>>>>>> Stashed changes
 };

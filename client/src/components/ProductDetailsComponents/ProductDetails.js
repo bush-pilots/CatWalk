@@ -35,7 +35,7 @@ class ProductDetails extends React.Component {
     return (
       <div id="product-details">
         <h1>Product Details</h1>
-        <ImageGallery style={this.state.currentStyle} />
+        <ImageGallery style={this.state.currentStyle} product={this.props.id} />
         <ProductInfo
           name={this.props.productData.name}
           style={this.state.currentStyle}

@@ -60,6 +60,7 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
 /* PRODUCT OVERVIEW STYLES */
 #style-selector-list {
   height: 160px;
+  padding: 10px;
 }
 .style-selector-item {
   width: 80px;

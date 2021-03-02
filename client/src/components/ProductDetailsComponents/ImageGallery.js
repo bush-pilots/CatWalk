@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable array-callback-return */
 /* eslint-disable consistent-return */
 /* eslint-disable react/no-array-index-key */
@@ -13,11 +14,15 @@ class ImageGallery extends React.Component {
       fullSizeImages: [],
       thumbnails: []
     };
+    this.changeImageIndex = this.changeImageIndex.bind(this);
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.style !== this.props.style) {
       this.extractImages();
+    }
+    if (prevProps.product !== this.props.product) {
+      this.setState({ currentImgIndex: 0 });
     }
   }
 
@@ -34,17 +39,17 @@ class ImageGallery extends React.Component {
     });
   }
 
+  changeImageIndex(e) {
+    this.setState({ currentImgIndex: e.target.name });
+  }
+
   render() {
     return (
       <div id="image-gallery" style={{ backgroundImage: `url(${this.state.fullSizeImages[this.state.currentImgIndex]})` }}>
         <div id="thumbnail-gallery">
-          {this.state.thumbnails.map((thumbnail, index) => {
-            if (index !== this.state.currentImgIndex) {
-              return (
-                <img className="thumbnail-gallery-item" key={index} src={thumbnail} alt="" />
-              );
-            }
-          })}
+          {this.state.thumbnails.map((thumbnail, index) => (
+            <img className="thumbnail-gallery-item"  src={thumbnail} alt="" onClick={this.changeImageIndex} name={index} key={index} />
+          ))}
         </div>
       </div>
     );

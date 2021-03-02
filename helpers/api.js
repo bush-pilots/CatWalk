@@ -49,10 +49,6 @@ const getQuestions = (id, count, cb) => {
 module.exports = {
   getProductData,
   getStyles,
-<<<<<<< Updated upstream
-  getRelated
-=======
   getRelated,
   getQuestions
->>>>>>> Stashed changes
 };

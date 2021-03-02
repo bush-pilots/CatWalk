@@ -25,7 +25,7 @@ const QA = ({id}) => {
     <div>QUESTIONS and ANSWERS</div>
     <div>Search Bar Placeholder</div>
     <QuestionList questions={questions} />
-    {/* {questions.length > 2 && (<button>MORE ANSWERED QUESTIONS</button>)} */}
+    {questions.length > 2 && (<button>MORE ANSWERED QUESTIONS</button>)}
     <button>ADD A QUESTION +</button>
     </div>
   )

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/destructuring-assignment */
@@ -13,18 +14,18 @@ class StyleSelector extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="style-selector">
         <span id="style-name">
           Current Style:
           {this.props.currentStyle.name}
         </span>
         <br />
-        <ul>
+        <div id="style-selector-list">
           {this.props.styles.results.map((style) => (
             // eslint-disable-next-line max-len
-            <li key={style.style_id} onClick={() => this.props.changeStyle(style)}>{style.name}</li>
+            <div className="style-selector-item" key={style.style_id} onClick={() => this.props.changeStyle(style)} style={{ backgroundImage: `url(${style.photos[0].thumbnail_url})` }}>{style.name}</div>
           ))}
-        </ul>
+        </div>
       </div>
     );
   }

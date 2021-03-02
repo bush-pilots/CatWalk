@@ -3,6 +3,7 @@
 import React from 'react';
 import ProductInfo from './ProductInfo';
 import StyleSelector from './StyleSelector';
+import ImageGallery from './ImageGallery';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -34,6 +35,7 @@ class ProductDetails extends React.Component {
     return (
       <div id="product-details">
         <h1>Product Details</h1>
+        <ImageGallery style={this.state.currentStyle} />
         <ProductInfo
           name={this.props.productData.name}
           style={this.state.currentStyle}

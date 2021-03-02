@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/no-absolute-path */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
@@ -21,7 +23,7 @@ class App extends React.Component {
     this.state = {
       currentProduct: '',
       productData: {},
-      styles: {},
+      styles: { results: [] },
       related: [],
       reviews: {},
       reviewsMeta: {}

@@ -5,13 +5,12 @@
 import React from 'react';
 import {
   Link,
-  withRouter,
+  withRouter
 } from 'react-router-dom';
 import ApiCheckDisplay from './ApiCheckDisplay';
 
 // eslint-disable-next-line import/no-unresolved
 // eslint-disable-next-line import/no-absolute-path
-const api = require('/helpers/api');
 
 class ApiCheck extends React.Component {
   constructor(props) {

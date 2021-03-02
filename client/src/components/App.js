@@ -8,12 +8,12 @@ import {
   Link,
   HashRouter as Router,
   Route,
-  withRouter,
+  withRouter
 } from 'react-router-dom';
 import ApiCheck from './ApiCheck';
 import ProductDetails from './ProductDetailsComponents/ProductDetails';
 
-const api = require('/helpers/api');
+const api = require('../../../helpers/api');
 
 class App extends React.Component {
   constructor(props) {
@@ -24,7 +24,7 @@ class App extends React.Component {
       styles: {},
       related: [],
       reviews: {},
-      reviewsMeta: {},
+      reviewsMeta: {}
     };
     this.updateData = this.updateData.bind(this);
   }
@@ -56,7 +56,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        TSVT FTW! 🌴 🏰 🧵 🌩️
+        <div className="cssCheck">
+          TSVT FTW! 🌴 🏰 🧵 🌩️
+        </div>
         <div />
         <ProductDetails
           id={this.props.match.params.id}
@@ -68,6 +70,7 @@ class App extends React.Component {
           productData={this.state.productData}
           styles={this.state.styles}
           related={this.state.related}
+
         />
       </div>
     );

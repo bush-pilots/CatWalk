@@ -9,21 +9,6 @@ axios.defaults.headers.common.authorization = config.API_TOKEN;
 
 // PRODUCTS DETAIL WIDGET HELPERS
 
-const amazingSampleHelper = (cb) => {
-// (just a sample, may need revision based on how this API actually behaves)
-
-  const options = {
-    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products?page=1&count=5',
-    headers: {
-      Authorization: `token ${config.API_TOKEN}`,
-    },
-  };
-
-  axios.get(options.url, options.headers)
-    .then((response) => cb(null, response))
-    .catch((err) => cb(err, null));
-};
-
 const getProductData = (id, cb) => {
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/${id}`)
     .then((response) => {
@@ -57,5 +42,5 @@ const getRelated = (id, cb) => {
 module.exports = {
   getProductData,
   getStyles,
-  getRelated,
+  getRelated
 };

@@ -5,7 +5,7 @@
 import React from 'react';
 import {
   Link,
-  withRouter,
+  withRouter
 } from 'react-router-dom';
 import ApiCheckDisplay from './ApiCheckDisplay';
 

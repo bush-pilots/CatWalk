@@ -8,7 +8,7 @@ class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentStyle: {},
+      currentStyle: {}
     };
     this.changeStyle = this.changeStyle.bind(this);
   }
@@ -39,6 +39,11 @@ class ProductDetails extends React.Component {
           style={this.state.currentStyle}
           category={this.props.productData.category}
         />
+        <span id="product-slogan">
+          Slogan:
+          {this.props.productData.slogan}
+        </span>
+        <br />
         <span id="product-desc">
           Description:
           {this.props.productData.description}

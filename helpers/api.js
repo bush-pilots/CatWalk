@@ -9,21 +9,6 @@ axios.defaults.headers.common.authorization = config.API_TOKEN;
 
 // PRODUCTS DETAIL WIDGET HELPERS
 
-const amazingSampleHelper = (cb) => {
-// (just a sample, may need revision based on how this API actually behaves)
-
-  const options = {
-    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products?page=1&count=5',
-    headers: {
-      Authorization: `token ${config.API_TOKEN}`
-    }
-  };
-
-  axios.get(options.url, options.headers)
-    .then((response) => cb(null, response))
-    .catch((err) => cb(err, null));
-};
-
 const getProductData = (id, cb) => {
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/${id}`)
     .then((response) => {
@@ -51,11 +36,19 @@ const getRelated = (id, cb) => {
 // RATINGS/REVIEWS WIDGET HELPERS
 
 // Q/A WIDGET HELPERS
+const getQuestions = (id, count, cb) => {
+  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions?product_id=${id}&page=1&count=${count}&sort=helpful`;
+
+  axios.get(url)
+    .then((response) => cb(null, response.data.results))
+    .catch((err) => cb(err, null));
+};
 
 // RELATED ITEMS/OUTFIT WIDGET HELPERS
 
 module.exports = {
   getProductData,
   getStyles,
-  getRelated
+  getRelated,
+  getQuestions
 };

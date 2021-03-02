@@ -12,6 +12,7 @@ import {
 } from 'react-router-dom';
 import ApiCheck from './ApiCheck';
 import ProductDetails from './ProductDetailsComponents/ProductDetails';
+import QA from './QA/QA.js';
 
 const api = require('../../../helpers/api');
 
@@ -21,7 +22,7 @@ class App extends React.Component {
     this.state = {
       currentProduct: '',
       productData: {},
-      styles: {},
+      styles: { results: [] },
       related: [],
       reviews: {},
       reviewsMeta: {}
@@ -70,9 +71,10 @@ class App extends React.Component {
           productData={this.state.productData}
           styles={this.state.styles}
           related={this.state.related}
-
         />
+        <QA id={this.props.match.params.id} />
       </div>
+
     );
   }
 }

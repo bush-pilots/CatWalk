@@ -11,8 +11,6 @@ import ApiCheckDisplay from './ApiCheckDisplay';
 
 // eslint-disable-next-line import/no-unresolved
 // eslint-disable-next-line import/no-absolute-path
-// const api = require('../../../helpers/api');
-
 class ApiCheck extends React.Component {
   constructor(props) {
     super(props);

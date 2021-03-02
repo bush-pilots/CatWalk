@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './styles.css';
 import {
   HashRouter as Router,
-  Route,
+  Route
 } from 'react-router-dom';
 import App from './components/App';
 
@@ -14,5 +15,5 @@ ReactDOM.render(
     </Router>
 
   </div>,
-  document.getElementById('app'),
+  document.getElementById('app')
 );

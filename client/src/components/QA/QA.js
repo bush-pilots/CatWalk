@@ -10,18 +10,18 @@ const QA = ({id}) => {
   useEffect( () => {
     setCount(4);
     getQuestions();
-  }, [id])
+  }, [id]);
 
   useEffect( () => {
     getQuestions();
-  }, [count])
+  }, [count]);
 
   useEffect( () => {
     if(questions.length > count) {
       setQuestions(questions => questions = questions.slice(0, count));
       console.log('count did not update in time, but I got you fam!');
     }
-  }, [questions.length])
+  }, [questions.length]);
 
   const getQuestions = () => {
     api.getQuestions(id, count, (err, results) => {

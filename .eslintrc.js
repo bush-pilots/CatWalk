@@ -29,6 +29,8 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'comma-dangle': ['error', 'never'],
-    'max-len': ['error', { code: 10000 }]
+    'max-len': ['error', { code: 10000 }],
+    'react/prefer-stateless-function': [0, { ignorePureComponents: false }],
+    'eslint no-trailing-spaces': ['error', { skipBlankLines: true, ignoreComments: true }]
   }
 };

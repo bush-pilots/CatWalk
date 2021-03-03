@@ -13,6 +13,7 @@ import {
 import ApiCheck from './ApiCheck';
 import ProductDetails from './ProductDetailsComponents/ProductDetails';
 import QA from './QA/QA.js';
+import RatingsReviewsParent from './RR/RatingsReviewsParent';
 
 const api = require('../../../helpers/api');
 
@@ -24,7 +25,7 @@ class App extends React.Component {
       productData: {},
       styles: { results: [] },
       related: [],
-      reviews: {},
+      reviews: [],
       reviewsMeta: {}
     };
     this.updateData = this.updateData.bind(this);
@@ -45,9 +46,13 @@ class App extends React.Component {
       api.getRelated(id, (err, results) => {
         this.setState({ related: results.data });
       });
-      // api.getReviews(id, (err, results) => {
-      //   this.setState({ reviews: results.data });
-      // });
+      api.getAllReviews(id, (err, results) => {
+        if (err) {
+          console.log('Error getting reviews: ', err);
+        } else {
+          this.setState({ reviews: results });
+        }
+      });
       // api.getReviewsMeta(id, (err, results) => {
       //   this.setState({ reviewsMeta: results.data });
       // });
@@ -73,8 +78,8 @@ class App extends React.Component {
           related={this.state.related}
         />
         <QA id={this.props.match.params.id} />
+        <RatingsReviewsParent reviews={this.state.reviews} />
       </div>
-
     );
   }
 }

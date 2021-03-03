@@ -1,12 +1,17 @@
+/* eslint-disable react/no-unused-state */
+/* eslint-disable react/no-did-update-set-state */
+/* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
+import QuantityDropDown from './QuantityDropDown';
+import SizeDropDown from './SizeDropDown';
 
 class AddToCart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      size: '',
+      sku: '',
       quantity: 0,
       inOutfit: false
     };
@@ -17,7 +22,7 @@ class AddToCart extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps !== this.props) {
       this.setState({
-        size: '',
+        sku: '',
         quantity: 0
       });
     }
@@ -25,7 +30,7 @@ class AddToCart extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state.quantity, this.state.size, this.props.style.name, 'Added to Cart!');
+    console.log(this.state.quantity, this.props.style.skus[this.state.sku].size, this.props.style.name, 'Added to Cart!');
   }
 
   handleChange(e) {
@@ -36,22 +41,8 @@ class AddToCart extends React.Component {
     return (
       <div id="add-to-cart">
         <form id="add-to-cart-form" onSubmit={this.handleSubmit}>
-          <select name="size" value={this.state.size} onChange={this.handleChange}>
-            <option default>Select Size</option>
-            <option value="XS">XS</option>
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-          </select>
-          <select name="quantity" value={this.state.quantity} onChange={this.handleChange}>
-            <option default>Quantity</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
+          <SizeDropDown skus={this.props.style.skus} handleChange={this.handleChange} sku={this.state.sku} />
+          <QuantityDropDown item={this.props.style.skus[this.state.sku]} handleChange={this.handleChange} quantity={this.state.quantity} />
           <input type="submit" value="Add to Cart!" />
         </form>
       </div>

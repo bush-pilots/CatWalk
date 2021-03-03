@@ -23,7 +23,8 @@ class StyleSelector extends React.Component {
         <div id="style-selector-list">
           {this.props.styles.results.map((style) => (
             // eslint-disable-next-line max-len
-            <div className="style-selector-item" key={style.style_id} onClick={() => this.props.changeStyle(style)} style={{ backgroundImage: `url(${style.photos[0].thumbnail_url})` }}>{style.name}</div>
+            <div className="style-selector-item" key={style.style_id} onClick={() => this.props.changeStyle(style)} style={{ backgroundImage: `url(${style.photos[0].thumbnail_url})` }} />
+
           ))}
         </div>
       </div>

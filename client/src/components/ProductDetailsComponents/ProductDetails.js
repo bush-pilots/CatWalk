@@ -4,6 +4,7 @@ import React from 'react';
 import ProductInfo from './ProductInfo';
 import StyleSelector from './StyleSelector';
 import ImageGallery from './ImageGallery';
+import AddToCart from './AddToCart';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -56,6 +57,7 @@ class ProductDetails extends React.Component {
           currentStyle={this.state.currentStyle}
           changeStyle={this.changeStyle}
         />
+        <AddToCart style={this.state.currentStyle} />
       </div>
     );
   }

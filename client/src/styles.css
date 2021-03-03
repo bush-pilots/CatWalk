@@ -69,6 +69,8 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
   background-repeat: no-repeat;
   background-size: cover;
   display: inline-block;
+  border: 1px lightgray solid;
+  margin: 10px;
 }
 
 .thumbnail-gallery-item {

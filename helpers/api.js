@@ -36,19 +36,52 @@ const getRelated = (id, cb) => {
 // RATINGS/REVIEWS WIDGET HELPERS
 
 // Q/A WIDGET HELPERS
-const getQuestions = (id, count, cb) => {
-  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions?product_id=${id}&page=1&count=${count}&sort=helpful`;
+const getQuestions = (id, cb) => {
+  // modify to recursively grab all questions!
+  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions?product_id=${id}&page=1&count=100&sort=helpful`;
 
   axios.get(url)
     .then((response) => cb(null, response.data.results))
     .catch((err) => cb(err, null));
 };
 
-const getAnswers = (id, count, cb) => {
-  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${id}/answers?page=1&count=${count}&sort=helpful`;
+const getAnswers = (id, cb) => {
+  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${id}/answers?page=1&count=100&sort=helpful`;
 
   axios.get(url)
     .then((response) => cb(null, response.data.results))
+    .catch((err) => cb(err, null));
+};
+
+const markQuestionHelpful = (id, cb) => {
+  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${id}/helpful`;
+
+  axios.put(url)
+    .then((response) => cb(null, response))
+    .catch((err) => cb(err, null));
+};
+
+const markAnswerHelpful = (id, cb) => {
+  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${id}/helpful`;
+
+  axios.put(url)
+    .then((response) => cb(null, response))
+    .catch((err) => cb(err, null));
+};
+
+const reportQuestion = (id, cb) => {
+  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${id}/report`;
+
+  axios.put(url)
+    .then((response) => cb(null, response))
+    .catch((err) => cb(err, null));
+};
+
+const reportAnswer = (id, cb) => {
+  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${id}/report`;
+
+  axios.put(url)
+    .then((response) => cb(null, response))
     .catch((err) => cb(err, null));
 };
 
@@ -59,5 +92,9 @@ module.exports = {
   getStyles,
   getRelated,
   getQuestions,
-  getAnswers
+  getAnswers,
+  markQuestionHelpful,
+  markAnswerHelpful,
+  reportQuestion,
+  reportAnswer
 };

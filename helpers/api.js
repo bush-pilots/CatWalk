@@ -77,4 +77,4 @@ module.exports = {
   getRelated,
   getQuestions,
   getAllReviews
-  };
+};

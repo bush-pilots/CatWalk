@@ -8,7 +8,6 @@ const QA = ({id}) => {
   const [count, setCount] = useState(4);
 
   useEffect( () => {
-    console.log('idChange useEffect');
     setCount(4);
     getQuestions();
   }, [id])

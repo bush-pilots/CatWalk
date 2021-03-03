@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import AnswerList from './AnswerList.js';
 
 const api = require('../../../../helpers/api');
 
@@ -6,19 +7,10 @@ const Question = ({question}) => {
   const [answers, setAnswers] = useState([]);
   const [count, setCount] = useState(2);
 
-  // useEffect(()=> {
-  //   getAnswers();
-  // }, []);
-
-  // const getAnswers = () => {
-  //   api.getAnswers(question.question_id, (err, results) => {
-  //     setAnswers(results);
-  //   });
-  // };
-
   return (
     <>
     <div>Q: {question.question_body}</div>
+    <p>Helpful? Yes ({question.question_helpfulness}) | AddAnswerLink</p>
     </>
   );
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-did-update-set-state */
 /* eslint-disable max-len */
 /* eslint-disable array-callback-return */
 /* eslint-disable consistent-return */
@@ -48,7 +49,7 @@ class ImageGallery extends React.Component {
       <div id="image-gallery" style={{ backgroundImage: `url(${this.state.fullSizeImages[this.state.currentImgIndex]})` }}>
         <div id="thumbnail-gallery">
           {this.state.thumbnails.map((thumbnail, index) => (
-            <img className="thumbnail-gallery-item"  src={thumbnail} alt="" onClick={this.changeImageIndex} name={index} key={index} />
+            <img className="thumbnail-gallery-item" src={thumbnail} alt="" onClick={this.changeImageIndex} name={index} key={index} />
           ))}
         </div>
       </div>

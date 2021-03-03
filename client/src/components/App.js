@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
@@ -78,7 +79,10 @@ class App extends React.Component {
           related={this.state.related}
         />
         <QA id={this.props.match.params.id} />
+<<<<<<< HEAD
         <RatingsReviewsParent reviews={this.state.reviews} />
+=======
+>>>>>>> main
       </div>
     );
   }

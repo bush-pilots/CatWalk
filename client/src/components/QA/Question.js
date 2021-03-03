@@ -18,7 +18,7 @@ const Question = ({question}) => {
 
   return (
     <>
-    <div>{question.question_body}</div>
+    <div>Q: {question.question_body}</div>
     </>
   );
 

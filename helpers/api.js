@@ -44,11 +44,20 @@ const getQuestions = (id, count, cb) => {
     .catch((err) => cb(err, null));
 };
 
+const getAnswers = (id, count, cb) => {
+  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${id}/answers?page=1&count=${count}&sort=helpful`;
+
+  axios.get(url)
+    .then((response) => cb(null, response.data.results))
+    .catch((err) => cb(err, null));
+};
+
 // RELATED ITEMS/OUTFIT WIDGET HELPERS
 
 module.exports = {
   getProductData,
   getStyles,
   getRelated,
-  getQuestions
+  getQuestions,
+  getAnswers
 };

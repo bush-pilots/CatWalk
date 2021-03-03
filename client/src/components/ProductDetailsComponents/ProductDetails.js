@@ -3,6 +3,8 @@
 import React from 'react';
 import ProductInfo from './ProductInfo';
 import StyleSelector from './StyleSelector';
+import ImageGallery from './ImageGallery';
+import AddToCart from './AddToCart';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -26,7 +28,7 @@ class ProductDetails extends React.Component {
   findDefaultStyle() {
     const stylesArray = this.props.styles.results || [];
     stylesArray.forEach((style) => {
-      if (style['default?']) this.setState({ currentStyle: style });
+      if (style['default?']) this.changeStyle(style);
     });
   }
 
@@ -34,6 +36,7 @@ class ProductDetails extends React.Component {
     return (
       <div id="product-details">
         <h1>Product Details</h1>
+        <ImageGallery style={this.state.currentStyle} product={this.props.id} />
         <ProductInfo
           name={this.props.productData.name}
           style={this.state.currentStyle}
@@ -54,6 +57,7 @@ class ProductDetails extends React.Component {
           currentStyle={this.state.currentStyle}
           changeStyle={this.changeStyle}
         />
+        <AddToCart style={this.state.currentStyle} />
       </div>
     );
   }

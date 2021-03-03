@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import {
-  withRouter,
+  withRouter
 } from 'react-router-dom';
 
 class ApiCheckDisplay extends React.Component {

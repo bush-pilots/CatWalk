@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
@@ -22,7 +23,7 @@ class App extends React.Component {
     this.state = {
       currentProduct: '',
       productData: {},
-      styles: {results: []},
+      styles: { results: [] },
       related: [],
       reviews: {},
       reviewsMeta: {}
@@ -72,7 +73,7 @@ class App extends React.Component {
           styles={this.state.styles}
           related={this.state.related}
         />
-        <QA id={this.props.match.params.id}/>
+        <QA id={this.props.match.params.id} />
       </div>
 
     );

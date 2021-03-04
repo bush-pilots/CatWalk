@@ -12,6 +12,7 @@ module.exports = {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly'
   },
+  parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
       jsx: true
@@ -27,6 +28,9 @@ module.exports = {
   ],
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
-    'comma-dangle': ['error', 'never']
+    'comma-dangle': ['error', 'never'],
+    'max-len': ['error', { code: 10000 }],
+    'react/prefer-stateless-function': [0, { ignorePureComponents: false }],
+    'eslint no-trailing-spaces': ['error', { skipBlankLines: true, ignoreComments: true }]
   }
 };

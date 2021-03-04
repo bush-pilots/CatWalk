@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Button } from '@material-ui/core';
 import QuestionList from './QuestionList.js';
-import AddQuestionModal from './AddQuestionModal.js'
+import Modal from './Modal.js'
 
 const api = require('../../../../helpers/api');
 
@@ -29,14 +29,16 @@ const QA = ({product, id}) => {
     <div id="QA">
       <div className="QA-header">QUESTIONS and ANSWERS</div>
       <div>Search Bar Placeholder</div>
-      <QuestionList questions={questions.slice(0, count)} />
-      {questions.length > 2 && (<button className="QA-moreQuestionsButton button" onClick={() => {
+      <QuestionList questions={questions.slice(0, count)} product={product} />
+      {questions.length > 2 && (<Button className="QA-moreQuestionsButton button" onClick={() => {
         setCount(count + 2)}}>
-          MORE ANSWERED QUESTIONS</button>)}
-      <Button color="primary" onClick={() => toggleModal()} className="QA-addQuestionButton button">ADD A QUESTION +</Button>
-        {displayModal && (<AddQuestionModal product={product} displayModal={displayModal} toggleModal={toggleModal}/>)}
+          MORE ANSWERED QUESTIONS</Button>)}
+      <Button onClick={() => toggleModal()} className="QA-addQuestionButton button">ADD A QUESTION +</Button>
+        {displayModal && (<Modal questionModal={true} question={null} product={product} displayModal={displayModal} toggleModal={toggleModal}/>)}
     </div>
   );
 };
+
+// color="primary"
 
 export default QA;

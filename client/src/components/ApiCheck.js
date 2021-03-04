@@ -11,7 +11,6 @@ import ApiCheckDisplay from './ApiCheckDisplay';
 
 // eslint-disable-next-line import/no-unresolved
 // eslint-disable-next-line import/no-absolute-path
-
 class ApiCheck extends React.Component {
   constructor(props) {
     super(props);

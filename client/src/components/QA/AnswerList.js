@@ -2,6 +2,7 @@ import React from 'react';
 import Answer from './Answer.js';
 
 const AnswerList = ({answers}) => (
+  <div className="QA-answerList">
   <ul>
       {
         answers.map(answer => {
@@ -11,6 +12,7 @@ const AnswerList = ({answers}) => (
         })
       }
   </ul>
+  </div>
 );
 
 export default AnswerList;

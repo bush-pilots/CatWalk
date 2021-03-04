@@ -1,6 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&display=swap');
+
+.app {
+  font-family: 'Montserrat', sans-serif;
+}
 /* check to see that css is working */
 .cssCheck {
   background-color: blue;
+
 }
 
 .container {
@@ -85,3 +91,31 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+
+.ratingsSummaryContainer {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: d; */
+  /* padding: 10px; */
+}
+
+.MuiRating-iconFilled {
+  color: black;
+}
+
+.MuiRating-icon {
+  /* display borders on stars */
+  height: -5%;
+  width: -5%;
+}
+
+.average {
+  font-size: 50px;
+  font-weight: 700;
+}
+
+.ratingsSummary {
+  padding-top: 8px;
+}
+

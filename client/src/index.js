@@ -9,7 +9,7 @@ import {
 import App from './components/App';
 
 ReactDOM.render(
-  <div>
+  <div className="app">
     <Router>
       <Route path="/:id" component={App} />
       <Route exact path="/" component={App}>

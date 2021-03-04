@@ -7,7 +7,6 @@ class RatingsReviewsParent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviews: []
     };
   }
 
@@ -48,18 +47,19 @@ class RatingsReviewsParent extends React.Component {
     return (
       <div>
         <p>
-        Ratings &amp; Reviews <br></br>
+          Ratings &amp; Reviews <br></br>
         </p>
         <div className="ratingsSummaryContainer">
-        <span className="average">{this.ratingsAverager(this.props.reviews)}</span>
+          <span className="average">{this.ratingsAverager(this.props.reviews)}</span>
 
           {console.log(Number(this.ratingsAverager(this.props.reviews)))}
-          <Rating className="ratingsSummary"
+          <Rating
+            className="ratingsSummary"
             value={Number(this.ratingsAverager(this.props.reviews))}
             max={5}
             readOnly={true}
             precision={0.25}
-            size={'small'}
+            size="small"
           />
         </div>
       </div>

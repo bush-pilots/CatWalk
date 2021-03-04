@@ -2,6 +2,7 @@ import React from 'react';
 import Question from './Question.js';
 
 const QuestionList = ({questions}) => (
+  <div className="QA-questionList">
   <ul>
       {
         questions.map(question => {
@@ -11,6 +12,7 @@ const QuestionList = ({questions}) => (
         })
       }
   </ul>
+  </div>
 );
 
 export default QuestionList;

@@ -32,11 +32,52 @@ const getRelated = (id, cb) => {
 };
 
 // Q/A WIDGET HELPERS
-const getQuestions = (id, count, cb) => {
-  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions?product_id=${id}&page=1&count=${count}&sort=helpful`;
+const getQuestions = (id, cb) => {
+  // modify to recursively grab all questions!
+  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions?product_id=${id}&page=1&count=100&sort=helpful`;
 
   axios.get(url)
     .then((response) => cb(null, response.data.results))
+    .catch((err) => cb(err, null));
+};
+
+const getAnswers = (id, cb) => {
+  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${id}/answers?page=1&count=100&sort=helpful`;
+
+  axios.get(url)
+    .then((response) => cb(null, response.data.results))
+    .catch((err) => cb(err, null));
+};
+
+const markQuestionHelpful = (id, cb) => {
+  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${id}/helpful`;
+
+  axios.put(url)
+    .then((response) => cb(null, response))
+    .catch((err) => cb(err, null));
+};
+
+const markAnswerHelpful = (id, cb) => {
+  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${id}/helpful`;
+
+  axios.put(url)
+    .then((response) => cb(null, response))
+    .catch((err) => cb(err, null));
+};
+
+const reportQuestion = (id, cb) => {
+  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${id}/report`;
+
+  axios.put(url)
+    .then((response) => cb(null, response))
+    .catch((err) => cb(err, null));
+};
+
+const reportAnswer = (id, cb) => {
+  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${id}/report`;
+
+  axios.put(url)
+    .then((response) => cb(null, response))
     .catch((err) => cb(err, null));
 };
 
@@ -44,7 +85,7 @@ const getQuestions = (id, count, cb) => {
 
 
 // RATINGS/REVIEWS WIDGET HELPERS
-const getAllReviews = (id, cb) => {
+const getReviews = (id, cb) => {
   // IOCE - input a product id and a callback
   // output is an array of all reviews for the input product id
   // method of operation is a recursive call to each page until reviews array is empty... asynchronously
@@ -76,5 +117,10 @@ module.exports = {
   getStyles,
   getRelated,
   getQuestions,
-  getAllReviews
+  getReviews,
+  getAnswers,
+  markQuestionHelpful,
+  markAnswerHelpful,
+  reportQuestion,
+  reportAnswer
 };

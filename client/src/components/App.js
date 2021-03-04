@@ -37,7 +37,7 @@ class App extends React.Component {
   }
 
   updateData(id) {
-    let updateStorage = {};
+    const updateStorage = {};
     if (id !== '') {
       api.getProductData(id, (err, results) => {
         // this.setState({ productData: results.data });
@@ -48,29 +48,23 @@ class App extends React.Component {
           api.getRelated(id, (err, results) => {
             // this.setState({ related: results.data });
             updateStorage.related = results.data;
-            api.getAllReviews(id, (err, results) => {
+            api.getReviews(id, (err, results) => {
               if (err) {
                 console.log('Error getting reviews: ', err);
               } else {
                 // this.setState({ reviews: results });
                 updateStorage.reviews = results;
-                //set state
+                // set state
                 this.setState(updateStorage);
               }
             });
-
           });
-
         });
-
       });
 
       // api.getReviewsMeta(id, (err, results) => {
       //   this.setState({ reviewsMeta: results.data });
       // });
-
-
-
     }
   }
 

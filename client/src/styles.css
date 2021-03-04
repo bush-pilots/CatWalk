@@ -71,7 +71,7 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
 .style-selector-item {
   width: 80px;
   height: 80px;
-  border-radius: 40px;
+  border-radius: 60px;
   background-repeat: no-repeat;
   background-size: cover;
   display: inline-block;

@@ -6,12 +6,18 @@ import ProductInfo from './ProductInfo';
 import StyleSelector from './StyleSelector';
 import ImageGallery from './ImageGallery';
 import AddToCart from './AddToCart';
+import ShareBar from './ShareBar';
 
 class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentStyle: { skus: { '': { quantity: 0, size: ' ' } } }
+      currentStyle: {
+        skus: {
+          '': { quantity: 0, size: ' ' }
+        },
+        photos: [{ url: '' }]
+      }
     };
     this.changeStyle = this.changeStyle.bind(this);
   }
@@ -59,7 +65,9 @@ class ProductDetails extends React.Component {
           changeStyle={this.changeStyle}
         />
         <AddToCart style={this.state.currentStyle} />
+        <ShareBar id={this.props.id} image={this.state.currentStyle.photos[0].url} />
       </div>
+
     );
   }
 }

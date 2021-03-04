@@ -92,6 +92,23 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
   background-size: cover;
 }
 
+/* QA Styling */
+
+.QA-SubmitQuestionForm {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 5%;
+  color: white;
+  text-align: center;
+  background-color: rgba(0,0,0,0.5);
+  padding: 10px;
+};
+
+/* RR Styling */
 
 .ratingsSummaryContainer {
   display: flex;

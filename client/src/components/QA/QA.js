@@ -39,6 +39,4 @@ const QA = ({product, id}) => {
   );
 };
 
-// color="primary"
-
 export default QA;

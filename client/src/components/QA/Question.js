@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { Button } from '@material-ui/core';
 import AnswerList from './AnswerList.js';
 import Modal from './Modal.js';
 
@@ -68,10 +69,10 @@ const Question = ({question, product}) => {
 
     <p>Helpful? <a href="#" onClick={(event) => markQuestionHelpful(event)}>Yes</a> ({question.question_helpfulness}) | <a href="#" onClick={(event) => toggleModal(event)}>Add Answer</a> | <a href="#" onClick={(event) => reportQuestion(event)}>Report</a></p>
     <p>A:</p><AnswerList answers={answers.slice(0, count)}/>
-    {answers.length > 2 && (<button className="QA-moreAnswersButton button"
+    {answers.length > 2 && (<Button className="QA-moreAnswersButton button"
     onClick={() => {
       setCount(count + 2)}}>
-      LOAD MORE ANSWERS</button>)}
+      LOAD MORE ANSWERS</Button>)}
     {displayModal && (<Modal questionModal={false} question={question.question_body} product={product} displayModal={displayModal} toggleModal={toggleModal}/>)}
     </div>
   );

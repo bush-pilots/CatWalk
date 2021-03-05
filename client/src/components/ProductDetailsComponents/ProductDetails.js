@@ -4,14 +4,20 @@
 import React from 'react';
 import ProductInfo from './ProductInfo';
 import StyleSelector from './StyleSelector';
-import ImageGallery from './ImageGallery';
 import AddToCart from './AddToCart';
+import ShareBar from './ShareBar';
+import ImageCarousel from './ImageCarousel';
 
 class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentStyle: { skus: { '': { quantity: 0, size: ' ' } } }
+      currentStyle: {
+        skus: {
+          '': { quantity: 0, size: ' ' }
+        },
+        photos: [{ url: '' }]
+      }
     };
     this.changeStyle = this.changeStyle.bind(this);
   }
@@ -37,7 +43,7 @@ class ProductDetails extends React.Component {
     return (
       <div id="product-details">
         <h1>Product Details</h1>
-        <ImageGallery style={this.state.currentStyle} product={this.props.id} />
+        <ImageCarousel style={this.state.currentStyle} product={this.props.id} />
         <ProductInfo
           name={this.props.productData.name}
           style={this.state.currentStyle}
@@ -59,7 +65,9 @@ class ProductDetails extends React.Component {
           changeStyle={this.changeStyle}
         />
         <AddToCart style={this.state.currentStyle} />
+        <ShareBar id={this.props.id} image={this.state.currentStyle.photos[0].url} />
       </div>
+
     );
   }
 }

@@ -90,19 +90,28 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
   margin: 10px;
 }
 
-.thumbnail-gallery-item {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-}
 
-#image-gallery {
-  width: 500px;
-  height: 500px;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+/* QA Styling */
 
+.QA-Modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 3%;
+  color: white;
+  text-align: center;
+  background-color: rgba(0,0,0,0.8);
+  padding: 10px;
+};
+
+.QA-ModalError {
+  color: red;
+};
+
+/* RR Styling */
 
 /* --------------------------------Ratings and Reviews--------------------------------------------------------------------------------------------------- */
 /* grid container */

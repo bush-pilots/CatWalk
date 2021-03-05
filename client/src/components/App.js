@@ -86,10 +86,16 @@ class App extends React.Component {
         // styles={this.state.styles}
         // related={this.state.related}
         />
+<<<<<<< HEAD
         <QA id={this.props.match.params.id} />
         <div className="ratingsReviewsContainer">
           <RatingsReviewsParent reviews={this.state.reviews} />
         </div>
+=======
+        <QA product={this.state.productData}
+            id={this.props.match.params.id} />
+        <RatingsReviewsParent reviews={this.state.reviews} />
+>>>>>>> d601cb517eceb13d407a3fb262c184c6ee77362b
       </div>
     );
   }

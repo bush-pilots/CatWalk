@@ -1,22 +1,16 @@
 import React, {useState, useEffect} from 'react';
+import { Button } from '@material-ui/core';
 import AnswerList from './AnswerList.js';
+import Modal from './Modal.js';
 
 const api = require('../../../../helpers/api');
 
-//add link to "YES" that hits helpful POST API
-//add link
-//add onClick to link that triggers method
-//write method
-  //method should grab current helpfulness rating and increment
-  //method should invoke helper function from API
-
-//add link to AddAnswer that opens modal and allows form submission
-
-const Question = ({question}) => {
+const Question = ({question, product}) => {
   const [answers, setAnswers] = useState([]);
   const [count, setCount] = useState(2);
   const [helpfulClicked, setHelpfulClicked] = useState(false);
   const [reportClicked, setReportClicked] = useState(false);
+  const [displayModal, setDisplayModal] = useState(false);
 
   useEffect( () => {
     setCount(2);
@@ -62,19 +56,24 @@ const Question = ({question}) => {
         }
       })
     };
+  };
 
+  const toggleModal = (e) => {
+    e.preventDefault();
+    setDisplayModal(!displayModal);
   };
 
   return (
     <div className="QA-question">
     <div>Q: {question.question_body}</div>
 
-    <p>Helpful? <a href="#" onClick={(event) => markQuestionHelpful(event)}>Yes</a> ({question.question_helpfulness}) | AddAnswerLink | <a href="#" onClick={(event) => reportQuestion(event)}>Report</a></p>
+    <p>Helpful? <a href="#" onClick={(event) => markQuestionHelpful(event)}>Yes</a> ({question.question_helpfulness}) | <a href="#" onClick={(event) => toggleModal(event)}>Add Answer</a> | <a href="#" onClick={(event) => reportQuestion(event)}>Report</a></p>
     <p>A:</p><AnswerList answers={answers.slice(0, count)}/>
-    {answers.length > 2 && (<button className="QA-moreAnswersButton button"
+    {answers.length > 2 && (<Button className="QA-moreAnswersButton button"
     onClick={() => {
       setCount(count + 2)}}>
-        LOAD MORE ANSWERS</button>)}
+      LOAD MORE ANSWERS</Button>)}
+    {displayModal && (<Modal questionModal={false} question={question.question_body} product={product} displayModal={displayModal} toggleModal={toggleModal}/>)}
     </div>
   );
 

@@ -47,7 +47,6 @@ class ProductBreakdown extends React.Component {
           }
         }
         newState.characteristics = newCharacteristics;
-        console.log(newState)
         this.setState(newState)
       }
     }

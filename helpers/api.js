@@ -89,6 +89,7 @@ const getReviews = (id, cb) => {
   // IOCE - input a product id and a callback
   // output is an array of all reviews for the input product id
   // method of operation is a recursive call to each page until reviews array is empty... asynchronously
+  // /api/fec2/hr-bld/reviews?product_id=####
   const reviews = [];
   const innerRecursiveFunc = (pageCount) => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/?page=${pageCount}&product_id=${id}`)

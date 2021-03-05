@@ -79,18 +79,6 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
   margin: 10px;
 }
 
-.thumbnail-gallery-item {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-}
-
-#image-gallery {
-  width: 500px;
-  height: 500px;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 
 /* QA Styling */
 

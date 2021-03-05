@@ -7,6 +7,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import carouselCSS from './carouselCSS.css';
+import noImage from './assets/no-image.png';
 
 class ImageCarousel extends React.Component {
   constructor(props) {
@@ -74,13 +75,13 @@ class ImageCarousel extends React.Component {
         <div className="carousel-wrapper">
           {this.state.currentImgIndex > 0 && <button className="left-arrow" onClick={this.prev}>&lt;</button>}
           <div className="carousel-content-wrapper">
-            <div id="thumbnail-gallery">
+            {this.state.thumbnails.length > 1 && (<div id="thumbnail-gallery">
               {this.state.thumbnails.map((thumbnail, index) => (
-                <img className="thumbnail-gallery-item" src={thumbnail} alt="" onClick={() => this.changeImageIndex(index)} name={index} key={index} />
+                <img className={index === this.state.currentImgIndex ? 'thumbnail-gallery-item selected-thumbnail' : 'thumbnail-gallery-item'} src={thumbnail || noImage} alt="" onClick={() => this.changeImageIndex(index)} name={index} key={index} />
               ))}
-            </div>
+          </div>)}
             <div className="carousel-content" style={{ transform: `translateX(-${this.state.currentImgIndex * 100}%)` }}>
-              {this.state.fullSizeImages.map((imageUrl, i) => (<img src={imageUrl} key={i} alt="" style={{ objectFit: 'contain' }} />))}
+              {this.state.fullSizeImages.map((imageUrl, i) => (<img src={imageUrl || noImage} key={i} alt="" style={{ objectFit: 'contain' }} />))}
             </div>
           </div>
           {this.state.currentImgIndex < this.state.fullSizeImages.length - 1 && <button className="right-arrow" onClick={this.next}>&gt;</button>}

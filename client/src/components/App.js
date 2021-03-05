@@ -82,13 +82,15 @@ class App extends React.Component {
         />
         <ApiCheck
           updateData={this.updateData}
-          // productData={this.state.productData}
-          // styles={this.state.styles}
-          // related={this.state.related}
+        // productData={this.state.productData}
+        // styles={this.state.styles}
+        // related={this.state.related}
         />
         <QA product={this.state.productData}
-            id={this.props.match.params.id} />
-        <RatingsReviewsParent reviews={this.state.reviews} />
+          id={this.props.match.params.id} />
+        <div className="ratingsReviewsContainer">
+          <RatingsReviewsParent reviews={this.state.reviews} />
+        </div>
       </div>
     );
   }

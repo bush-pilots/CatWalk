@@ -31,59 +31,6 @@ const getRelated = (id, cb) => {
     .catch((err) => cb(err, null));
 };
 
-// Q/A WIDGET HELPERS
-const getQuestions = (id, cb) => {
-  // modify to recursively grab all questions!
-  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions?product_id=${id}&page=1&count=100&sort=helpful`;
-
-  axios.get(url)
-    .then((response) => cb(null, response.data.results))
-    .catch((err) => cb(err, null));
-};
-
-const getAnswers = (id, cb) => {
-  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${id}/answers?page=1&count=100&sort=helpful`;
-
-  axios.get(url)
-    .then((response) => cb(null, response.data.results))
-    .catch((err) => cb(err, null));
-};
-
-const markQuestionHelpful = (id, cb) => {
-  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${id}/helpful`;
-
-  axios.put(url)
-    .then((response) => cb(null, response))
-    .catch((err) => cb(err, null));
-};
-
-const markAnswerHelpful = (id, cb) => {
-  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${id}/helpful`;
-
-  axios.put(url)
-    .then((response) => cb(null, response))
-    .catch((err) => cb(err, null));
-};
-
-const reportQuestion = (id, cb) => {
-  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${id}/report`;
-
-  axios.put(url)
-    .then((response) => cb(null, response))
-    .catch((err) => cb(err, null));
-};
-
-const reportAnswer = (id, cb) => {
-  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${id}/report`;
-
-  axios.put(url)
-    .then((response) => cb(null, response))
-    .catch((err) => cb(err, null));
-};
-
-// RELATED ITEMS/OUTFIT WIDGET HELPERS
-
-
 // RATINGS/REVIEWS WIDGET HELPERS
 const getReviews = (id, cb) => {
   // IOCE - input a product id and a callback
@@ -116,11 +63,5 @@ module.exports = {
   getProductData,
   getStyles,
   getRelated,
-  getQuestions,
-  getReviews,
-  getAnswers,
-  markQuestionHelpful,
-  markAnswerHelpful,
-  reportQuestion,
-  reportAnswer
+  getReviews
 };

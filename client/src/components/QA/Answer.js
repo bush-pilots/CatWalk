@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-const api = require('../../../../helpers/api');
+const api = require('../../../../helpers/qa.js');
 
 const Answer = ({answer}) => {
   const [helpfulClicked, setHelpfulClicked] = useState(false);
@@ -21,20 +21,24 @@ const Answer = ({answer}) => {
       return;
     } else {
       setHelpfulClicked(true);
-      api.markAnswerHelpful(answer.answer_id, (err, results) => {
-        console.log(results);
+      api.markQuestionOrAnswerHelpful('answers', answer.answer_id, (err, results) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(results);
+        }
       });
     }
   };
 
-  const reportQuestion = (e) => {
+  const reportAnswer = (e) => {
     e.preventDefault();
     if (reportClicked) {
       return;
     } else {
       setReportClicked(true);
 
-      api.reportAnswer(answer.answer_id, (err, results) => {
+      api.reportQuestionOrAnswer('answers', answer.answer_id, (err, results) => {
         if (err) {
           console.log(err);
         } else {

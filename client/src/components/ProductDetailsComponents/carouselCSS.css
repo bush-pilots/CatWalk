@@ -71,3 +71,11 @@
   height: 60px;
   object-fit: cover;
 }
+
+.selected-thumbnail {
+  border: 2px white solid;
+  width: 70px;
+  height: 70px;
+  -webkit-filter: drop-shadow(2px 4px 6px black);
+  filter: drop-shadow(2px 4px 6px black);
+}

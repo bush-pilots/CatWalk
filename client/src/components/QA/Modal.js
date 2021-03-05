@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import { Button } from '@material-ui/core';
 
+const api = require('../../../../helpers/qa.js');
+
 const Modal = ({questionModal, question, product, displayModal, toggleModal}) => {
   const [inputs, setInputs] = useState({questionOrAnswer: '', nickname: 'Example: bobjohnson88', email: ''});
   const [errorMessage, setErrorMessage] = useState('');
@@ -20,26 +22,42 @@ const Modal = ({questionModal, question, product, displayModal, toggleModal}) =>
     }
   }, [submission])
 
-//   POST /qa/questions
-
-// Parameter	Type	Description
-// body	text	Text of question being asked
-// name	text	Username for question asker
-// email	text	Email address for question asker
-// product_id	integer	Required ID of the Product for which the question is posted
-
   const submit = () => {
     console.log('hello world!');
+
+    if (questionModal) {
+      const params = {
+        body: inputs.questionOrAnswer,
+        name: inputs.nickname,
+        email: inputs.email,
+        product_id: product.id
+      };
+
+      api.submitQuestion(params, (err, results) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(results);
+        }
+      });
+    } else {
+      const params = {
+        body: inputs.questionOrAnswer,
+        name: inputs.nickname,
+        email: inputs.email,
+      };
+
+      api.submitAnswer(question.question_id, params, (err, results) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(results);
+        }
+      });
+    }
+
     setSubmission(false);
     toggleModal();
-
-    //check if answer or question
-    //use appropriate API helper based on above
-    //toggleModal
-
-    //logic for validating inputs before submission
-    //utilize toggleDisplay to turn off modal (but only when inputs are validated)
-    //post request to hit up form!
   };
 
   const validate = () => {
@@ -81,7 +99,7 @@ const Modal = ({questionModal, question, product, displayModal, toggleModal}) =>
     <div className="QA-Modal">
       <div className="QA-ModalGuts">
       {questionModal ? (<><div>Ask Your Question</div>
-        <div>About the {product.name} Here</div></>) : (<><div>Submit Your Answer</div><p>{product.name}: {question}</p></>)}
+        <div>About the {product.name} Here</div></>) : (<><div>Submit Your Answer</div><p>{product.name}: {question.question_body}</p></>)}
       {questionModal ? (<div>Your Question</div>) : (<div>Your Answer</div>)}
         <textarea name="questionOrAnswer" value={inputs.questionOrAnswer} onChange={(event) => handleInputChange(event)}></textarea>
         <div>What is your nickname?</div>

@@ -8,7 +8,6 @@ const SearchBar = ({questions, filteredQuestions, setFilteredQuestions}) => {
   }, [searchInput]);
 
   const filterQuestions = () => {
-    console.log('holla');
     if (searchInput.length >= 3 && searchInput !== 'Have Questions? Search for answers...') {
       setFilteredQuestions(questions.filter(q => q.question_body.includes(searchInput)));
     } else {

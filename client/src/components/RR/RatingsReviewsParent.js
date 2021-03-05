@@ -15,10 +15,10 @@ class RatingsReviewsParent extends React.Component {
     return (
       <div><br></br>
         <div className="ratings">
-          <Ratings reviews={this.props.reviews} />
+          <Ratings isFetching={this.props.isFetching} reviewsMeta={this.props.reviewsMeta} reviews={this.props.reviews} />
         </div>
         <div className="reviews">
-          <ReviewList reviews={this.props.reviews} />
+          <ReviewList reviews={this.props.reviews} reviewsMeta={this.props.reviewsMeta} />
         </div>
       </div>
 
@@ -40,3 +40,22 @@ export default RatingsReviewsParent;
 // review_id: 215168
 // reviewer_name: "Velma18"
 // summary: "Explicabo occaecati doloremque cum consequatur ea et eos."
+
+// Review Meta
+
+// data:
+// characteristics:
+// Comfort: {id: 61908, value: "2.2941176470588235"}
+// Quality: {id: 61909, value: "2.7647058823529412"}
+// Size: {id: 61906, value: "2.9411764705882353"}
+// Width: {id: 61907, value: "2.9411764705882353"}
+// __proto__: Object
+// product_id: "18445"
+// ratings:
+// 1: "7"
+// 2: "2"
+// 3: "3"
+// 4: "2"
+// 5: "3"
+// __proto__: Object
+// recommended: {false: "7", true: "10"}

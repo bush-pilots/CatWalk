@@ -3,18 +3,18 @@ import RatingsSummary from './RatingsSummary';
 import RatingsBreakdown from './RatingsBreakdown';
 import ProductBreakdown from './ProductBreakdown';
 
-var Ratings = ({ reviews }) => {
+var Ratings = ({ reviews, reviewsMeta, isFetching }) => {
 
   return (
     <div>
       <div className="ratingsSummary">
-        <RatingsSummary reviews={reviews} />
+        <RatingsSummary reviewsMeta={reviewsMeta} reviews={reviews} />
       </div>
       <div className="ratingsBreakdown">
-        <RatingsBreakdown reviews={reviews} />
+        <RatingsBreakdown reviewsMeta={reviewsMeta} reviews={reviews} />
       </div>
       <div className="productBreakdown">
-        <ProductBreakdown reviews={reviews} />
+        <ProductBreakdown isFetching={isFetching} reviewsMeta={reviewsMeta} reviews={reviews} />
       </div>
     </div>
 

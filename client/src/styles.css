@@ -6,10 +6,17 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-p {
-  /* use this font on paragraphs */
+.small {
+  font-size: small;
+}
 
+.medium {
+  font-size: medium;
+}
 
+.large {
+  font-size: large;
+  font-weight: 600;
 }
 /* check to see that css is working */
 .cssCheck {
@@ -194,3 +201,36 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
   width: 300px;
   font-size: 85%;
 }
+/* --------------------------------Product Breakdown ---------------------------------------------------------------------------------------------------- */
+.MuiSlider-root {
+  /* height: 400;
+  display: inline-block; */
+  width: 263px !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+
+.MuiSlider-rail {
+  display: inline-block;
+  height: 8px !important;
+  background: linear-gradient(to right,
+   grey 32%, white 32% 33%, grey 33% 65%, white 65% 66%,
+   grey 66%);
+
+}
+
+.chMeaning {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 263px
+}
+
+.characteristics {
+  font-size: 85%;
+  margin-top: 8px;
+}
+
+
+
+

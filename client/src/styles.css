@@ -163,6 +163,11 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
   text-align: center;
 }
 
+.loading-div {
+  margin-top: auto;
+  margin-bottom: auto;
+  text-align: center;
+}
 
 /* QA Styling */
 

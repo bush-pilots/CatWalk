@@ -70,24 +70,24 @@ class ImageCarousel extends React.Component {
           maxWidth: 500
         }}
       >
-        <div className="carousel-wrapper">
+        {this.props.isFetching ? <LoadingDiv /> :
+        (<div className="carousel-wrapper">
           {this.state.currentImgIndex > 0 && <button className="left-arrow" onClick={this.prev}>&lt;</button>}
-          <div className="carousel-content-wrapper">
-            {this.state.thumbnails.length > 1 && (
+
+            <div className="carousel-content-wrapper">
               <div id="thumbnail-gallery">
                 {this.state.thumbnails.map((thumbnail, index) => (
                   <img className={index === this.state.currentImgIndex ? 'thumbnail-gallery-item selected-thumbnail' : 'thumbnail-gallery-item'} src={thumbnail || noImage} alt="" onClick={() => this.changeImageIndex(index)} name={index} key={index} />
                 ))}
-              </div>)}
-          {this.props.isFetching ? <LoadingDiv />
-          :(
+              </div>
             <div className="carousel-content" style={{ transform: `translateX(-${this.state.currentImgIndex * 100}%)` }}>
               {this.state.fullSizeImages.map((imageUrl, i) => (<img src={imageUrl || noImage} key={i} alt="" style={{ objectFit: 'contain' }} />))}
-            </div>)}
+            </div>
           </div>
 
           {this.state.currentImgIndex < this.state.fullSizeImages.length - 1 && <button className="right-arrow" onClick={this.next}>&gt;</button>}
         </div>
+        )}
       </div>
     );
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import loading from './assets/loading.gif';
 
 const LoadingDiv = () => (
-  <div style={{textAlign: 'center'}}>
+  <div className="loading-div">
     <img src={ loading } />
   </div>
 );

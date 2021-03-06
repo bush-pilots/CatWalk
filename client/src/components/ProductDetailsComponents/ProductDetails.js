@@ -43,12 +43,12 @@ class ProductDetails extends React.Component {
     return (
       <div id="product-details">
         <ImageCarousel style={this.state.currentStyle} product={this.props.id} isFetching={this.props.isFetching} />
-        <ProductInfo
+        {this.props.isFetching || <ProductInfo
           name={this.props.productData.name}
           style={this.state.currentStyle}
           category={this.props.productData.category}
-        />
-        <div id="product-desc">
+        />}
+        {this.props.isFetching || <div id="product-desc">
           <span id="product-slogan" className="large">
             {this.props.productData.slogan}
           </span>
@@ -58,12 +58,13 @@ class ProductDetails extends React.Component {
             {this.props.productData.description}
           </span>
           <br />
-        </div>
-        <StyleSelector
+        </div>}
+        {this.props.isFetching || <StyleSelector
           styles={this.props.styles || []}
           currentStyle={this.state.currentStyle}
           changeStyle={this.changeStyle}
-        />
+          isFetching={this.props.isFetching}
+        />}
         <AddToCart style={this.state.currentStyle} isFetching={this.props.isFetching} />
         <ShareBar id={this.props.id} image={this.state.currentStyle.photos[0].url} />
       </div>

@@ -66,10 +66,7 @@ class ImageCarousel extends React.Component {
       <div
         className="carousel-container"
         style={{
-          maxWidth: 600,
-          marginLeft: '5%',
-          marginRight: 'auto',
-          marginTop: '5%'
+          maxWidth: 500
         }}
       >
         <div className="carousel-wrapper">

@@ -39,11 +39,11 @@ class AddToCart extends React.Component {
 
   render() {
     return (
-      <div id="add-to-cart">
+      <div id="add-to-cart" >
         <form id="add-to-cart-form" onSubmit={this.handleSubmit}>
           <SizeDropDown skus={this.props.style.skus} handleChange={this.handleChange} sku={this.state.sku} />
           <QuantityDropDown item={this.props.style.skus[this.state.sku]} handleChange={this.handleChange} quantity={this.state.quantity} />
-          <input type="submit" value="Add to Cart!" />
+          <input type="submit" value="Add to Cart!" id="add-to-cart-button" className="medium add-to-cart-input"/>
         </form>
       </div>
     );

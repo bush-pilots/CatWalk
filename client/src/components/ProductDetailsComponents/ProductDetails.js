@@ -42,7 +42,6 @@ class ProductDetails extends React.Component {
   render() {
     return (
       <div id="product-details">
-        <h1>Product Details</h1>
         <ImageCarousel style={this.state.currentStyle} product={this.props.id} />
         <ProductInfo
           name={this.props.productData.name}
@@ -50,13 +49,12 @@ class ProductDetails extends React.Component {
           category={this.props.productData.category}
         />
         <div id="product-desc">
-          <span id="product-slogan">
-            Slogan: <br/>
+          <span id="product-slogan" className="large">
             {this.props.productData.slogan}
           </span>
           <br />
-          <span id="desc">
-            Description: <br/>
+          <br />
+          <span id="desc"className="medium">
             {this.props.productData.description}
           </span>
           <br />

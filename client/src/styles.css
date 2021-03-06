@@ -82,7 +82,7 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
 /* --------------------------------Product Overview Styles------------------------------------------------------------------------------------------------ */
 #product-details {
   display: grid;
-  grid-template-columns: 5% 625px 500px 5%;
+  grid-template-columns: 5% 525px 500px 5%;
   grid-template-rows: 10% 33% 25% auto 25%;
 }
 
@@ -106,10 +106,9 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
 #add-to-cart {
   grid-column: 3;
   grid-row: 4;
-  margin: 50px;
 }
 
-div#share-bar {
+#share-bar {
   text-align: right;
   grid-column: 2;
   grid-row: 5;
@@ -156,9 +155,14 @@ div#share-bar {
   text-decoration: line-through;
 }
 
-#original-price {
-
+.add-to-cart-input {
+  padding: 10px;
+  width: 200px;
+  margin: 25px;
+  text-align: center;
 }
+
+
 /* QA Styling */
 
 .QA-Modal {

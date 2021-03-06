@@ -29,7 +29,7 @@ const QA = ({product, id}) => {
 
   return (
     <div id="QA">
-      <div className="QA-header">QUESTIONS and ANSWERS</div>
+      <div className="QA-header">QUESTIONS & ANSWERS</div>
 
       <SearchBar questions={questions} filteredQuestions={filteredQuestions} setFilteredQuestions={setFilteredQuestions}/>
 

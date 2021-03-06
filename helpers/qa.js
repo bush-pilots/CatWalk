@@ -62,12 +62,15 @@ const reportQuestionOrAnswer = (QorA, id, cb) => {
     .catch((err) => cb(err, null));
 }
 
-const submitQuestion = (params, cb) => {
-  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions`;
-
-  axios.post(url, params)
-    .then((response) => cb(null, response))
-    .catch((err) => cb(err, null));
+const submitQuestion = async (params, cb) => {
+  try {
+    const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions`;
+    const resp = axios.post(url, params);
+    console.log(resp);
+  }
+  catch {
+    console.log(err);
+  }
 };
 
 const submitAnswer = (id, params, cb) => {

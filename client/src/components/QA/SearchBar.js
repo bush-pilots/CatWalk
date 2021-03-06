@@ -8,16 +8,15 @@ const SearchBar = ({questions, filteredQuestions, setFilteredQuestions}) => {
   }, [searchInput]);
 
   const filterQuestions = () => {
-    if (searchInput.length >= 3 && searchInput !== 'Have Questions? Search for answers...') {
-      setFilteredQuestions(questions.filter(q => q.question_body.includes(searchInput)));
-    } else {
-      setFilteredQuestions(null);
-    }
+    (searchInput.length >= 3 && searchInput !== 'Have Questions? Search for answers...') ?
+    setFilteredQuestions(questions.filter(({question_body}) => question_body.includes(searchInput))) :
+    setFilteredQuestions(null);
   };
 
   return (
     <div className="search">
-      <input value={searchInput} onChange={(event) => setSearchInput(event.target.value)} onClick={() => setSearchInput('')}/>
+      <input value={searchInput} onChange={(event) => setSearchInput(event.target.value)}
+      onClick={() => setSearchInput('')}/>
     </div>
   );
 

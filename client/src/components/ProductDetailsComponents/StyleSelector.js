@@ -18,7 +18,7 @@ class StyleSelector extends React.Component {
     return (
       <div id="style-selector">
         <span id="style-name">
-          Current Style:
+          Current Style: <br/>
           {this.props.currentStyle.name}
         </span>
         <br />

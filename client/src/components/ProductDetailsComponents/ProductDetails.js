@@ -49,16 +49,18 @@ class ProductDetails extends React.Component {
           style={this.state.currentStyle}
           category={this.props.productData.category}
         />
-        <span id="product-slogan">
-          Slogan:
-          {this.props.productData.slogan}
-        </span>
-        <br />
-        <span id="product-desc">
-          Description:
-          {this.props.productData.description}
-        </span>
-        <br />
+        <div id="product-desc">
+          <span id="product-slogan">
+            Slogan: <br/>
+            {this.props.productData.slogan}
+          </span>
+          <br />
+          <span id="desc">
+            Description: <br/>
+            {this.props.productData.description}
+          </span>
+          <br />
+        </div>
         <StyleSelector
           styles={this.props.styles || []}
           currentStyle={this.state.currentStyle}

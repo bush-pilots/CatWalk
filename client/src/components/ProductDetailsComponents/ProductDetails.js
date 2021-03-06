@@ -42,7 +42,7 @@ class ProductDetails extends React.Component {
   render() {
     return (
       <div id="product-details">
-        <ImageCarousel style={this.state.currentStyle} product={this.props.id} />
+        <ImageCarousel style={this.state.currentStyle} product={this.props.id} isFetching={this.props.isFetching} />
         <ProductInfo
           name={this.props.productData.name}
           style={this.state.currentStyle}
@@ -54,7 +54,7 @@ class ProductDetails extends React.Component {
           </span>
           <br />
           <br />
-          <span id="desc"className="medium">
+          <span id="desc" className="medium">
             {this.props.productData.description}
           </span>
           <br />
@@ -64,7 +64,7 @@ class ProductDetails extends React.Component {
           currentStyle={this.state.currentStyle}
           changeStyle={this.changeStyle}
         />
-        <AddToCart style={this.state.currentStyle} />
+        <AddToCart style={this.state.currentStyle} isFetching={this.props.isFetching} />
         <ShareBar id={this.props.id} image={this.state.currentStyle.photos[0].url} />
       </div>
 

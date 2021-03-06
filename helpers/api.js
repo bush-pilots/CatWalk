@@ -60,9 +60,21 @@ const getReviews = (id, cb) => {
   innerRecursiveFunc(1);
 };
 
+const getReviewsMeta = (id, cb) => {
+
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/meta?product_id=${id}`)
+      .then((response) => {
+          cb(null, response);
+      })
+      .catch((err) => {
+        cb(err, null);
+      });
+};
+
 module.exports = {
   getProductData,
   getStyles,
   getRelated,
-  getReviews
+  getReviews,
+  getReviewsMeta
 };

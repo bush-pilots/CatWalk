@@ -3,12 +3,11 @@ const config = require('../config.js');
 
 axios.defaults.headers.common.authorization = config.API_TOKEN;
 
-// Q/A WIDGET HELPERS
-
 const getQuestions = (id, cb) => {
   const questions = [];
 
   const getAnotherPage = (page) => {
+
     const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions?product_id=${id}&page=${page}&count=100&sort=helpful`;
 
     axios.get(url)
@@ -47,20 +46,12 @@ const getAnswers = (id, cb) => {
   getAnotherPage(1);
 };
 
-// const getAnswers = (id, cb) => {
-//   const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${id}/answers?page=1&count=100&sort=helpful`;
-
-//   axios.get(url)
-//     .then((response) => cb(null, response.data.results))
-//     .catch((err) => cb(err, null));
-// };
-
 const markQuestionOrAnswerHelpful = (QorA, id, cb) => {
   const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/${QorA}/${id}/helpful`;
 
   axios.put(url)
-  .then((response) => cb(null, response))
-  .catch((err) => cb(err, null));
+    .then((response) => cb(null, response))
+    .catch((err) => cb(err, null));
 };
 
 const reportQuestionOrAnswer = (QorA, id, cb) => {

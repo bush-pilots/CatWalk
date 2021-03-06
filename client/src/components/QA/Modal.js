@@ -100,15 +100,20 @@ const Modal = ({questionModal, question, product, displayModal, toggleModal}) =>
       <div className="QA-ModalGuts">
       {questionModal ? (<><div>Ask Your Question</div>
         <div>About the {product.name} Here</div></>) : (<><div>Submit Your Answer</div><p>{product.name}: {question.question_body}</p></>)}
+
       {questionModal ? (<div>Your Question</div>) : (<div>Your Answer</div>)}
         <textarea name="questionOrAnswer" value={inputs.questionOrAnswer} onChange={(event) => handleInputChange(event)}></textarea>
+
         <div>What is your nickname?</div>
         <input name="nickname" value={inputs.nickname} onChange={(event) => handleInputChange(event)}></input>
         <p>For privacy reasons, do not use your full name or email address</p>
+
         <div>Your Email</div>
         <input name="email" value={inputs.email} onChange={(event) => handleInputChange(event)}></input>
         <p>For authentication reasons, you will not be emailed</p>
+
         {errorExists && (<div className="QA-ModalError" style={styles}>{errorMessage}</div>)}
+
         <Button color="inherit" onClick={(event) => toggleModal(event)}>Cancel</Button>
       {questionModal ? (<Button color="inherit" onClick={() => validate()}>Submit Question</Button>) :
         (<Button color ="inherit" onClick={() => validate()}>Submit Answer</Button>)}

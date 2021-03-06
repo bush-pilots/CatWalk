@@ -9,6 +9,7 @@ import React from 'react';
 import carouselCSS from './carouselCSS.css';
 import noImage from './assets/no-image.png';
 import LoadingDiv from './LoadingDiv';
+import ThumbnailGallery from './ThumbnailGallery';
 
 class ImageCarousel extends React.Component {
   constructor(props) {
@@ -67,24 +68,18 @@ class ImageCarousel extends React.Component {
       <div
         className="carousel-container"
         style={{
-          maxWidth: 500
+          maxWidth: 600
         }}
       >
         {this.props.isFetching ? <LoadingDiv /> :
         (<div className="carousel-wrapper">
           {this.state.currentImgIndex > 0 && <button className="left-arrow" onClick={this.prev}>&lt;</button>}
-
             <div className="carousel-content-wrapper">
-              <div id="thumbnail-gallery">
-                {this.state.thumbnails.map((thumbnail, index) => (
-                  <img className={index === this.state.currentImgIndex ? 'thumbnail-gallery-item selected-thumbnail' : 'thumbnail-gallery-item'} src={thumbnail || noImage} alt="" onClick={() => this.changeImageIndex(index)} name={index} key={index} />
-                ))}
-              </div>
+              {this.state.thumbnails.length > 1 && <ThumbnailGallery thumbnails={this.state.thumbnails} currentImgIndex={this.state.currentImgIndex} changeImageIndex={this.changeImageIndex} />}
             <div className="carousel-content" style={{ transform: `translateX(-${this.state.currentImgIndex * 100}%)` }}>
               {this.state.fullSizeImages.map((imageUrl, i) => (<img src={imageUrl || noImage} key={i} alt="" style={{ objectFit: 'contain' }} />))}
             </div>
           </div>
-
           {this.state.currentImgIndex < this.state.fullSizeImages.length - 1 && <button className="right-arrow" onClick={this.next}>&gt;</button>}
         </div>
         )}

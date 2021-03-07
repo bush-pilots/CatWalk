@@ -59,7 +59,7 @@ class ProductBreakdown extends React.Component {
   // }, [meta])
   // console.log(`Fetching? ${isFetching}`)
   // console.log('meta', reviewsMeta)
-  // data:
+  // meta data:
   // characteristics:
   // Comfort: {id: 61908, value: "2.2941176470588235"}
   // Quality: {id: 61909, value: "2.7647058823529412"}
@@ -77,9 +77,9 @@ class ProductBreakdown extends React.Component {
   // recommended: {false: "7", true: "10"}
   render() {
     return (
-      <div>
+      <>
         {this.state.Size ? (
-          <div>
+          <div className="breakdown">
             <div className="characteristics">Size</div>
             <Slider
               value={Number(this.state.characteristics.Size.value)}
@@ -89,9 +89,9 @@ class ProductBreakdown extends React.Component {
               track={false}
             />
             <div className="small chMeaning">
-              <span>Too small</span>
-              <span>Perfect</span>
-              <span>Too large</span>
+              <span className="meaning l">Too small</span>
+              <span className="meaning">Perfect</span>
+              <span className="meaning r">Too large</span>
             </div>
           </div>
         ) : (
@@ -99,7 +99,7 @@ class ProductBreakdown extends React.Component {
           )}
 
         {this.state.Width ? (
-          <div>
+          <div className="breakdown">
             <div className="characteristics">Width</div>
             <Slider
               value={Number(this.state.characteristics.Width.value)}
@@ -109,9 +109,9 @@ class ProductBreakdown extends React.Component {
               track={false}
             />
             <div className="small chMeaning">
-              <span>Too narrow</span>
-              <span>Perfect</span>
-              <span>Too wide</span>
+              <span className="meaning l">Too narrow</span>
+              <span className="meaning">Perfect</span>
+              <span className="meaning r">Too wide</span>
             </div>
           </div>
         ) : (
@@ -119,7 +119,7 @@ class ProductBreakdown extends React.Component {
           )}
 
         {this.state.Comfort ? (
-          <div>
+          <div className="breakdown">
             <div className="characteristics">Comfort</div>
             <Slider
               value={Number(this.state.characteristics.Comfort.value)}
@@ -129,9 +129,9 @@ class ProductBreakdown extends React.Component {
               track={false}
             />
             <div className="small chMeaning">
-              <span>Uncomfortable</span>
-              <span>Ok</span>
-              <span>Comfortable</span>
+              <span className="meaning l">Uncomfortable</span>
+              <span className="meaning">Ok</span>
+              <span className="meaning r">Comfortable</span>
             </div>
           </div>
         ) : (
@@ -139,7 +139,7 @@ class ProductBreakdown extends React.Component {
           )}
 
         {this.state.Quality ? (
-          <div>
+          <div className="breakdown">
             <div className="characteristics">Quality</div>
             <Slider
               value={Number(this.state.characteristics.Quality.value)}
@@ -149,9 +149,9 @@ class ProductBreakdown extends React.Component {
               track={false}
             />
             <div className="small chMeaning">
-              <span>Poor</span>
-              <span>What I expected</span>
-              <span>Perfect</span>
+              <span className="meaning l">Poor</span>
+              <span className="meaning">What I expected</span>
+              <span className="meaning r">Perfect</span>
             </div>
           </div>
         ) : (
@@ -159,7 +159,7 @@ class ProductBreakdown extends React.Component {
           )}
 
         {this.state.Length ? (
-          <div>
+          <div className="breakdown">
             <div className="characteristics">Length</div>
             <Slider
               value={Number(this.state.characteristics.Length.value)}
@@ -169,9 +169,9 @@ class ProductBreakdown extends React.Component {
               track={false}
             />
             <div className="small chMeaning">
-              <span>Runs short</span>
-              <span>Perfect</span>
-              <span>Runs long</span>
+              <span className="meaning l">Runs short</span>
+              <span className="meaning">Perfect</span>
+              <span className="meaning r">Runs long</span>
             </div>
           </div>
         ) : (
@@ -179,7 +179,7 @@ class ProductBreakdown extends React.Component {
           )}
 
         {this.state.Fit ? (
-          <div>
+          <div className="breakdown">
             <div className="characteristics">Fit</div>
             <Slider
               value={Number(this.state.characteristics.Fit.value)}
@@ -189,15 +189,15 @@ class ProductBreakdown extends React.Component {
               track={false}
             />
             <div className="small chMeaning">
-              <span>Runs tight</span>
-              <span>Perfect</span>
-              <span>Runs long</span>
+              <span className="meaning l">Runs tight</span>
+              <span className="meaning">Perfect</span>
+              <span className="meaning r">Runs long</span>
             </div>
           </div>
         ) : (
             <div></div>
           )}
-      </div>
+      </>
     )
 
   }

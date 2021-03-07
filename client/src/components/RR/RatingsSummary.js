@@ -15,7 +15,7 @@ var RatingsSummary = ({ reviews }) => {
   }
 
   return (
-    <div>
+    <>
      RATINGS &amp; REVIEWS
       <div className="ratingsSummaryContainer">
         <span className="average">{ratingsAverager(reviews)}</span>
@@ -28,7 +28,7 @@ var RatingsSummary = ({ reviews }) => {
           size="small"
         />
       </div>
-    </div>
+    </>
   )
 
 

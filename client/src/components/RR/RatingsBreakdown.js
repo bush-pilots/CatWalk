@@ -57,7 +57,7 @@ class RatingsBreakdown extends React.Component {
   // the real calculation is # of 5 star reviews / number of reviews to give percentage
   render() {
     return (
-      <div>
+      <>
         <p className="recommendedPer">
           {isNaN(this.state.percentageRec) ? 'No reviews yet!' : `${this.state.percentageRec}% of reviewers recommend this product`}
         </p>
@@ -85,7 +85,7 @@ class RatingsBreakdown extends React.Component {
             </tr>
           </tbody>
         </table>
-      </div>
+      </>
     )
   }
 

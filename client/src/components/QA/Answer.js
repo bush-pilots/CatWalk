@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import AnswerThumbnails from './AnswerThumbnails.js';
 
 const api = require('../../../../helpers/qa.js');
 
@@ -44,7 +45,9 @@ const Answer = ({answer}) => {
     <span className="QA-AnswerTitle medium">{answer.body}</span>
     <p className="QA-AnswerInteractive small">by {answer.answerer_name}, {formatDate(answer.date)} | Helpful? <a href="#" onClick={(event) => markAnswerHelpful(event)}>Yes</a> ({helpfulness}) | &nbsp;
     {!reported ? (<a href="#" onClick={(event) => reportAnswer(event)}>Report</a>) : (<span>Reported</span>)}</p>
+    <AnswerThumbnails thumbnails={answer.photos}/>
     </span>
+
   );
 
 };

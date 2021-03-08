@@ -236,11 +236,37 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
   grid-area: 1 / 1 / auto / span 1;
 }
 
-/* Answer Buttons */
-
 .QA-collapseAnswers {
   justify-self: left;
   margin-left: 10px;
+}
+
+.AnswerThumbnail {
+  height: 50px;
+  width: 50px;
+  border: 1px solid #ddd; /* Gray border */
+  border-radius: 25%;  /* Rounded border */
+  padding: 2px; /* Some padding */
+  /* border-radius: 50%; */
+
+}
+.AnswerThumbnail:hover {
+  box-shadow: 0 0 4px 4px rgba(6, 39, 131, 0.5);
+  cursor: pointer;
+}
+
+.AnswerExpandedThumbnail {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 2%;
+  color: white;
+  text-align: center;
+  background-color: rgba(6, 39, 131, 0.5);
+  padding: 10px;
 }
 
 /* Modal Styling */
@@ -265,7 +291,7 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
   text-align: center;
 }
 
-/* QA Styling */
+/* Modal Styling */
 
 .QA-Modal {
   position: fixed;
@@ -274,7 +300,7 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
   transform: translate(-50%, -50%);
   max-width: 80%;
   max-height: 80%;
-  border-radius: 3%;
+  border-radius: 2%;
   color: white;
   text-align: center;
   background-color: rgba(0,0,0,0.8);

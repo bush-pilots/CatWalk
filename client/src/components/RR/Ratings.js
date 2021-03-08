@@ -6,7 +6,7 @@ import ProductBreakdown from './ProductBreakdown';
 var Ratings = ({ reviews, reviewsMeta, isFetching }) => {
 
   return (
-    <div>
+    <>
       <div className="ratingsSummary">
         <RatingsSummary reviewsMeta={reviewsMeta} reviews={reviews} />
       </div>
@@ -16,7 +16,8 @@ var Ratings = ({ reviews, reviewsMeta, isFetching }) => {
       <div className="productBreakdown">
         <ProductBreakdown isFetching={isFetching} reviewsMeta={reviewsMeta} reviews={reviews} />
       </div>
-    </div>
+    </>
+
 
 
   )

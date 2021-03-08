@@ -15,6 +15,7 @@ const QA = ({product, id}) => {
 
   useEffect( () => {
     getQuestions();
+    setCount(2);
   }, [id]);
 
   const getQuestions = () => {

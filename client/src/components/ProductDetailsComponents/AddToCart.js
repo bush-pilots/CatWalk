@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable react/no-unused-state */
 /* eslint-disable react/no-did-update-set-state */
 /* eslint-disable max-len */
@@ -44,7 +45,7 @@ class AddToCart extends React.Component {
           <form id="add-to-cart-form" onSubmit={this.handleSubmit}>
             <SizeDropDown skus={this.props.style.skus} handleChange={this.handleChange} sku={this.state.sku} />
             <QuantityDropDown item={this.props.style.skus[this.state.sku]} handleChange={this.handleChange} quantity={this.state.quantity} />
-            <input type="submit" value="Add to Cart!" id="add-to-cart-button" className="medium add-to-cart-input"/>
+            <input type="submit" value="Add to Cart!" id="add-to-cart-button" className="medium add-to-cart-input" />
           </form>
         )}
       </div>

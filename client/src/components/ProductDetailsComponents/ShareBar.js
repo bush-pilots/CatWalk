@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import {
   FacebookShareButton,
@@ -18,7 +19,7 @@ const ShareBar = ({ id, image }) => {
       <FacebookShareButton
         url={shareUrl}
         quote={message}
-        style={{margin: 5}}
+        style={{ margin: 5 }}
       >
         <FacebookIcon size={32} round />
       </FacebookShareButton>
@@ -26,7 +27,7 @@ const ShareBar = ({ id, image }) => {
       <TwitterShareButton
         url={shareUrl}
         title={message}
-        style={{margin: 5}}
+        style={{ margin: 5 }}
       >
         <TwitterIcon size={32} round />
       </TwitterShareButton>
@@ -34,7 +35,7 @@ const ShareBar = ({ id, image }) => {
       <PinterestShareButton
         url={shareUrl}
         media={imageUrl}
-        style={{margin: 5}}
+        style={{ margin: 5 }}
       >
         <PinterestIcon size={32} round />
       </PinterestShareButton>

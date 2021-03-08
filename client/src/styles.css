@@ -99,8 +99,8 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
   margin: 50px;
 }
 .carousel-container {
-  grid-column: 2;
   grid-row: 2 / span 3;
+  grid-column: 2 / span 3;
 }
 
 #add-to-cart {

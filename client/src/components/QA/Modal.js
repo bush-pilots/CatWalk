@@ -9,11 +9,6 @@ const Modal = ({questionModal, question, product, displayModal, toggleModal}) =>
   const [errorExists, setErrorExists] = useState(false);
   const [submission, setSubmission] = useState(false);
 
-  //using styling here for now b/c CSS stylesheet is not adding property to error message
-  const styles = {
-    color: 'red'
-  };
-
   useEffect ( () => {
     if (!errorExists && submission) {
       submit();
@@ -23,8 +18,6 @@ const Modal = ({questionModal, question, product, displayModal, toggleModal}) =>
   }, [submission])
 
   const submit = () => {
-    console.log('hello world!');
-
     if (questionModal) {
       const params = {
         body: inputs.questionOrAnswer,
@@ -32,28 +25,14 @@ const Modal = ({questionModal, question, product, displayModal, toggleModal}) =>
         email: inputs.email,
         product_id: product.id
       };
-
-      api.submitQuestion(params, (err, results) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(results);
-        }
-      });
+      api.submitQuestion(params);
     } else {
       const params = {
         body: inputs.questionOrAnswer,
         name: inputs.nickname,
         email: inputs.email,
       };
-
-      api.submitAnswer(question.question_id, params, (err, results) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(results);
-        }
-      });
+      api.submitAnswer(question.question_id, params);
     }
 
     setSubmission(false);
@@ -112,7 +91,7 @@ const Modal = ({questionModal, question, product, displayModal, toggleModal}) =>
         <input name="email" value={inputs.email} onChange={(event) => handleInputChange(event)}></input>
         <p>For authentication reasons, you will not be emailed</p>
 
-        {errorExists && (<div className="QA-ModalError" style={styles}>{errorMessage}</div>)}
+        {errorExists && (<div className="QA-ModalError">{errorMessage}</div>)}
 
         <Button color="inherit" onClick={(event) => toggleModal(event)}>Cancel</Button>
       {questionModal ? (<Button color="inherit" onClick={() => validate()}>Submit Question</Button>) :

@@ -4,20 +4,26 @@ import React from 'react';
 
 const ProductInfo = (props) => (
   <div id="product-info">
-    <h3 id="product-name">{props.name}</h3>
+    <h1 id="product-name">{props.name}</h1>
     <span id="product-category">
-      Category:
       {props.category}
     </span>
     <br />
+    <br />
     {props.style.sale_price ? (
-      <span id="sale-price">
-        ON SALE! $
-        {props.style.sale_price}
-        !
-      </span>
+      <React.Fragment>
+        <span id="sale-price" className="large">
+          $
+          {props.style.sale_price}
+        </span>
+        <br />
+        <span id="old-price" className="small">
+          $
+          {props.style.original_price}
+        </span>
+      </React.Fragment>
     ) : (
-      <span id="original-price">
+      <span id="original-price" className="large">
         $
         {props.style.original_price}
       </span>

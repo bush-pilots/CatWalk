@@ -22,7 +22,7 @@ class QuantityDropDown extends React.Component {
 
   render() {
     return (
-      <select name="quantity" value={this.props.quantity} onChange={this.props.handleChange}>
+      <select id="quantity-drop-down" className="medium add-to-cart-input"name="quantity" value={this.props.quantity} onChange={this.props.handleChange}>
         {this.populateDropDown().length === 0 ? <option default>---</option> : <option default> Select Quantity </option> }
         {this.populateDropDown().map((x) => (<option value={x} key={x}>{x}</option>))}
       </select>

@@ -39,11 +39,6 @@ const QA = ({product, id}) => {
       setCount(count + 2)}}>
         MORE ANSWERED QUESTIONS</Button>)}
 
-        {/* 'default'
-| 'inherit'
-| 'primary'
-| 'secondary' */}
-
         <Button onClick={() => toggleModal()} size="medium" color="primary" className="QA-AddQuestion">ADD A QUESTION +</Button>
 
     {(count >= questions.length) && (<Button size="medium" color="primary" className="QA-CollapseQuestions small" onClick={() => setCount(2)}>Collapse Questions</Button>)}

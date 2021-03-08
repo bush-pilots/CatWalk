@@ -83,6 +83,7 @@ class App extends React.Component {
           id={this.props.match.params.id}
           productData={this.state.productData}
           styles={this.state.styles}
+          isFetching={this.state.isFetching}
         />
         <ApiCheck
           updateData={this.updateData}

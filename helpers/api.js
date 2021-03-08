@@ -71,10 +71,33 @@ const getReviewsMeta = (id, cb) => {
       });
 };
 
+const markHelpful = (reviewId, cb) => {
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/${reviewId}/helpful`)
+  .then((response) => {
+    cb(null, response);
+  })
+  .catch((err) => {
+    cb(err, null);
+  })
+
+}
+const reportReview = (reviewId, cb) => {
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/${reviewId}/report`)
+  .then((response) => {
+    cb(null, response);
+  })
+  .catch((err) => {
+    cb(err, null);
+  })
+
+}
+
 module.exports = {
   getProductData,
   getStyles,
   getRelated,
   getReviews,
-  getReviewsMeta
+  getReviewsMeta,
+  markHelpful,
+  reportReview
 };

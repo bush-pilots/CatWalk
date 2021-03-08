@@ -31,10 +31,21 @@ class App extends React.Component {
       isFetching: true
     };
     this.updateData = this.updateData.bind(this);
+    this.updateProductReviews = this.updateProductReviews.bind(this);
   }
 
   componentDidMount() {
     this.updateData(this.props.match.params.id);
+  }
+
+  updateProductReviews(productId) {
+    api.getReviews(productId, (err, results) => {
+      if (err) {
+        console.log('Error getting reviews: ', err);
+      } else {
+        this.setState({ reviews: results });
+      }
+    })
   }
 
   updateData(id) {
@@ -58,6 +69,7 @@ class App extends React.Component {
                 updateStorage.reviews = results;
                 // set state
                 api.getReviewsMeta(id, (err, results) => {
+                  // console.log('Reviews: ', updateStorage.reviews)
                   // console.log('Reviews Meta: ', results);
                   updateStorage.reviewsMeta = results.data;
                   updateStorage.isFetching = false;
@@ -74,7 +86,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <>
         <div className="cssCheck">
           TSVT FTW! 🌴 🏰 🧵 🌩️
         </div>
@@ -93,10 +105,10 @@ class App extends React.Component {
         />
         <QA product={this.state.productData}
           id={this.props.match.params.id} />
-        <div className="ratingsReviewsContainer">
-          <RatingsReviewsParent isFetching={this.state.isFetching} reviewsMeta={this.state.reviewsMeta} reviews={this.state.reviews} />
+        <div className="RR">
+          <RatingsReviewsParent isFetching={this.state.isFetching} reviewsMeta={this.state.reviewsMeta} reviews={this.state.reviews} updateProductReviews={this.updateProductReviews}/>
         </div>
-      </div>
+      </>
     );
   }
 }

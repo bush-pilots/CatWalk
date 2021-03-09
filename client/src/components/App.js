@@ -28,7 +28,7 @@ class App extends React.Component {
       related: [],
       reviews: [],
       reviewsMeta: {},
-      isFetching: true
+      isFetching: false,
     };
     this.updateData = this.updateData.bind(this);
     this.updateProductReviews = this.updateProductReviews.bind(this);
@@ -48,25 +48,25 @@ class App extends React.Component {
     })
   }
 
-  async updateData (id) {
-    this.setState({isFetching: true});
+  updateData (id) {
     const updateStorage = {};
 
-    await Promise.all([
-      (async () => await api.getProductData(id)),
-      (async () => await api.getStyles(id)),
-      (async () => await api.getRelated(id)),
-      (async () => await api.getReviews(id)),
-      (async () => await api.getReviewsMeta(id))])
+     Promise.all([
+      (api.getProductData(id)),
+      (api.getStyles(id)),
+      (api.getRelated(id)),
+      (api.getReviews(id)),
+      (api.getReviewsMeta(id))])
         .then((data) => {
-          updateStorage.productData = data[0];
-          updateStorage.styles = data[1];
-          updateStorage.related = data[2];
-          updateStorage.reviews = data[3];
-          updateStorage.reviewsMeta = data[4];
+          console.log(data);
+          updateStorage.productData = data[0].data;
+          updateStorage.styles = data[1].data;
+          updateStorage.related = data[2].data;
+          updateStorage.reviews = data[3].data.results;
+          updateStorage.reviewsMeta = data[4].data;
           this.setState(updateStorage);
-          this.setState({isFetching: false});
-        });
+        })
+        .catch((err) => console.log(`Error in promise: ${err}`));
   };
 
 
@@ -117,7 +117,6 @@ class App extends React.Component {
           id={this.props.match.params.id}
           productData={this.state.productData}
           styles={this.state.styles}
-          isFetching={this.state.isFetching}
         />
         <ApiCheck
           updateData={this.updateData}
@@ -128,7 +127,7 @@ class App extends React.Component {
         <QA product={this.state.productData}
           id={this.props.match.params.id} />
         <div className="RR">
-          {/* <RatingsReviewsParent isFetching={this.state.isFetching} reviewsMeta={this.state.reviewsMeta} reviews={this.state.reviews} updateProductReviews={this.updateProductReviews}/> */}
+          <RatingsReviewsParent isFetching={this.state.isFetching} reviewsMeta={this.state.reviewsMeta} reviews={this.state.reviews} updateProductReviews={this.updateProductReviews}/>
         </div>
       </>
     );

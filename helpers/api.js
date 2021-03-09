@@ -10,7 +10,6 @@ axios.defaults.headers.common.authorization = config.API_TOKEN;
 const getProductData = async (id) => {
   try {
     const response = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/${id}`);
-    console.log(response);
     return response;
   }
   catch (error) {
@@ -18,10 +17,11 @@ const getProductData = async (id) => {
   }
 };
 
+
+
 const getStyles = async (id) => {
   try {
     const response = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/${id}/styles`);
-    console.log(response);
     return response;
   }
   catch (error) {
@@ -32,7 +32,6 @@ const getStyles = async (id) => {
 const getRelated = async (id) => {
   try {
     const response = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/${id}/related`)
-    console.log(response);
     return response;
   }
   catch (error) {
@@ -44,7 +43,6 @@ const getRelated = async (id) => {
 const getReviews = async (id) => {
   try {
     const response = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/?page=1&count=1000&product_id=${id}`);
-    console.log(response);
     return response;
   }
   catch (error) {
@@ -81,9 +79,8 @@ const getReviews = async (id) => {
 
 const getReviewsMeta = async (id) => {
   try {
-    const response = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/meta?product_id=${id}`)
-    console.log(result);
-    return result;
+    const response = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/meta?product_id=${id}`);
+    return response;
   }
   catch (error) {
     console.log(error);

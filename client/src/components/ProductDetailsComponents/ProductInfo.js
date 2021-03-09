@@ -11,7 +11,7 @@ const ProductInfo = (props) => (
     <br />
     <br />
     {props.style.sale_price ? (
-      <React.Fragment>
+      <>
         <span id="sale-price" className="large">
           $
           {props.style.sale_price}
@@ -21,7 +21,7 @@ const ProductInfo = (props) => (
           $
           {props.style.original_price}
         </span>
-      </React.Fragment>
+      </>
     ) : (
       <span id="original-price" className="large">
         $

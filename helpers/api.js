@@ -3,6 +3,20 @@ const config = require('../config.js');
 
 axios.defaults.headers.common.authorization = config.API_TOKEN;
 
+// broken down by widget to minimize toe-on-toe action
+
+// INTERACTION WIDGET HELPER
+
+const sendClickData = async (data) => {
+  try {
+    const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/interactions';
+    const response = await axios.post(url, data);
+    console.log(response.status);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // PRODUCTS DETAIL WIDGET HELPERS
 
 const getProductData = async (id) => {
@@ -40,11 +54,9 @@ const getRelated = async (id) => {
 //get onePage helper function
 const getNextPage = async (page, id) => {
   const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/?page=${page}&count=5&product_id=${id}`;
-
   const response = await axios.get(url);
-
   return response.data.results;
-}
+};
 
 const getReviews = async (id) => {
   const reviews = [];
@@ -62,7 +74,6 @@ const getReviews = async (id) => {
   catch (error) {
     console.log(error);
   }
-
 };
 
 const getReviewsMeta = async (id) => {
@@ -77,24 +88,23 @@ const getReviewsMeta = async (id) => {
 
 const markHelpful = (reviewId, cb) => {
   axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/${reviewId}/helpful`)
-  .then((response) => {
-    cb(null, response);
-  })
-  .catch((err) => {
-    cb(err, null);
-  })
+    .then((response) => {
+      cb(null, response);
+    })
+    .catch((err) => {
+      cb(err, null);
+    });
+};
 
-}
 const reportReview = (reviewId, cb) => {
   axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/${reviewId}/report`)
-  .then((response) => {
-    cb(null, response);
-  })
-  .catch((err) => {
-    cb(err, null);
-  })
-
-}
+    .then((response) => {
+      cb(null, response);
+    })
+    .catch((err) => {
+      cb(err, null);
+    });
+};
 
 module.exports = {
   getProductData,
@@ -103,5 +113,6 @@ module.exports = {
   getReviews,
   getReviewsMeta,
   markHelpful,
-  reportReview
+  reportReview,
+  sendClickData
 };

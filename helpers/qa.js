@@ -3,61 +3,51 @@ const config = require('../config.js');
 
 axios.defaults.headers.common.authorization = config.API_TOKEN;
 
-// const recursiveHelper = (url) => {
-//   const result = [];
-
-//   axios.get(url)
-// }
-
-const getQuestions = (id, cb) => {
-  const questions = [];
-
-  const getAnotherPage = (page) => {
-    const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions?product_id=${id}&page=${page}&count=100&sort=helpful`;
-
-    axios.get(url)
-      .then((response) => {
-        if (response.data.results.length === 0) {
-          cb(null, questions.flat());
-        }
-        if (response.data.results.length > 0) {
-          questions.push(response.data.results);
-          getAnotherPage(page + 1);
-        }
-      })
-      .catch((err) => cb(err, null));
-  };
-  getAnotherPage(1);
+//get next page helper for both questions/answers
+const getNextPage = async (url) => {
+  const response = await axios.get(url);
+  return response.data.results;
 };
 
-// const getSentence = async function(offset = 0) {
-//   const fragment = await getSentenceFragment(offset)
-//   if (fragment.nextPage) {
-//     return fragment.data.concat(await getSentence(fragment.nextPage));
-//   } else {
-//     return fragment.data;
-//   }
-// }
+const getQuestions = async (id) => {
+  const questions = [];
+  let page = 1;
 
-const getAnswers = (id, cb) => {
+  try {
+    do {
+      let url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions?product_id=${id}&page=${page}&count=100&sort=helpful`;
+
+      var onePage = await getNextPage(url);
+      questions.push(onePage);
+      page++;
+    } while (onePage.length > 0);
+
+    return questions.flat();
+  }
+  catch (error) {
+    console.log(error);
+  }
+
+};
+
+const getAnswers = async (id) => {
   const answers = [];
+  let page = 1;
 
-  const getAnotherPage = (page) => {
-    const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${id}/answers?page=${page}&count=100&sort=helpful`;
+  try {
+    do {
+      let url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${id}/answers?page=${page}&count=100&sort=helpful`;
 
-    axios.get(url)
-      .then((response) => {
-        if (response.data.results.length === 0) {
-          cb(null, answers.flat());
-        }
-        if (response.data.results.length > 0) {
-          answers.push(response.data.results);
-          getAnotherPage(page + 1);
-        }
-      })
-      .catch((err) => cb(err, null));
-  };
-  getAnotherPage(1);
+      var onePage = await getNextPage(url);
+      answers.push(onePage);
+      page++;
+    } while (onePage.length > 0);
+
+    return answers.flat();
+  }
+  catch (error) {
+    console.log(error);
+  }
 };
 
 const markQuestionOrAnswerHelpful = async (QorA, id) => {

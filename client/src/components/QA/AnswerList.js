@@ -2,21 +2,8 @@ import React, {useState, useEffect} from 'react';
 import Answer from './Answer.js';
 import { Button } from '@material-ui/core';
 
-const AnswerList = ({answers}) => {
+const AnswerList = ({answers, setAnswers}) => {
   const [count, setCount] = useState(2);
-
-  useEffect( () => {
-    checkForSeller();
-  }, [answers])
-
-  const checkForSeller = () => {
-    for (const answer of answers) {
-      if (answer.answerer_name === 'Seller') {
-        answers.splice(answers.indexOf(answer), 1);
-        answers.unshift(answer);
-      }
-  }
-};
 
   return (
     <div className="QA-AnswerList">

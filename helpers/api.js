@@ -5,92 +5,106 @@ axios.defaults.headers.common.authorization = config.API_TOKEN;
 
 // broken down by widget to minimize toe-on-toe action
 
+// INTERACTION WIDGET HELPER
+
+const sendClickData = async (data) => {
+  try {
+    const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/interactions';
+    const response = await axios.post(url, data);
+    console.log(response.status);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // PRODUCTS DETAIL WIDGET HELPERS
 
-const getProductData = (id, cb) => {
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/${id}`)
-    .then((response) => {
-      cb(null, response);
-    })
-    .catch((err) => cb(err, null));
+const getProductData = async (id) => {
+  try {
+    const response = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/${id}`);
+    return response.data;
+  }
+  catch (error) {
+    console.log(error);
+  }
 };
 
-const getStyles = (id, cb) => {
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/${id}/styles`)
-    .then((response) => {
-      cb(null, response);
-    })
-    .catch((err) => cb(err, null));
+const getStyles = async (id) => {
+  try {
+    const response = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/${id}/styles`);
+    return response.data;
+  }
+  catch (error) {
+    console.log(error);
+  }
 };
 
-const getRelated = (id, cb) => {
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/${id}/related`)
-    .then((response) => {
-      cb(null, response);
-    })
-    .catch((err) => cb(err, null));
+const getRelated = async (id) => {
+  try {
+    const response = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/${id}/related`)
+    return response.data;
+  }
+  catch (error) {
+    console.log(error);
+  }
 };
 
 // RATINGS/REVIEWS WIDGET HELPERS
-const getReviews = (id, cb) => {
-  // IOCE - input a product id and a callback
-  // output is an array of all reviews for the input product id
-  // method of operation is a recursive call to each page until reviews array is empty... asynchronously
-  // /api/fec2/hr-bld/reviews?product_id=####
-  const reviews = [];
-  const innerRecursiveFunc = (pageCount) => {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/?page=${pageCount}&product_id=${id}`)
-      .then((response) => {
-        // base case reviews empty
-        if (response.data.results.length === 0) {
-          cb(null, reviews.flat());
-          return;
-        }
-        // recursive
-        if (response.data.results.length > 0) {
-          reviews.push(response.data.results);
-          innerRecursiveFunc(pageCount + 1);
-        }
-      })
-      .catch((err) => {
-        // err does not get triggered if the page is empty.  Only if the request fails at the server.
-        cb(err, null);
-      });
-  };
-  innerRecursiveFunc(1);
+
+//get onePage helper function
+const getNextPage = async (page, id) => {
+  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/?page=${page}&count=5&product_id=${id}`;
+  const response = await axios.get(url);
+  return response.data.results;
 };
 
-const getReviewsMeta = (id, cb) => {
+const getReviews = async (id) => {
+  const reviews = [];
+  let page = 0;
 
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/meta?product_id=${id}`)
-      .then((response) => {
-          cb(null, response);
-      })
-      .catch((err) => {
-        cb(err, null);
-      });
+  try {
+    do {
+      var onePage = await getNextPage(page + 1, id);
+      reviews.push(onePage);
+      page++;
+    } while (onePage.length > 0);
+
+    return reviews.flat();
+  }
+  catch (error) {
+    console.log(error);
+  }
+};
+
+const getReviewsMeta = async (id) => {
+  try {
+    const response = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/meta?product_id=${id}`);
+    return response.data;
+  }
+  catch (error) {
+    console.log(error);
+  }
 };
 
 const markHelpful = (reviewId, cb) => {
   axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/${reviewId}/helpful`)
-  .then((response) => {
-    cb(null, response);
-  })
-  .catch((err) => {
-    cb(err, null);
-  })
+    .then((response) => {
+      cb(null, response);
+    })
+    .catch((err) => {
+      cb(err, null);
+    });
+};
 
-}
 const reportReview = (reviewId, cb) => {
   axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/${reviewId}/report`)
-  .then((response) => {
-    cb(null, response);
-  })
-  .catch((err) => {
-    cb(err, null);
-  })
-
-}
+    .then((response) => {
+      cb(null, response);
+    })
+    .catch((err) => {
+      cb(err, null);
+    });
+};
 
 module.exports = {
   getProductData,
@@ -99,5 +113,6 @@ module.exports = {
   getReviews,
   getReviewsMeta,
   markHelpful,
-  reportReview
+  reportReview,
+  sendClickData
 };

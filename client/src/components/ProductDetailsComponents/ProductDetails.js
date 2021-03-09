@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable import/no-named-as-default-member */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
@@ -7,6 +9,7 @@ import StyleSelector from './StyleSelector';
 import AddToCart from './AddToCart';
 import ShareBar from './ShareBar';
 import ImageCarousel from './ImageCarousel';
+import withListener from '../Tracker';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -41,7 +44,7 @@ class ProductDetails extends React.Component {
 
   render() {
     return (
-      <div id="product-details">
+      <div id="product-details" onClick={this.props.onClick}>
         <ImageCarousel style={this.state.currentStyle} product={this.props.id} isFetching={this.props.isFetching} />
         {this.props.isFetching || (
         <ProductInfo
@@ -51,13 +54,13 @@ class ProductDetails extends React.Component {
         />
         )}
         {this.props.isFetching || (
-        <div id="product-desc">
+        <div id="product-desc-container">
           <span id="product-slogan" className="large">
             {this.props.productData.slogan}
           </span>
           <br />
           <br />
-          <span id="desc" className="medium">
+          <span id="product-desc" className="medium">
             {this.props.productData.description}
           </span>
           <br />
@@ -79,4 +82,4 @@ class ProductDetails extends React.Component {
   }
 }
 
-export default ProductDetails;
+export default withListener(ProductDetails, 'Product Details');

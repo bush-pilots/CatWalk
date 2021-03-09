@@ -43,11 +43,10 @@ const Answer = ({answer}) => {
   return (
     <span className="QA-Answer">
     <span className="QA-AnswerTitle medium">{answer.body}</span>
+    <AnswerThumbnails thumbnails={answer.photos}/>
     <p className="QA-AnswerInteractive small">by {answer.answerer_name}, {formatDate(answer.date)} | Helpful? <a href="#" onClick={(event) => markAnswerHelpful(event)}>Yes</a> ({helpfulness}) | &nbsp;
     {!reported ? (<a href="#" onClick={(event) => reportAnswer(event)}>Report</a>) : (<span>Reported</span>)}</p>
-    <AnswerThumbnails thumbnails={answer.photos}/>
     </span>
-
   );
 
 };

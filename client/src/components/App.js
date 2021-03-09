@@ -28,7 +28,7 @@ class App extends React.Component {
       related: [],
       reviews: [],
       reviewsMeta: {},
-      isFetching: true
+      isFetching: false,
     };
     this.updateData = this.updateData.bind(this);
     this.updateProductReviews = this.updateProductReviews.bind(this);
@@ -48,41 +48,25 @@ class App extends React.Component {
     })
   }
 
-  updateData(id) {
-    this.setState({isFetching: true});
+  updateData (id) {
     const updateStorage = {};
-    if (id !== '') {
-      api.getProductData(id, (err, results) => {
-        // this.setState({ productData: results.data });
-        updateStorage.productData = results.data;
-        api.getStyles(id, (err, results) => {
-          // this.setState({ styles: results.data });
-          updateStorage.styles = results.data
-          api.getRelated(id, (err, results) => {
-            // this.setState({ related: results.data });
-            updateStorage.related = results.data;
-            api.getReviews(id, (err, results) => {
-              if (err) {
-                console.log('Error getting reviews: ', err);
-              } else {
-                // this.setState({ reviews: results });
-                updateStorage.reviews = results;
-                // set state
-                api.getReviewsMeta(id, (err, results) => {
-                  // console.log('Reviews: ', updateStorage.reviews)
-                  // console.log('Reviews Meta: ', results);
-                  updateStorage.reviewsMeta = results.data;
-                  updateStorage.isFetching = false;
-                  this.setState(updateStorage);
-                });
-              }
-            });
-          });
-        });
-      });
 
-    }
-  }
+     Promise.all([
+      (api.getProductData(id)),
+      (api.getStyles(id)),
+      (api.getRelated(id)),
+      (api.getReviews(id)),
+      (api.getReviewsMeta(id))])
+        .then((data) => {
+          updateStorage.productData = data[0];
+          updateStorage.styles = data[1];
+          updateStorage.related = data[2];
+          updateStorage.reviews = data[3];
+          updateStorage.reviewsMeta = data[4];
+          this.setState(updateStorage);
+        })
+        .catch((err) => console.log(`Error in promise: ${err}`));
+  };
 
   render() {
     return (
@@ -95,7 +79,7 @@ class App extends React.Component {
           id={this.props.match.params.id}
           productData={this.state.productData}
           styles={this.state.styles}
-          isFetching={this.state.isFetching}
+          isFetching={this.state.isFetchng}
         />
         <ApiCheck
           updateData={this.updateData}

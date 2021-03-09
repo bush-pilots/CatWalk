@@ -19,9 +19,8 @@ const QA = ({product, id}) => {
   }, [id]);
 
   const getQuestions = () => {
-    api.getQuestions(id, (err, results) => {
-      setQuestions(results);
-    });
+    api.getQuestions(id)
+      .then(data => setQuestions(data));
   };
 
   const toggleModal = () => {

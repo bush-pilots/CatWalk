@@ -48,41 +48,63 @@ class App extends React.Component {
     })
   }
 
-  updateData(id) {
+  async updateData (id) {
     this.setState({isFetching: true});
     const updateStorage = {};
-    if (id !== '') {
-      api.getProductData(id, (err, results) => {
-        // this.setState({ productData: results.data });
-        updateStorage.productData = results.data;
-        api.getStyles(id, (err, results) => {
-          // this.setState({ styles: results.data });
-          updateStorage.styles = results.data
-          api.getRelated(id, (err, results) => {
-            // this.setState({ related: results.data });
-            updateStorage.related = results.data;
-            api.getReviews(id, (err, results) => {
-              if (err) {
-                console.log('Error getting reviews: ', err);
-              } else {
-                // this.setState({ reviews: results });
-                updateStorage.reviews = results;
-                // set state
-                api.getReviewsMeta(id, (err, results) => {
-                  // console.log('Reviews: ', updateStorage.reviews)
-                  // console.log('Reviews Meta: ', results);
-                  updateStorage.reviewsMeta = results.data;
-                  updateStorage.isFetching = false;
-                  this.setState(updateStorage);
-                });
-              }
-            });
-          });
-        });
-      });
 
-    }
-  }
+    await Promise.all([
+      (async () => await api.getProductData(id)),
+      (async () => await api.getStyles(id)),
+      (async () => await api.getRelated(id)),
+      (async () => await api.getReviews(id)),
+      (async () => await api.getReviewsMeta(id))])
+        .then((data) => {
+          updateStorage.productData = data[0];
+          updateStorage.styles = data[1];
+          updateStorage.related = data[2];
+          updateStorage.reviews = data[3];
+          updateStorage.reviewsMeta = data[4];
+          this.setState(updateStorage);
+          this.setState({isFetching: false});
+        });
+  };
+
+
+  // updateData(id) {
+  //   this.setState({isFetching: true});
+  //   const updateStorage = {};
+  //   if (id !== '') {
+  //     api.getProductData(id, (err, results) => {
+  //       // this.setState({ productData: results.data });
+  //       updateStorage.productData = results.data;
+  //       api.getStyles(id, (err, results) => {
+  //         // this.setState({ styles: results.data });
+  //         updateStorage.styles = results.data
+  //         api.getRelated(id, (err, results) => {
+  //           // this.setState({ related: results.data });
+  //           updateStorage.related = results.data;
+  //           api.getReviews(id, (err, results) => {
+  //             if (err) {
+  //               console.log('Error getting reviews: ', err);
+  //             } else {
+  //               // this.setState({ reviews: results });
+  //               updateStorage.reviews = results;
+  //               // set state
+  //               api.getReviewsMeta(id, (err, results) => {
+  //                 // console.log('Reviews: ', updateStorage.reviews)
+  //                 // console.log('Reviews Meta: ', results);
+  //                 updateStorage.reviewsMeta = results.data;
+  //                 updateStorage.isFetching = false;
+  //                 this.setState(updateStorage);
+  //               });
+  //             }
+  //           });
+  //         });
+  //       });
+  //     });
+
+  //   }
+  // }
 
   render() {
     return (
@@ -106,7 +128,7 @@ class App extends React.Component {
         <QA product={this.state.productData}
           id={this.props.match.params.id} />
         <div className="RR">
-          <RatingsReviewsParent isFetching={this.state.isFetching} reviewsMeta={this.state.reviewsMeta} reviews={this.state.reviews} updateProductReviews={this.updateProductReviews}/>
+          {/* <RatingsReviewsParent isFetching={this.state.isFetching} reviewsMeta={this.state.reviewsMeta} reviews={this.state.reviews} updateProductReviews={this.updateProductReviews}/> */}
         </div>
       </>
     );

@@ -3,12 +3,6 @@ const config = require('../config.js');
 
 axios.defaults.headers.common.authorization = config.API_TOKEN;
 
-// const recursiveHelper = (url) => {
-//   const result = [];
-
-//   axios.get(url)
-// }
-
 const getQuestions = (id, cb) => {
   const questions = [];
 

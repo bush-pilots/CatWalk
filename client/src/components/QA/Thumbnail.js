@@ -3,10 +3,6 @@ import React, {useState} from 'react';
 const Thumbnail = ({thumbnail}) => {
   const [expandThumbnail, setExpandThumbnail] = useState(false);
 
-  const toggleThumbnail = () => {
-    setExpandThumbnail(!expandThumbnail);
-  };
-
   return (
     <>
       <img

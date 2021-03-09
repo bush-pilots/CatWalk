@@ -14,7 +14,9 @@ class AddToCart extends React.Component {
     this.state = {
       sku: '',
       quantity: 0,
-      inOutfit: false
+      inOutfit: false,
+      quantityError: false,
+      sizeError: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,7 +33,9 @@ class AddToCart extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state.quantity, this.props.style.skus[this.state.sku].size, this.props.style.name, 'Added to Cart!');
+    if (!this.state.sku) this.setState({ sizeError: true });
+    else if (!this.state.quantity) this.setState({ quantityError: true });
+    else console.log(this.state.quantity, this.props.style.skus[this.state.sku].size, this.props.style.name, 'Added to Cart!');
   }
 
   handleChange(e) {
@@ -43,7 +47,7 @@ class AddToCart extends React.Component {
       <div id="add-to-cart">
         {this.props.isFetching || (
           <form id="add-to-cart-form" onSubmit={this.handleSubmit}>
-            <SizeDropDown skus={this.props.style.skus} handleChange={this.handleChange} sku={this.state.sku} />
+            <SizeDropDown skus={this.props.style.skus} handleChange={this.handleChange} sku={this.state.sku} sizeError={this.state.sizeError} />
             <QuantityDropDown item={this.props.style.skus[this.state.sku]} handleChange={this.handleChange} quantity={this.state.quantity} />
             <input type="submit" value="Add to Cart!" id="add-to-cart-button" className="medium add-to-cart-input" />
           </form>

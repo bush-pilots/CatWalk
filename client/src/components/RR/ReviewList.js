@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Review from './Review';
+import ReviewFormModal from './ReviewFormModal';
 
-var ReviewList = ({reviews, reviewsMeta, updateReviews, isFetching}) => {
+var ReviewList = ({ reviews, reviewsMeta, updateReviews, isFetching, productData }) => {
   //add buttons later
 
   const [isReviews, setShowReviews] = useState(false);
   const [upperReviewRange, setUpperReviewRange] = useState(2);
   const [reviewsDisplay, setReviewDisplay] = useState([]);
   const [showButtons, setShowButtons] = useState(false);
+  const [showReviewForm, setShowReviewForm] = useState(false);
 
   var incrementReviewNumber = () => {
     //check length of reviews, if length shorter than two only adjust it to that
@@ -17,8 +19,9 @@ var ReviewList = ({reviews, reviewsMeta, updateReviews, isFetching}) => {
   }
 
 
-  var testUpperRange = () => {
-    console.log('Test of the Upper Review Range after all asynchronuness is said and done.  Source of truth: ', upperReviewRange);
+  var clickOpenReviewForm = () => {
+    console.log(productData.name)
+    setShowReviewForm(true);
   }
 
   useEffect(() => {
@@ -32,14 +35,14 @@ var ReviewList = ({reviews, reviewsMeta, updateReviews, isFetching}) => {
     // console.log('Amount of reviews coming from server: ', reviews.length)
     //if it gets buggy, then have a conditional that tests for not fetching and there are reviews
 
-      if (reviewsDisplay.length + 1 >= reviews.length) {
-          setShowButtons(false);
-        } else {
-          console.log('showing buttons')
-          setShowButtons(true);
-        }
+    if (reviewsDisplay.length + 1 >= reviews.length) {
+      setShowButtons(false);
+    } else {
+      console.log('showing buttons')
+      setShowButtons(true);
+    }
 
-  },[reviewsDisplay])
+  }, [reviewsDisplay])
 
   useEffect(() => {
     //do things when a new render triggers
@@ -52,7 +55,7 @@ var ReviewList = ({reviews, reviewsMeta, updateReviews, isFetching}) => {
       for (var i = 0; i < upperReviewRange; i++) {
         if (reviews[i] !== undefined) {
           // console.log('got reviews at index i=', i)
-          collectReviewsToDisplay.push(<Review key={i} review={reviews[i]} reviewsMeta={reviewsMeta} updateReviews={updateReviews}/>);
+          collectReviewsToDisplay.push(<Review key={i} review={reviews[i]} reviewsMeta={reviewsMeta} updateReviews={updateReviews} />);
         } else {
           //we found the current limit of reviews for this product
           //set upperReviewRange to this.  So if those reviews are created, we don't
@@ -82,38 +85,43 @@ var ReviewList = ({reviews, reviewsMeta, updateReviews, isFetching}) => {
 
   return (
     <>
-    {isReviews && !isFetching? (showButtons?
-      <>
-      <div>{reviewsDisplay}</div>
-      <div className="reviewListButtonContainer">
-      <button
-      className="reviewButton"
-      onClick={incrementReviewNumber}
-       >MORE REVIEWS</button>
-      <button
-      className="reviewButton"
-      onClick={testUpperRange}
-      >ADD A REVIEW +</button>
-      </div>
-      </> :
-      <>
-      <div>{reviewsDisplay}</div>
-      <div className="reviewListButtonContainer">
-      <button
-      className="reviewButton"
-      onClick={testUpperRange}
-      >ADD A REVIEW +</button>
-      </div>
-      </>
-    ) : (!isFetching ?
-      <div className="reviewListButtonContainer">
-       <button
-      className="reviewButton"
-      onClick={testUpperRange}
-      >ADD A REVIEW ➕</button>
-      </div>
-      : <></>
-    )}
+      {isReviews && !isFetching ? (showButtons ?
+        <>
+          <div>{reviewsDisplay}</div>
+          <div className="reviewListButtonContainer">
+            <button
+              className="reviewButton"
+              onClick={incrementReviewNumber}
+            >MORE REVIEWS</button>
+            <button
+              className="reviewButton"
+              onClick={clickOpenReviewForm}
+            >ADD A REVIEW ➕</button>
+          </div>
+         {showReviewForm? <ReviewFormModal productData={productData} /> : null}
+        </> :
+        <>
+          <div>{reviewsDisplay}</div>
+          <div className="reviewListButtonContainer">
+            <button
+              className="reviewButton"
+              onClick={clickOpenReviewForm}
+            >ADD A REVIEW ➕</button>
+          </div>
+          {showReviewForm? <ReviewFormModal productData={productData} /> : null}
+        </>
+      ) : (!isFetching ?
+        <>
+        <div className="reviewListButtonContainer">
+          <button
+            className="reviewButton"
+            onClick={clickOpenReviewForm}
+          >ADD A REVIEW ➕</button>
+        </div>
+        {showReviewForm? <ReviewFormModal productData={productData} /> : null}
+        </>
+        : <></>
+      )}
     </>
   )
 

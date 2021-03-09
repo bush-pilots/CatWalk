@@ -18,7 +18,7 @@ class RatingsReviewsParent extends React.Component {
           <Ratings isFetching={this.props.isFetching} reviewsMeta={this.props.reviewsMeta} reviews={this.props.reviews} />
         </div>
         <div className="reviews">
-          <ReviewList reviews={this.props.reviews} reviewsMeta={this.props.reviewsMeta} updateReviews={this.props.updateProductReviews} isFetching={this.props.isFetching}/>
+          <ReviewList reviews={this.props.reviews} reviewsMeta={this.props.reviewsMeta} updateReviews={this.props.updateProductReviews} isFetching={this.props.isFetching} productData={this.props.productData}/>
         </div>
       </>
 

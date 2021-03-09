@@ -18,10 +18,18 @@ const Question = ({question, product}) => {
   }, [question]);
 
   const getAnswers = () => {
-    api.getAnswers(question.question_id, (err, results) => {
-      setAnswers(results);
-    });
+    api.getAnswers(question.question_id)
+      .then((data) => {
+        for (const answer of data) {
+          if (answer.answerer_name === 'Seller') {
+            data.splice(data.indexOf(answer), 1);
+            data.unshift(answer);
+          }
+        }
+        setAnswers(data);
+        });
   };
+
 
   const markQuestionHelpful = (e) => {
     e.preventDefault();
@@ -58,7 +66,7 @@ const Question = ({question, product}) => {
 
     <p className="Question-Interactive small">Helpful? <a href="#" onClick={(event) => markQuestionHelpful(event)}>Yes</a> ({helpfulness}) | <a href="#" onClick={(event) => toggleModal(event)}>Add Answer</a></p>
 
-    <AnswerList answers={answers}/>
+    <AnswerList answers={answers} setAnswers={setAnswers}/>
 
     {displayModal && (<Modal questionModal={false} question={question} product={product} displayModal={displayModal} toggleModal={toggleModal}/>)}
     </div>

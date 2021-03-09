@@ -114,6 +114,7 @@ var Review = ({ review, reviewsMeta, updateReviews }) => {
       }
 
       setDate(date);
+      // console.log(review)
     })
 
     return (

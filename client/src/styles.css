@@ -297,6 +297,19 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
   margin-top: 20px;
 }
 /* --------------------------------Reviews--------------------------------------------------------------------------------------------------- */
+/* --------------------------------ReviewList--------------------------------------------------------------------------------------------------- */
+
+.reviewListButtonContainer {
+
+  /* padding-top: 70 px; */
+  height: 70px;
+
+}
+.reviewButton {
+  height: 70%;
+  margin-top: 20px;
+  margin-right: 20px;
+}
 
 /* --------------------------------Review--------------------------------------------------------------------------------------------------- */
 
@@ -305,8 +318,11 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
   border-bottom: solid 1px grey;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   height: 300px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
 }
 
 .tileStarContainer {
@@ -414,7 +430,7 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
 /* --------------------------------Top level div grid organization--------------------------------------------------------------------------------------------------- */
 .RR {
   display: grid;
-  grid-template-rows: 150px 150px 150px;
+  grid-template-rows: 800px;
   grid-template-columns: 0.5fr 1fr;
   margin-top: 40px;
 
@@ -435,6 +451,7 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
 .reviews {
   margin-left: 30px;
   margin-right: 30px;
+  overflow-y: auto;
 }
 
   /* grid-column: 2 / 3;

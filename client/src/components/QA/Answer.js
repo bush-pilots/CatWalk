@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
+import AnswerThumbnails from './AnswerThumbnails.js';
 
 const api = require('../../../../helpers/qa.js');
 
 const Answer = ({answer}) => {
+  const [helpfulness, setHelpfulness] = useState(answer.helpfulness);
   const [helpfulClicked, setHelpfulClicked] = useState(false);
   const [reportClicked, setReportClicked] = useState(false);
+  const [reported, setReported] = useState(false);
 
   const formatDate = (date) => {
     const monthNames = ["January", "February", "March",  "April", "May", "June",  "July", "August", "September", "October", "November", "December"];
@@ -20,15 +23,10 @@ const Answer = ({answer}) => {
     if (helpfulClicked) {
       return;
     } else {
+      setHelpfulness(helpfulness + 1);
       setHelpfulClicked(true);
-      api.markQuestionOrAnswerHelpful('answers', answer.answer_id, (err, results) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(results);
-        }
-      });
-    }
+      api.markQuestionOrAnswerHelpful('answers', answer.answer_id);
+    };
   };
 
   const reportAnswer = (e) => {
@@ -37,22 +35,19 @@ const Answer = ({answer}) => {
       return;
     } else {
       setReportClicked(true);
-
-      api.reportQuestionOrAnswer('answers', answer.answer_id, (err, results) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(results);
-        }
-      });
+      setReported(true);
+      api.reportQuestionOrAnswer('answers', answer.answer_id);
     }
   };
 
   return (
-    <div className="QA-answer">
-    <div>{answer.body}</div>
-    <p>by {answer.answerer_name}, {formatDate(answer.date)} | Helpful? <a href="#" onClick={(event) => markAnswerHelpful(event)}>Yes</a> ({answer.helpfulness}) | <a href="#" onClick={(event) => reportAnswer(event)}>Report</a></p>
-    </div>
+    <span className="QA-Answer">
+    <span className="QA-AnswerTitle medium">{answer.body}</span>
+    <p className="QA-AnswerInteractive small">by {answer.answerer_name}, {formatDate(answer.date)} | Helpful? <a href="#" onClick={(event) => markAnswerHelpful(event)}>Yes</a> ({helpfulness}) | &nbsp;
+    {!reported ? (<a href="#" onClick={(event) => reportAnswer(event)}>Report</a>) : (<span>Reported</span>)}</p>
+    <AnswerThumbnails thumbnails={answer.photos}/>
+    </span>
+
   );
 
 };

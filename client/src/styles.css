@@ -99,8 +99,8 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
   margin: 50px;
 }
 .carousel-container {
-  grid-column: 2;
   grid-row: 2 / span 3;
+  grid-column: 2 / span 3;
 }
 
 #add-to-cart {
@@ -148,6 +148,128 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
 
 }
 
+/* --------------------------------QA--------------------------------------------------------------------------------------------------- */
+
+/* QA Overall Structure */
+
+#QA {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  max-height: 100%;
+}
+
+.QA-Header {
+  grid-area: 1 / 2 / span 1 / span 3;
+  color: rgba(77,100,154,1);
+}
+
+.QA-SearchBar {
+  grid-area: 2 / 2 / span 1 / span 8;
+  margin-top: 10px;
+}
+
+.QA-QuestionList {
+  grid-area: 3 / 2 / span 5 / span 8;
+  max-height: 80vh;
+  overflow-y: scroll;
+  padding-inline-start: 0px;
+  margin-block-start: 0px;
+}
+
+/* Question Buttons */
+
+.QA-ShowMoreQuestions {
+  grid-area: 8 / 2 / span 1 / span 2;
+  box-shadow: rgba(77,100,154,0.5) -5px 5px, rgba(134,179,209,0.4) -10px 10px, rgba(153,206,211,0.3) -15px 15px;
+}
+
+.QA-CollapseQuestions {
+  grid-area: 8 / 2 / span 1 / span 2;
+  box-shadow: rgba(77,100,154,0.5) -5px 5px, rgba(134,179,209,0.4) -10px 10px, rgba(153,206,211,0.3) -15px 15px;
+}
+
+.QA-AddQuestion {
+  grid-area: 8 / 5 / span 1 / span 2;
+  box-shadow: rgba(77,100,154,0.5) 5px 5px, rgba(134,179,209,0.4) 10px 10px, rgba(153,206,211,0.3) 15px 15px;
+}
+
+/* Question Elements */
+
+.QA-Question {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  padding-top: 10px;
+}
+
+.Question-Title {
+  grid-area: 1 / 1 / span 1 / span 6;
+  align-self: center;
+  font-weight: bold;
+  color: rgba(77,100,154,1);
+}
+
+.Question-Interactive {
+  grid-area: 1 / 8 / span 1 / span 3;
+  justify-self: right;
+  padding-right: 10px;
+  color: rgba(77,100,154,1);
+}
+
+/* Answer List */
+
+.QA-AnswerList {
+  display: grid;
+  grid-area: 2 / 1 / span 4 / span 7;
+  max-height: 50vh;
+  overflow-y: scroll;
+  color: rgba(134,179,209,1);
+}
+
+.QA-AnswerListAnchor {
+  grid-area: 1 / 1 / span 1 / span 1;
+  font-weight: bold;
+  align-self: left;
+  justify-self: top;
+}
+
+.QA-Answers {
+  grid-area: 1 / 1 / auto / span 1;
+}
+
+.QA-collapseAnswers {
+  justify-self: left;
+  margin-left: 10px;
+}
+
+.AnswerThumbnail {
+  height: 50px;
+  width: 50px;
+  border: 1px solid #ddd; /* Gray border */
+  border-radius: 25%;  /* Rounded border */
+  padding: 2px; /* Some padding */
+  /* border-radius: 50%; */
+
+}
+.AnswerThumbnail:hover {
+  box-shadow: 0 0 4px 4px rgba(6, 39, 131, 0.5);
+  cursor: pointer;
+}
+
+.AnswerExpandedThumbnail {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 2%;
+  color: white;
+  text-align: center;
+  background-color: rgba(6, 39, 131, 0.5);
+  padding: 10px;
+}
+
+/* Modal Styling */
 #sale-price {
   color: red;
 }
@@ -169,7 +291,7 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
   text-align: center;
 }
 
-/* QA Styling */
+/* Modal Styling */
 
 .QA-Modal {
   position: fixed;
@@ -178,12 +300,12 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
   transform: translate(-50%, -50%);
   max-width: 80%;
   max-height: 80%;
-  border-radius: 3%;
+  border-radius: 2%;
   color: white;
   text-align: center;
   background-color: rgba(0,0,0,0.8);
   padding: 10px;
-};
+}
 
 .QA-ModalError {
   color: red;

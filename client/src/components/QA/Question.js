@@ -7,13 +7,13 @@ const api = require('../../../../helpers/qa.js');
 
 const Question = ({question, product}) => {
   const [answers, setAnswers] = useState([]);
-  const [count, setCount] = useState(2);
+  const [helpfulness, setHelpfulness] = useState(question.question_helpfulness)
   const [helpfulClicked, setHelpfulClicked] = useState(false);
   const [reportClicked, setReportClicked] = useState(false);
   const [displayModal, setDisplayModal] = useState(false);
+  const [reported, setReported] = useState(false);
 
   useEffect( () => {
-    setCount(2);
     getAnswers();
   }, [question]);
 
@@ -29,15 +29,8 @@ const Question = ({question, product}) => {
       return;
     } else {
       setHelpfulClicked(true);
-
-      api.markQuestionOrAnswerHelpful('questions', question.question_id,
-      (err, results) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(results);
-        }
-      });
+      setHelpfulness(helpfulness + 1);
+      api.markQuestionOrAnswerHelpful('questions', question.question_id);
     };
   };
 
@@ -47,14 +40,8 @@ const Question = ({question, product}) => {
       return;
     } else {
       setReportClicked(true);
-
-      api.reportQuestionOrAnswer('questions', question.question_id, (err, results) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(results);
-        }
-      })
+      setReported(true);
+      api.reportQuestionOrAnswer('questions', question.question_id);
     };
   };
 
@@ -66,22 +53,19 @@ const Question = ({question, product}) => {
   };
 
   return (
-    <div className="QA-question">
-    <div>Q: {question.question_body}</div>
+    <div className="QA-Question">
+    <span className="Question-Title medium">Q: &emsp;{question.question_body}</span>
 
-    <p>Helpful? <a href="#" onClick={(event) => markQuestionHelpful(event)}>Yes</a> ({question.question_helpfulness}) | <a href="#" onClick={(event) => toggleModal(event)}>Add Answer</a> | <a href="#" onClick={(event) => reportQuestion(event)}>Report</a></p>
+    <p className="Question-Interactive small">Helpful? <a href="#" onClick={(event) => markQuestionHelpful(event)}>Yes</a> ({helpfulness}) | <a href="#" onClick={(event) => toggleModal(event)}>Add Answer</a></p>
 
-    {answers.length > 0 && <p>A:</p>}
-    <AnswerList answers={answers.slice(0, count)}/>
-    {answers.length > 2 && (<Button className="QA-moreAnswersButton button"
-    onClick={() => {
-      setCount(count + 2)}}>
-      LOAD MORE ANSWERS</Button>)}
+    <AnswerList answers={answers}/>
 
     {displayModal && (<Modal questionModal={false} question={question} product={product} displayModal={displayModal} toggleModal={toggleModal}/>)}
     </div>
   );
 
 };
+
+// {!reported ? (<a href="#" onClick={(event) => reportQuestion(event)}>Report</a>) : (<span>Reported</span>)}</p>
 
 export default Question;

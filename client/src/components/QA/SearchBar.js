@@ -1,6 +1,11 @@
 import React, {useState, useEffect} from 'react';
+import SearchBar from "material-ui-search-bar";
 
-const SearchBar = ({questions, filteredQuestions, setFilteredQuestions}) => {
+const style = {
+  color:  'rgba(77,100,154,1)'
+}
+
+const Search = ({questions, filteredQuestions, setFilteredQuestions, setCount}) => {
   const [searchInput, setSearchInput] = useState('Have Questions? Search for answers...');
 
   useEffect( () => {
@@ -8,19 +13,19 @@ const SearchBar = ({questions, filteredQuestions, setFilteredQuestions}) => {
   }, [searchInput]);
 
   const filterQuestions = () => {
-    if (searchInput.length >= 3 && searchInput !== 'Have Questions? Search for answers...') {
-      setFilteredQuestions(questions.filter(q => q.question_body.includes(searchInput)));
-    } else {
-      setFilteredQuestions(null);
-    }
+    (searchInput.length >= 3 && searchInput !== 'Have Questions? Search for answers...') ?
+    setFilteredQuestions(questions.filter(({question_body}) => question_body.includes(searchInput))) :
+    setFilteredQuestions(null);
+    setCount(2);
   };
 
   return (
-    <div className="search">
-      <input value={searchInput} onChange={(event) => setSearchInput(event.target.value)} onClick={() => setSearchInput('')}/>
-    </div>
+    <SearchBar
+    className="QA-SearchBar" style={style} value={searchInput} onChange={(value) => setSearchInput(value)}
+    onClick={() => setSearchInput('')}/>
   );
 
 };
 
-export default SearchBar;
+export default Search;
+

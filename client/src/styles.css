@@ -93,7 +93,7 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
   align-self: end;
 }
 
-#product-desc {
+#product-desc-container {
   grid-row: 5;
   grid-column: 2;
   margin: 50px;

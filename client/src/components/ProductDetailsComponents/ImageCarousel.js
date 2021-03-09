@@ -85,7 +85,7 @@ class ImageCarousel extends React.Component {
         {this.props.isFetching ? <LoadingDiv />
           : (
             <div className="carousel-wrapper">
-              {this.state.currentImgIndex > 0 && <button className="left-arrow" onClick={this.prev}>&lt;</button>}
+              {this.state.currentImgIndex > 0 && <button className="left-arrow" id="carousel-left-arrow" onClick={this.prev}>&lt;</button>}
               <div className="carousel-content-wrapper">
                 {this.state.thumbnails.length > 1 && <ThumbnailGallery thumbnails={this.state.thumbnails} currentImgIndex={this.state.currentImgIndex} changeImageIndex={this.changeImageIndex} />}
                 <button className="expanded-view" onClick={this.handleViewChange}>
@@ -95,7 +95,7 @@ class ImageCarousel extends React.Component {
                   {this.state.fullSizeImages.map((imageUrl, i) => (<img src={imageUrl || noImage} key={i} alt="" style={{ objectFit: 'contain' }} />))}
                 </div>
               </div>
-              {this.state.currentImgIndex < this.state.fullSizeImages.length - 1 && <button className="right-arrow" onClick={this.next}>&gt;</button>}
+              {this.state.currentImgIndex < this.state.fullSizeImages.length - 1 && <button className="right-arrow" id="carousel-right-arrow" onClick={this.next}>&gt;</button>}
             </div>
           )}
       </div>

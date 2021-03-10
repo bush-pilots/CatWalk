@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 /* eslint-disable import/extensions */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
@@ -28,7 +29,7 @@ class App extends React.Component {
       related: [],
       reviews: [],
       reviewsMeta: {},
-      isFetching: false,
+      isFetching: true
     };
     this.updateData = this.updateData.bind(this);
     this.updateProductReviews = this.updateProductReviews.bind(this);
@@ -50,8 +51,9 @@ class App extends React.Component {
 
   updateData (id) {
     const updateStorage = {};
+    this.state.isFetching = true;
 
-     Promise.all([
+    Promise.all([
       (api.getProductData(id)),
       (api.getStyles(id)),
       (api.getRelated(id)),
@@ -63,6 +65,7 @@ class App extends React.Component {
           updateStorage.related = data[2];
           updateStorage.reviews = data[3];
           updateStorage.reviewsMeta = data[4];
+          updateStorage.isFetching = false;
           this.setState(updateStorage);
         })
         .catch((err) => console.log(`Error in promise: ${err}`));
@@ -79,7 +82,8 @@ class App extends React.Component {
           id={this.props.match.params.id}
           productData={this.state.productData}
           styles={this.state.styles}
-          isFetching={this.state.isFetchng}
+          isFetching={this.state.isFetching}
+          reviews={this.state.reviews}
         />
         <ApiCheck
           updateData={this.updateData}

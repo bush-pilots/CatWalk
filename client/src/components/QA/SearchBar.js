@@ -14,7 +14,7 @@ const Search = ({questions, filteredQuestions, setFilteredQuestions, setCount}) 
 
   const filterQuestions = () => {
     (searchInput.length >= 3 && searchInput !== 'Have Questions? Search for answers...') ?
-    setFilteredQuestions(questions.filter(({question_body}) => question_body.includes(searchInput))) :
+    setFilteredQuestions(questions.filter(({question_body}) => question_body.toLowerCase().includes(searchInput.toLowerCase()))) :
     setFilteredQuestions(null);
     setCount(2);
   };

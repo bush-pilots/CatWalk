@@ -106,6 +106,20 @@ const reportReview = (reviewId, cb) => {
     });
 };
 
+const addReview = (reviewFormObj, cb) => {
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews',
+  {
+    headers: { "Content-Type": "application/json; charset=UTF-8" },
+    data: reviewFormObj
+  })
+  .then((response) => {
+    cb(null, response);
+  })
+  .catch((err) => {
+    cb(err, null);
+  })
+}
+
 module.exports = {
   getProductData,
   getStyles,
@@ -114,5 +128,6 @@ module.exports = {
   getReviewsMeta,
   markHelpful,
   reportReview,
-  sendClickData
+  sendClickData,
+  addReview
 };

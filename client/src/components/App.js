@@ -49,6 +49,7 @@ class App extends React.Component {
   }
 
   updateData (id) {
+    this.setState({isFetching: true});
     const updateStorage = {};
 
      Promise.all([
@@ -64,6 +65,7 @@ class App extends React.Component {
           updateStorage.reviews = data[3];
           updateStorage.reviewsMeta = data[4];
           this.setState(updateStorage);
+          this.setState({isFetching: false});
         })
         .catch((err) => console.log(`Error in promise: ${err}`));
   };

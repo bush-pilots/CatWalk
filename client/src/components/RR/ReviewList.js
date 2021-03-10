@@ -19,14 +19,19 @@ var ReviewList = ({ reviews, reviewsMeta, updateReviews, isFetching, productData
   }
 
 
-  var clickOpenReviewForm = () => {
-    console.log(productData.name)
+  const clickOpenReviewForm = () => {
+    // console.log(productData.name)
     setShowReviewForm(true);
   }
 
+  const clickClosedReviewForm = () => {
+    setShowReviewForm(false);
+  }
+
   useEffect(() => {
-    //if product id changes, reset upper review range to 2
+    //if product id changes, reset upper review range to 2, stop showing form modal if their was one
     setUpperReviewRange(2);
+    setShowReviewForm(false);
   }, [reviewsMeta.product_id])
 
   useEffect(() => {
@@ -38,7 +43,7 @@ var ReviewList = ({ reviews, reviewsMeta, updateReviews, isFetching, productData
     if (reviewsDisplay.length + 1 >= reviews.length) {
       setShowButtons(false);
     } else {
-      console.log('showing buttons')
+      // console.log('showing buttons')
       setShowButtons(true);
     }
 
@@ -98,7 +103,7 @@ var ReviewList = ({ reviews, reviewsMeta, updateReviews, isFetching, productData
               onClick={clickOpenReviewForm}
             >ADD A REVIEW ➕</button>
           </div>
-         {showReviewForm? <ReviewFormModal productData={productData} /> : null}
+         {showReviewForm? <ReviewFormModal reviewsMeta={reviewsMeta} clickClosedReviewForm={clickClosedReviewForm} productData={productData} /> : null}
         </> :
         <>
           <div>{reviewsDisplay}</div>
@@ -108,7 +113,7 @@ var ReviewList = ({ reviews, reviewsMeta, updateReviews, isFetching, productData
               onClick={clickOpenReviewForm}
             >ADD A REVIEW ➕</button>
           </div>
-          {showReviewForm? <ReviewFormModal productData={productData} /> : null}
+          {showReviewForm? <ReviewFormModal reviewsMeta={reviewsMeta} clickClosedReviewForm={clickClosedReviewForm} productData={productData} /> : null}
         </>
       ) : (!isFetching ?
         <>
@@ -118,7 +123,7 @@ var ReviewList = ({ reviews, reviewsMeta, updateReviews, isFetching, productData
             onClick={clickOpenReviewForm}
           >ADD A REVIEW ➕</button>
         </div>
-        {showReviewForm? <ReviewFormModal productData={productData} /> : null}
+        {showReviewForm? <ReviewFormModal reviewsMeta={reviewsMeta} clickClosedReviewForm={clickClosedReviewForm} productData={productData} /> : null}
         </>
         : <></>
       )}

@@ -4,10 +4,11 @@ import Search from './SearchBar.js';
 import QuestionList from './QuestionList.js';
 import Modal from './Modal.js'
 import { Button } from '@material-ui/core';
+import withListener from '../Tracker';
 
 const api = require('../../../../helpers/qa.js');
 
-const QA = ({product, id}) => {
+const QA = ({onClick, product, id}) => {
   const [questions, setQuestions] = useState([]);
   const [filteredQuestions, setFilteredQuestions] = useState(null);
   const [count, setCount] = useState(2);
@@ -28,7 +29,7 @@ const QA = ({product, id}) => {
   };
 
   return (
-    <div id="QA">
+    <div id="QA" onClick={onClick}>
       <div className="QA-Header large">QUESTIONS & ANSWERS</div>
 
       <Search questions={questions} filteredQuestions={filteredQuestions} setFilteredQuestions={setFilteredQuestions} setCount={setCount}/>
@@ -49,4 +50,4 @@ const QA = ({product, id}) => {
   );
 };
 
-export default QA;
+export default withListener(QA, 'QA');

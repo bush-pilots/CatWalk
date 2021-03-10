@@ -3,6 +3,7 @@
 import React from 'react';
 import Ratings from './Ratings';
 import ReviewList from './ReviewList';
+import withListener from '../Tracker';
 
 class RatingsReviewsParent extends React.Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class RatingsReviewsParent extends React.Component {
   }
 }
 
-export default RatingsReviewsParent;
+export default withListener(RatingsReviewsParent, 'RatingReviewsParent');
 
 // Review object
 

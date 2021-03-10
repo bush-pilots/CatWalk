@@ -34,6 +34,7 @@ node_modules
 public/app.js
 config.js
 .eslintignore
+coverage
 
 # Floobits
 .floo

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { Button } from '@material-ui/core';
 
 const api = require('../../../../helpers/qa.js');
+const helpers = require('./componentHelpers.js');
 
 const Modal = ({questionModal, question, product, displayModal, toggleModal}) => {
   const [inputs, setInputs] = useState({questionOrAnswer: '', nickname: 'Example: bobjohnson88', email: ''});
@@ -40,31 +41,21 @@ const Modal = ({questionModal, question, product, displayModal, toggleModal}) =>
   };
 
   const validate = () => {
-    validateInputs();
-    validateEmail();
-    setSubmission(true);
-  };
-
-  const validateInputs = () => {
-    if (inputs.questionOrAnswer.length === 0 || inputs.nickname.length === 0 || inputs.email.length === 0) {
+    if (!helpers.validateInputs(inputs)) {
       setErrorExists(true);
-      setErrorMessage('Please ensure all forms are filled out and that your email is formatted correctly!');
-    } else if (inputs.questionOrAnswer.length > 1000 || inputs.nickname.length > 60 || inputs.email.length > 60) {
+      setErrorMessage('Please ensure all forms are filled out and that your email is formatted correctly!')
+    } else {
+      setErrorExists(false);
+    }
+
+    if (!helpers.validateEmail(inputs.email)) {
       setErrorExists(true);
       setErrorMessage('Please ensure all forms are filled out and that your email is formatted correctly!');
     } else {
       setErrorExists(false);
     }
-  };
 
-  const validateEmail = () => {
-    const validEmailRegex = RegExp(
-      /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
-
-    if (!validEmailRegex.test(inputs.email)) {
-      setErrorExists(true);
-      setErrorMessage('Please ensure all forms are filled out and that your email is formatted correctly!');
-    }
+    setSubmission(true);
   };
 
   const handleInputChange = (e) => {

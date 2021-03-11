@@ -82,7 +82,7 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
 /* --------------------------------Product Overview Styles------------------------------------------------------------------------------------------------ */
 #product-details {
   display: grid;
-  grid-template-columns: 5% 625px 5% 550px 5%;
+  grid-template-columns:  auto 625px auto 550px auto;
   grid-template-rows: 10% 33% 250px auto 25%;
 }
 

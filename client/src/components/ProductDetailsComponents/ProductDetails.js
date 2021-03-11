@@ -10,6 +10,7 @@ import AddToCart from './AddToCart';
 import ShareBar from './ShareBar';
 import ImageCarousel from './ImageCarousel';
 import withListener from '../Tracker';
+import StarRatingDisplay from './StarRatingDisplay';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -46,6 +47,7 @@ class ProductDetails extends React.Component {
     return (
       <div id="product-details" onClick={this.props.onClick}>
         <ImageCarousel style={this.state.currentStyle} product={this.props.id} isFetching={this.props.isFetching} />
+        <StarRatingDisplay reviews={this.props.reviews} />
         {this.props.isFetching || (
         <ProductInfo
           name={this.props.productData.name}

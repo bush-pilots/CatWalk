@@ -12,8 +12,8 @@ const ReviewFormModal = ({ productData, clickClosedReviewForm, reviewsMeta }) =>
 
 
   const inputListener = (e) => {
-    console.log('name: ', e.target.name)
-    console.log('value: ', e.target.value)
+    // console.log('name: ', e.target.name)
+    // console.log('value: ', e.target.value)
     if (e.target.name !== 'photos') {
       setState({ ...state, [e.target.name]: (e.target.value) });
 

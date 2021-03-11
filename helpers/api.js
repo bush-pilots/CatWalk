@@ -107,10 +107,14 @@ const reportReview = (reviewId, cb) => {
 };
 
 const addReview = (reviewFormObj, cb) => {
-  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews',
-  {
-    headers: { "Content-Type": "application/json; charset=UTF-8" },
-    data: reviewFormObj
+  axios({
+    method: 'post',
+    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews',
+    data: reviewFormObj,
+    header: {
+      contentType: 'application/json',
+      Connection: 'keep-alive'
+    }
   })
   .then((response) => {
     cb(null, response);

@@ -91,9 +91,9 @@ class App extends React.Component {
         />
         <QA product={this.state.productData}
           id={this.props.match.params.id} />
-        <div className="RR">
+
           <RatingsReviewsParent isFetching={this.state.isFetching} reviewsMeta={this.state.reviewsMeta} reviews={this.state.reviews} updateProductReviews={this.updateProductReviews} productData={this.state.productData}/>
-        </div>
+
       </>
     );
   }

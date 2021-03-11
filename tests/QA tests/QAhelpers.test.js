@@ -1,6 +1,6 @@
 const helpers = require('../../client/src/components/QA/componentHelpers.js');
 
-//tests for QA module helper functions
+//unit tests for QA module helper functions
 
   describe('Date format ("DF") helper for answer component should format input date properly',  () => {
 

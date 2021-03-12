@@ -86,12 +86,8 @@ class App extends React.Component {
           styles={this.state.styles}
           isFetching={this.state.isFetching}
           reviews={this.state.reviews}
-        />
-        <ApiCheck
+          related={this.state.related}
           updateData={this.updateData}
-        // productData={this.state.productData}
-        // styles={this.state.styles}
-        // related={this.state.related}
         />
         <QA product={this.state.productData}
           id={this.props.match.params.id} />

@@ -1,5 +1,6 @@
 const axios = require('axios');
 const config = require('../config.js');
+const regeneratorRuntime = require("regenerator-runtime");
 
 axios.defaults.headers.common.authorization = config.API_TOKEN;
 

@@ -40,16 +40,17 @@ class App extends React.Component {
   }
 
   updateProductReviews(productId) {
-    api.getReviews(productId, (err, results) => {
-      if (err) {
-        console.log('Error getting reviews: ', err);
-      } else {
-        this.setState({ reviews: results });
-      }
+    api.getReviews(productId)
+    .then((res) => {
+      this.setState({ reviews: res });
+    })
+    .catch((err) => {
+      console.log('could not update reviews in app: ', err)
     })
   }
 
   updateData (id) {
+    this.setState({isFetching: true});
     const updateStorage = {};
     this.state.isFetching = true;
 
@@ -67,6 +68,7 @@ class App extends React.Component {
           updateStorage.reviewsMeta = data[4];
           updateStorage.isFetching = false;
           this.setState(updateStorage);
+          this.setState({isFetching: false});
         })
         .catch((err) => console.log(`Error in promise: ${err}`));
   };
@@ -93,9 +95,9 @@ class App extends React.Component {
         />
         <QA product={this.state.productData}
           id={this.props.match.params.id} />
-        <div className="RR">
-          <RatingsReviewsParent isFetching={this.state.isFetching} reviewsMeta={this.state.reviewsMeta} reviews={this.state.reviews} updateProductReviews={this.updateProductReviews}/>
-        </div>
+
+          <RatingsReviewsParent isFetching={this.state.isFetching} reviewsMeta={this.state.reviewsMeta} reviews={this.state.reviews} updateProductReviews={this.updateProductReviews} productData={this.state.productData}/>
+
       </>
     );
   }

@@ -14,14 +14,14 @@ class RatingsReviewsParent extends React.Component {
 
   render() {
     return (
-      <>
-        <div className="ratings">
+      <div className="RR">
+        <div className="ratings" onClick={this.props.onClick}>
           <Ratings isFetching={this.props.isFetching} reviewsMeta={this.props.reviewsMeta} reviews={this.props.reviews} />
         </div>
-        <div className="reviews">
-          <ReviewList reviews={this.props.reviews} reviewsMeta={this.props.reviewsMeta} updateReviews={this.props.updateProductReviews} isFetching={this.props.isFetching}/>
+        <div className="reviews" onClick={this.props.onClick}>
+          <ReviewList reviews={this.props.reviews} reviewsMeta={this.props.reviewsMeta} updateReviews={this.props.updateProductReviews} isFetching={this.props.isFetching} productData={this.props.productData} />
         </div>
-      </>
+      </div>
 
     );
   }

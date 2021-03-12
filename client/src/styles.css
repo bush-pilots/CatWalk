@@ -82,8 +82,8 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
 /* --------------------------------Product Overview Styles------------------------------------------------------------------------------------------------ */
 #product-details {
   display: grid;
-  grid-template-columns:  auto 625px auto 550px auto;
-  grid-template-rows: 10% 33% 250px auto 25%;
+  grid-template-columns: auto 625px auto 525px auto;
+  grid-template-rows: 10% 33% auto auto 500px;
 }
 
 #product-info {
@@ -101,6 +101,7 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
 .carousel-container {
   grid-row: 2 / span 3;
   grid-column: 2 / span 3;
+  min-height: 500px;
 }
 
 #add-to-cart {
@@ -124,6 +125,7 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
   margin-left: 50px;
   grid-column: 4;
   grid-row: 3;
+  margin-bottom: 150px;
 }
 #style-selector-list {
   height: 160px;
@@ -156,6 +158,11 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
   grid-column: 4;
   grid-row: 2;
   margin: 50px;
+}
+
+#related-items {
+  grid-column: 4;
+  grid-row: 5;
 }
 
 /* --------------------------------QA--------------------------------------------------------------------------------------------------- */

@@ -4,7 +4,7 @@ import { Button } from '@material-ui/core';
 const api = require('../../../../helpers/qa.js');
 const helpers = require('./componentHelpers.js');
 
-const Modal = ({questionModal, question, product, displayModal, toggleModal}) => {
+const Modal = ({questionModal, question, product, toggleModal, getQuestions, getAnswers}) => {
   const [inputs, setInputs] = useState({questionOrAnswer: '', nickname: 'Example: bobjohnson88', email: ''});
   const [errorMessage, setErrorMessage] = useState('');
   const [errorExists, setErrorExists] = useState(false);
@@ -26,14 +26,17 @@ const Modal = ({questionModal, question, product, displayModal, toggleModal}) =>
         email: inputs.email,
         product_id: product.id
       };
-      api.submitQuestion(params);
+      api.submitQuestion(params)
+        .then(response => getQuestions(product.id));
+
     } else {
       const params = {
         body: inputs.questionOrAnswer,
         name: inputs.nickname,
         email: inputs.email,
       };
-      api.submitAnswer(question.question_id, params);
+      api.submitAnswer(question.question_id, params)
+        .then(response => getAnswers(question.question_id));
     }
 
     setSubmission(false);

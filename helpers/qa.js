@@ -77,8 +77,8 @@ const submitQuestion = async (params) => {
   try {
     const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions`;
     const response = await axios.post(url, params);
-    console.log(response);
-    return response.status;
+    console.log(response.config.data);
+    return response.config.data;
   }
   catch (error) {
     return error.response.status;

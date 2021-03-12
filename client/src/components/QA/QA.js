@@ -44,7 +44,8 @@ const QA = ({onClick, product, id}) => {
 
     {(count > 2 && count >= questions.length) && (<Button size="medium" color="primary" className="QA-CollapseQuestions small" onClick={() => setCount(2)}>Collapse Questions</Button>)}
 
-      {displayModal && (<Modal questionModal={true} question={null} product={product} displayModal={displayModal} toggleModal={toggleModal}/>)}
+      {displayModal && (<Modal questionModal={true} question={null} product={product}
+      toggleModal={toggleModal} getQuestions={getQuestions}/>)}
 
     </div>
   );

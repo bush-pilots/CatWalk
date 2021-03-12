@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Answer from './Answer.js';
 import { Button } from '@material-ui/core';
 
-const AnswerList = ({answers, setAnswers}) => {
+const AnswerList = ({answers}) => {
   const [count, setCount] = useState(2);
 
   return (

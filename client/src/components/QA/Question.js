@@ -66,9 +66,9 @@ const Question = ({question, product}) => {
 
     <p className="Question-Interactive small">Helpful? <a href="#" onClick={(event) => markQuestionHelpful(event)}>Yes</a> ({helpfulness}) | <a href="#" onClick={(event) => toggleModal(event)}>Add Answer</a></p>
 
-    <AnswerList answers={answers} setAnswers={setAnswers}/>
+    <AnswerList answers={answers}/>
 
-    {displayModal && (<Modal questionModal={false} question={question} product={product} displayModal={displayModal} toggleModal={toggleModal}/>)}
+    {displayModal && (<Modal questionModal={false} question={question} product={product} toggleModal={toggleModal} getAnswers={getAnswers}/>)}
     </div>
   );
 

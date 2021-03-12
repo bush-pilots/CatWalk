@@ -5,7 +5,7 @@ const api = require('../../../../helpers/qa.js');
 const helpers = require('./componentHelpers.js');
 
 const Modal = ({questionModal, question, product, toggleModal, getQuestions, getAnswers}) => {
-  const [inputs, setInputs] = useState({questionOrAnswer: '', nickname: 'Example: bobjohnson88', email: ''});
+  const [inputs, setInputs] = useState({questionOrAnswer: '', nickname: '', email: ''});
   const [errorMessage, setErrorMessage] = useState('');
   const [errorExists, setErrorExists] = useState(false);
   const [submission, setSubmission] = useState(false);
@@ -78,7 +78,7 @@ const Modal = ({questionModal, question, product, toggleModal, getQuestions, get
         <textarea className="QA-ModalBody" name="questionOrAnswer" value={inputs.questionOrAnswer} onChange={(event) => handleInputChange(event)}></textarea>
 
         <div className="QA-ModalNameHeader">What is your nickname?</div>
-        <input className="QA-ModalName" name="nickname" value={inputs.nickname} onChange={(event) => handleInputChange(event)}></input>
+        <input className="QA-ModalName" placeholder="Example: BobRoss9000" name="nickname" value={inputs.nickname} onChange={(event) => handleInputChange(event)}></input>
         <p>For privacy reasons, do not use your full name or email address</p>
 
         <div className="QA-ModalEmailHeader">Your Email</div>

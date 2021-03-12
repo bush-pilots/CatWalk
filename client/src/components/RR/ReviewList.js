@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Review from './Review';
 import ReviewFormModal from './ReviewFormModal';
+import api from '../../../../helpers/api';
 
 var ReviewList = ({ reviews, reviewsMeta, updateReviews, isFetching, productData }) => {
   //add buttons later
@@ -87,6 +88,29 @@ var ReviewList = ({ reviews, reviewsMeta, updateReviews, isFetching, productData
   }, [reviews, upperReviewRange]);
 
   // reviews.map((review, i) => (<Review key={i} review={review} reviewsMeta={reviewsMeta} updateReviews={updateReviews}/>))
+  // var testPostClick = () => {
+  //   console.log('Reviews Meta Characteristics per product_id: ', reviewsMeta.characteristics)
+  //   // var obj = {
+  //   //   body: "It's raining it's pouring the old man is snoringgg again",
+  //   //   characteristics: {
+  //   //   14: 1,  //size
+  //   //   15: 2,  //Width
+  //   //   16: 1,  //Comfort
+  //   //   17: 2,  //Qua
+  //   //   18: 1,
+  //   //   19: 1
+  //   //   },
+  //   //   email: "oren@ishi.com",
+  //   //   name: "orehoreho",
+  //   //   photos: [],
+  //   //   product_id: 18201,
+  //   //   rating: 5,
+  //   //   recommend: false,
+  //   //   summary: "ohdosso"
+  //   // }
+  //   // api.addReview(obj)
+  // }
+
 
   return (
     <>
@@ -103,7 +127,7 @@ var ReviewList = ({ reviews, reviewsMeta, updateReviews, isFetching, productData
               onClick={clickOpenReviewForm}
             >ADD A REVIEW ➕</button>
           </div>
-         {showReviewForm? <ReviewFormModal reviewsMeta={reviewsMeta} clickClosedReviewForm={clickClosedReviewForm} productData={productData} /> : null}
+         {showReviewForm? <ReviewFormModal reviewsMeta={reviewsMeta} updateReviews={updateReviews} clickClosedReviewForm={clickClosedReviewForm} productData={productData} /> : null}
         </> :
         <>
           <div>{reviewsDisplay}</div>
@@ -113,7 +137,7 @@ var ReviewList = ({ reviews, reviewsMeta, updateReviews, isFetching, productData
               onClick={clickOpenReviewForm}
             >ADD A REVIEW ➕</button>
           </div>
-          {showReviewForm? <ReviewFormModal reviewsMeta={reviewsMeta} clickClosedReviewForm={clickClosedReviewForm} productData={productData} /> : null}
+          {showReviewForm? <ReviewFormModal reviewsMeta={reviewsMeta} updateReviews={updateReviews} clickClosedReviewForm={clickClosedReviewForm} productData={productData} /> : null}
         </>
       ) : (!isFetching ?
         <>
@@ -123,10 +147,11 @@ var ReviewList = ({ reviews, reviewsMeta, updateReviews, isFetching, productData
             onClick={clickOpenReviewForm}
           >ADD A REVIEW ➕</button>
         </div>
-        {showReviewForm? <ReviewFormModal reviewsMeta={reviewsMeta} clickClosedReviewForm={clickClosedReviewForm} productData={productData} /> : null}
+        {showReviewForm? <ReviewFormModal reviewsMeta={reviewsMeta} updateReviews={updateReviews} clickClosedReviewForm={clickClosedReviewForm} productData={productData} /> : null}
         </>
         : <></>
       )}
+
     </>
   )
 

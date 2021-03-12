@@ -28,7 +28,7 @@ class App extends React.Component {
       related: [],
       reviews: [],
       reviewsMeta: {},
-      isFetching: false,
+      isFetching: true,
     };
     this.updateData = this.updateData.bind(this);
     this.updateProductReviews = this.updateProductReviews.bind(this);
@@ -39,12 +39,12 @@ class App extends React.Component {
   }
 
   updateProductReviews(productId) {
-    api.getReviews(productId, (err, results) => {
-      if (err) {
-        console.log('Error getting reviews: ', err);
-      } else {
-        this.setState({ reviews: results });
-      }
+    api.getReviews(productId)
+    .then((res) => {
+      this.setState({ reviews: res });
+    })
+    .catch((err) => {
+      console.log('couldnot update reviews in app: ', err)
     })
   }
 

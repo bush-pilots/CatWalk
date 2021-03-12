@@ -21,7 +21,11 @@ import AnswerThumbnails from '../../client/src/components/QA/AnswerThumbnails.js
 
       // it('parent QA component should render SearchBar', () => {
       //   const wrapper = shallow(<QA />);
+<<<<<<< HEAD:tests/QA/QArenders.test.js
+      //   expect(wrapper.find(<SearchBar />)).toHaveLength(1);
+=======
       //   expect(wrapper.find(SearchBar)).toHaveLength(1);
+>>>>>>> main:tests/QA tests/QArenders.test.js
       // });
 
       it("should render QuestionList component", () => {

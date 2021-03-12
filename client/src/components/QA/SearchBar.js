@@ -6,7 +6,7 @@ const style = {
 }
 
 const Search = ({questions, filteredQuestions, setFilteredQuestions, setCount}) => {
-  const [searchInput, setSearchInput] = useState('Have Questions? Search for answers...');
+  const [searchInput, setSearchInput] = useState('');
 
   useEffect( () => {
     filterQuestions();
@@ -21,7 +21,7 @@ const Search = ({questions, filteredQuestions, setFilteredQuestions, setCount}) 
 
   return (
     <SearchBar
-    className="QA-SearchBar" style={style} value={searchInput} onChange={(value) => setSearchInput(value)}
+    className="QA-SearchBar" placeholder='Have Questions? Search for answers...' style={style} value={searchInput} onChange={(value) => setSearchInput(value)}
     onClick={() => setSearchInput('')}/>
   );
 

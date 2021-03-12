@@ -21,7 +21,7 @@ const AnswerList = ({answers}) => {
     {(answers.length > 2 && count !== answers.length) && (<Button size="small" color="primary" className="QA-moreAnswersButton small"
       onClick={() => {
         setCount(answers.length)}}>
-        LOAD MORE ANSWERS</Button>)}
+        SEE MORE ANSWERS</Button>)}
 
     {(count >= answers.length && count > 2) && (<Button size="small" color="primary" className="QA-CollapseAnswers small" onClick={() => setCount(2)}>Collapse Answers</Button>)}
     </div>

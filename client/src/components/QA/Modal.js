@@ -72,17 +72,17 @@ const Modal = ({questionModal, question, product, toggleModal, getQuestions, get
     <div className="QA-Modal">
       <div className="QA-ModalGuts">
       {questionModal ? (<><div>Ask Your Question</div>
-        <div>About the {product.name} Here</div></>) : (<><div>Submit Your Answer</div><p>{product.name}: {question.question_body}</p></>)}
+        <div className="QA-ModalHeader">About the {product.name} Here</div></>) : (<><div className="QA-ModalHeader">Submit Your Answer</div><p>{product.name}: {question.question_body}</p></>)}
 
       {questionModal ? (<div>Your Question</div>) : (<div>Your Answer</div>)}
-        <textarea name="questionOrAnswer" value={inputs.questionOrAnswer} onChange={(event) => handleInputChange(event)}></textarea>
+        <textarea className="QA-ModalBody" name="questionOrAnswer" value={inputs.questionOrAnswer} onChange={(event) => handleInputChange(event)}></textarea>
 
-        <div>What is your nickname?</div>
-        <input name="nickname" value={inputs.nickname} onChange={(event) => handleInputChange(event)}></input>
+        <div className="QA-ModalNameHeader">What is your nickname?</div>
+        <input className="QA-ModalName" name="nickname" value={inputs.nickname} onChange={(event) => handleInputChange(event)}></input>
         <p>For privacy reasons, do not use your full name or email address</p>
 
-        <div>Your Email</div>
-        <input name="email" value={inputs.email} onChange={(event) => handleInputChange(event)}></input>
+        <div className="QA-ModalEmailHeader">Your Email</div>
+        <input className="QA-ModalEmail" name="email" value={inputs.email} onChange={(event) => handleInputChange(event)}></input>
         <p>For authentication reasons, you will not be emailed</p>
 
         {errorExists && (<div className="QA-ModalError">{errorMessage}</div>)}

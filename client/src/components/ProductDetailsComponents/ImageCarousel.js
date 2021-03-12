@@ -101,7 +101,6 @@ class ImageCarousel extends React.Component {
               {this.props.isFetching ? <LoadingDiv />
                 : (
                   <div className="carousel-wrapper">
-
                     {this.state.currentImgIndex > 0 && <button className="left-arrow" id="carousel-left-arrow" onClick={this.prev}>&lt;</button>}
                     <div className="carousel-content-wrapper">
 

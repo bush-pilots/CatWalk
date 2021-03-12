@@ -1,0 +1,241 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Product Details components should all successfully render in isolation should render AddToCart 1`] = `
+<div
+  id="add-to-cart"
+>
+  <form
+    id="add-to-cart-form"
+    onSubmit={[Function]}
+  >
+    <SizeDropDown
+      checkForOutOfStock={[Function]}
+      handleChange={[Function]}
+      sizeError={false}
+      sku=""
+      skus={
+        Object {
+          "000": Object {
+            "quantity": 1,
+            "size": "X",
+          },
+        }
+      }
+    />
+    <QuantityDropDown
+      handleChange={[Function]}
+      quantity={0}
+      quantityError={false}
+    />
+    <input
+      className="medium add-to-cart-input"
+      id="add-to-cart-button"
+      type="submit"
+      value="Add to Cart!"
+    />
+  </form>
+</div>
+`;
+
+exports[`Product Details components should all successfully render in isolation should render ImageCarousel 1`] = `
+<Fragment>
+  <div
+    className="carousel-container"
+    style={
+      Object {
+        "maxWidth": "600px",
+      }
+    }
+  >
+    <div
+      className="carousel-wrapper"
+    >
+      <div
+        className="carousel-content-wrapper"
+      >
+        <button
+          className="expanded-view"
+          onClick={[Function]}
+        >
+          <img
+            alt=""
+            src="test-file-stub"
+            style={
+              Object {
+                "height": "20px",
+                "width": "20px",
+              }
+            }
+          />
+        </button>
+        <div
+          className="carousel-content"
+          style={
+            Object {
+              "transform": "translateX(-0%)",
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+</Fragment>
+`;
+
+exports[`Product Details components should all successfully render in isolation should render ProductInfo 1`] = `
+<div
+  id="product-info"
+>
+  <h1
+    id="product-name"
+  >
+    name
+  </h1>
+  <span
+    id="product-category"
+  >
+    category
+  </span>
+  <br />
+  <br />
+  <span
+    className="large"
+    id="original-price"
+  >
+    $
+    0.00
+  </span>
+  <br />
+</div>
+`;
+
+exports[`Product Details components should all successfully render in isolation should render ShareBar 1`] = `
+<div
+  id="share-bar"
+>
+  <ForwardRef(ShareButton-facebook)
+    id="facebook-share-button"
+    quote="Check out this product!"
+    style={
+      Object {
+        "margin": 5,
+      }
+    }
+    url="http://localhost:3000/#/undefined"
+  >
+    <Icon
+      bgStyle={Object {}}
+      borderRadius={0}
+      iconFillColor="white"
+      id="facebook-icon"
+      round={true}
+      size={32}
+    />
+  </ForwardRef(ShareButton-facebook)>
+  <ForwardRef(ShareButton-twitter)
+    id="twitter-share-button"
+    style={
+      Object {
+        "margin": 5,
+      }
+    }
+    title="Check out this product!"
+    url="http://localhost:3000/#/undefined"
+  >
+    <Icon
+      bgStyle={Object {}}
+      borderRadius={0}
+      iconFillColor="white"
+      id="twitter-icon"
+      round={true}
+      size={32}
+    />
+  </ForwardRef(ShareButton-twitter)>
+  <ForwardRef(ShareButton-pinterest)
+    id="pinterest-share-button"
+    media=""
+    style={
+      Object {
+        "margin": 5,
+      }
+    }
+    url="http://localhost:3000/#/undefined"
+  >
+    <Icon
+      bgStyle={Object {}}
+      borderRadius={0}
+      iconFillColor="white"
+      id="pinterest-icon"
+      round={true}
+      size={32}
+    />
+  </ForwardRef(ShareButton-pinterest)>
+</div>
+`;
+
+exports[`Product Details components should all successfully render in isolation should render StyleSelector 1`] = `
+<div
+  id="style-selector"
+>
+  <span
+    className="large"
+    id="style-name"
+  >
+    XXXX
+  </span>
+  <br />
+  <div
+    id="style-selector-list"
+  >
+    <div
+      className="style-selector-item"
+      key="00001"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundImage": "url(test-file-stub)",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`Product Details components should all successfully render in isolation should render parent ProductDetails component 1`] = `
+<div>
+  <ProductDetails
+    onClick={[Function]}
+    productData={
+      Object {
+        "category": "category",
+        "default_price": "0.00",
+        "descirption": "description",
+        "id": 0,
+        "name": "XXXX",
+        "slogan": "slogan",
+        "styles": Object {
+          "productId": "00000",
+          "results": Array [
+            Object {},
+          ],
+        },
+      }
+    }
+    styles={
+      Object {
+        "productId": "00000",
+        "results": Array [
+          Object {
+            "photos": Array [
+              Object {
+                "thumbnail_url": "",
+              },
+            ],
+            "style_id": "00001",
+          },
+        ],
+      }
+    }
+  />
+</div>
+`;

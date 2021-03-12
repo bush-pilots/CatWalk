@@ -5,7 +5,7 @@ const api = require('../../helpers/qa.js');
 
 //tests for QA module async API functions
 
-//for later: refactor with MOCK tests, currently these tests are vulnerable to issue with API and internet connectivity
+//for later: refactor with MOCK tests, currently these tests are vulnerable to issues with API and internet connectivity
 
   describe('getQuestions async should return an array of questions for a product or return status code 500 for a non-existent product ID', () => {
     it('should return an array of answers', async () => {

@@ -1,0 +1,240 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QA components should all successfully render in isolation should render Answer component 1`] = `
+<span
+  className="QA-Answer"
+>
+  <span
+    className="QA-AnswerTitle medium"
+  >
+    hello world
+  </span>
+  <AnswerThumbnails
+    thumbnails={Array []}
+  />
+  <p
+    className="QA-AnswerInteractive small"
+  >
+    by 
+    , 
+    August 18, 2018
+     | Helpful? 
+    <a
+      href="#"
+      onClick={[Function]}
+    >
+      Yes
+    </a>
+     (
+    10
+    ) |  
+    <a
+      href="#"
+      onClick={[Function]}
+    >
+      Report
+    </a>
+  </p>
+</span>
+`;
+
+exports[`QA components should all successfully render in isolation should render AnswerList component 1`] = `
+<div
+  className="QA-AnswerList"
+>
+  <span
+    className="QA-AnswerListAnchor medium"
+  >
+    A:
+  </span>
+  <ul
+    className="QA-Answers"
+  >
+    <Answer
+      answer={
+        Object {
+          "answer_id": 1,
+          "placeholder": "a",
+        }
+      }
+      key="1"
+    />
+    <Answer
+      answer={
+        Object {
+          "answer_id": 2,
+          "placeholder": "a",
+        }
+      }
+      key="2"
+    />
+  </ul>
+  <WithStyles(ForwardRef(Button))
+    className="QA-moreAnswersButton small"
+    color="primary"
+    onClick={[Function]}
+    size="small"
+  >
+    LOAD MORE ANSWERS
+  </WithStyles(ForwardRef(Button))>
+</div>
+`;
+
+exports[`QA components should all successfully render in isolation should render AnswerThumbnails component 1`] = `
+<div
+  className="AnswerThumbnails"
+>
+  <Thumbnail
+    key="1"
+    thumbnail="urlplaceholder/answer_5_photo_number_1.jpg"
+  />
+</div>
+`;
+
+exports[`QA components should all successfully render in isolation should render Modal component 1`] = `
+<div
+  className="QA-Modal"
+>
+  <div
+    className="QA-ModalGuts"
+  >
+    <div>
+      Ask Your Question
+    </div>
+    <div>
+      About the 
+      Gucci shoes
+       Here
+    </div>
+    <div>
+      Your Question
+    </div>
+    <textarea
+      name="questionOrAnswer"
+      onChange={[Function]}
+      value=""
+    />
+    <div>
+      What is your nickname?
+    </div>
+    <input
+      name="nickname"
+      onChange={[Function]}
+      value="Example: bobjohnson88"
+    />
+    <p>
+      For privacy reasons, do not use your full name or email address
+    </p>
+    <div>
+      Your Email
+    </div>
+    <input
+      name="email"
+      onChange={[Function]}
+      value=""
+    />
+    <p>
+      For authentication reasons, you will not be emailed
+    </p>
+    <WithStyles(ForwardRef(Button))
+      color="inherit"
+      onClick={[Function]}
+    >
+      Cancel
+    </WithStyles(ForwardRef(Button))>
+    <WithStyles(ForwardRef(Button))
+      color="inherit"
+      onClick={[Function]}
+    >
+      Submit Question
+    </WithStyles(ForwardRef(Button))>
+  </div>
+</div>
+`;
+
+exports[`QA components should all successfully render in isolation should render Question component 1`] = `
+<div
+  className="QA-Question"
+>
+  <span
+    className="Question-Title medium"
+  >
+    Q:  
+    Hello world
+  </span>
+  <p
+    className="Question-Interactive small"
+  >
+    Helpful? 
+    <a
+      href="#"
+      onClick={[Function]}
+    >
+      Yes
+    </a>
+     (
+    ) | 
+    <a
+      href="#"
+      onClick={[Function]}
+    >
+      Add Answer
+    </a>
+  </p>
+  <AnswerList
+    answers={Array []}
+    setAnswers={[Function]}
+  />
+</div>
+`;
+
+exports[`QA components should all successfully render in isolation should render QuestionList component 1`] = `
+<Fragment>
+  <ul
+    className="QA-QuestionList"
+  >
+    <Question
+      key="1"
+      product={5}
+      question={
+        Object {
+          "question_body": "et tu Brutu",
+          "question_id": 1,
+        }
+      }
+    />
+  </ul>
+</Fragment>
+`;
+
+exports[`QA components should all successfully render in isolation should render SearchBar component 1`] = `
+<WithStyles(ForwardRef)
+  className="QA-SearchBar"
+  onChange={[Function]}
+  onClick={[Function]}
+  style={
+    Object {
+      "color": "rgba(77,100,154,1)",
+    }
+  }
+  value="Have Questions? Search for answers..."
+/>
+`;
+
+exports[`QA components should all successfully render in isolation should render Thumbnail component 1`] = `
+<Fragment>
+  <img
+    alt="no image"
+    className="AnswerThumbnail"
+    onClick={[Function]}
+  />
+</Fragment>
+`;
+
+exports[`QA components should all successfully render in isolation should render parent QA component 1`] = `
+<div>
+  <QA
+    onClick={[Function]}
+  />
+</div>
+`;

@@ -26,7 +26,6 @@ const getQuestions = async (id) => {
     return questions.flat();
   }
   catch (error) {
-    console.log(error);
     return error.response.status;
   }
 
@@ -48,7 +47,6 @@ const getAnswers = async (id) => {
     return answers.flat();
   }
   catch (error) {
-    console.log(error);
     return error.response.status;
   }
 };

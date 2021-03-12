@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 /* eslint-disable import/extensions */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
@@ -28,7 +29,7 @@ class App extends React.Component {
       related: [],
       reviews: [],
       reviewsMeta: {},
-      isFetching: false,
+      isFetching: true
     };
     this.updateData = this.updateData.bind(this);
     this.updateProductReviews = this.updateProductReviews.bind(this);
@@ -39,19 +40,21 @@ class App extends React.Component {
   }
 
   updateProductReviews(productId) {
-    api.getReviews(productId, (err, results) => {
-      if (err) {
-        console.log('Error getting reviews: ', err);
-      } else {
-        this.setState({ reviews: results });
-      }
+    api.getReviews(productId)
+    .then((res) => {
+      this.setState({ reviews: res });
+    })
+    .catch((err) => {
+      console.log('could not update reviews in app: ', err)
     })
   }
 
   updateData (id) {
+    this.setState({isFetching: true});
     const updateStorage = {};
+    this.state.isFetching = true;
 
-     Promise.all([
+    Promise.all([
       (api.getProductData(id)),
       (api.getStyles(id)),
       (api.getRelated(id)),
@@ -63,7 +66,9 @@ class App extends React.Component {
           updateStorage.related = data[2];
           updateStorage.reviews = data[3];
           updateStorage.reviewsMeta = data[4];
+          updateStorage.isFetching = false;
           this.setState(updateStorage);
+          this.setState({isFetching: false});
         })
         .catch((err) => console.log(`Error in promise: ${err}`));
   };
@@ -79,7 +84,8 @@ class App extends React.Component {
           id={this.props.match.params.id}
           productData={this.state.productData}
           styles={this.state.styles}
-          isFetching={this.state.isFetchng}
+          isFetching={this.state.isFetching}
+          reviews={this.state.reviews}
         />
         <ApiCheck
           updateData={this.updateData}
@@ -89,9 +95,9 @@ class App extends React.Component {
         />
         <QA product={this.state.productData}
           id={this.props.match.params.id} />
-        <div className="RR">
-          <RatingsReviewsParent isFetching={this.state.isFetching} reviewsMeta={this.state.reviewsMeta} reviews={this.state.reviews} updateProductReviews={this.updateProductReviews}/>
-        </div>
+
+          <RatingsReviewsParent isFetching={this.state.isFetching} reviewsMeta={this.state.reviewsMeta} reviews={this.state.reviews} updateProductReviews={this.updateProductReviews} productData={this.state.productData}/>
+
       </>
     );
   }

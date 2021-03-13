@@ -40,9 +40,9 @@ const QA = ({onClick, product, id}) => {
       setCount(count + 2)}}>
         MORE ANSWERED QUESTIONS</Button>)}
 
-        <Button onClick={() => toggleModal()} size="medium" color="primary" className="QA-AddQuestion">ADD A QUESTION +</Button>
+        <Button color="primary" onClick={() => toggleModal()} size="medium" color="primary" className="QA-AddQuestion">ADD A QUESTION +</Button>
 
-    {(count > 2 && count >= questions.length) && (<Button size="medium" color="primary" className="QA-CollapseQuestions small" onClick={() => setCount(2)}>Collapse Questions</Button>)}
+    {(count > 2 && count >= questions.length) && (<Button color="primary" size="medium" className="QA-CollapseQuestions small" onClick={() => setCount(2)}>Collapse Questions</Button>)}
 
       {displayModal && (<Modal questionModal={true} question={null} product={product}
       toggleModal={toggleModal} getQuestions={getQuestions}/>)}

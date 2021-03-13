@@ -52,7 +52,6 @@ class App extends React.Component {
   updateData (id) {
     this.setState({isFetching: true});
     const updateStorage = {};
-    this.state.isFetching = true;
 
     Promise.all([
       (api.getProductData(id)),
@@ -68,7 +67,6 @@ class App extends React.Component {
           updateStorage.reviewsMeta = data[4];
           updateStorage.isFetching = false;
           this.setState(updateStorage);
-          this.setState({isFetching: false});
         })
         .catch((err) => console.log(`Error in promise: ${err}`));
   };

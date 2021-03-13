@@ -211,6 +211,10 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
   box-shadow: rgba(77,100,154,0.5) 5px 5px, rgba(134,179,209,0.4) 10px 10px, rgba(153,206,211,0.3) 15px 15px;
 }
 
+.MuiButton-root {
+  font-family: 'Montserrat', sans-serif;
+}
+
 /* Question Elements */
 
 .QA-Question {
@@ -314,6 +318,8 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
 
 .QA-Modal {
   position: fixed;
+  width: 50%;
+  height: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -322,21 +328,23 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
   border-radius: 1%;
   color: white;
   text-align: center;
-  background-color: rgba(6, 39, 131, 0.5);
+  background-color: rgba(6, 39, 131, 0.75);
   padding: 10px;
 }
-/* /*
+
 .QA-ModalGuts {
   overflow-y: scroll;
-} */
+}
 
 /* .QA-ModalHeader {
 
-}
+} */
 
 .QA-ModalBodyHeader {
-
-}  */
+  margin: 2px 0;;
+  padding-left: 2em;
+  text-align: left;
+}
 
 .QA-ModalBody {
   width: 90%;
@@ -345,8 +353,9 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
 }
 
 .QA-ModalNameHeader {
+  margin: 2px 0;
+  padding-left: 2em;
   text-align: left;
-
 }
 
 .QA-ModalName {
@@ -355,8 +364,20 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
   border: 3px solid rgba(77,100,154,1);
 }
 
-.QA-ModalEmailHeader {
+.QA-ModalNameMessage {
+  text-align: left;
+  padding-left: 2em;
+}
 
+.QA-ModalEmailHeader {
+  margin: 2px 0;
+  padding-left: 2em;
+  text-align: left;
+}
+
+.QA-ModalNameMessage {
+  text-align: left;
+  padding-left: 2em;
 }
 
 .QA-ModalEmail {

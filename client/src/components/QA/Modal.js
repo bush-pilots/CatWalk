@@ -74,16 +74,16 @@ const Modal = ({questionModal, question, product, toggleModal, getQuestions, get
       {questionModal ? (<><div>Ask Your Question</div>
         <div className="QA-ModalHeader">About the {product.name} Here</div></>) : (<><div className="QA-ModalHeader">Submit Your Answer</div><p>{product.name}: {question.question_body}</p></>)}
 
-      {questionModal ? (<div>Your Question</div>) : (<div>Your Answer</div>)}
+      {questionModal ? (<div className="QA-ModalBodyHeader">Your Question</div>) : (<div className="QA-ModalBodyHeader">Your Answer</div>)}
         <textarea className="QA-ModalBody" name="questionOrAnswer" value={inputs.questionOrAnswer} onChange={(event) => handleInputChange(event)}></textarea>
 
         <div className="QA-ModalNameHeader">What is your nickname?</div>
         <input className="QA-ModalName" placeholder="Example: BobRoss9000" name="nickname" value={inputs.nickname} onChange={(event) => handleInputChange(event)}></input>
-        <p>For privacy reasons, do not use your full name or email address</p>
+        <p className="QA-ModalNameMessage">For privacy reasons, do not use your full name or email address</p>
 
         <div className="QA-ModalEmailHeader">Your Email</div>
         <input className="QA-ModalEmail" name="email" value={inputs.email} onChange={(event) => handleInputChange(event)}></input>
-        <p>For authentication reasons, you will not be emailed</p>
+        <p className="QA-ModalEmailMessage">For authentication reasons, you will not be emailed</p>
 
         {errorExists && (<div className="QA-ModalError">{errorMessage}</div>)}
 

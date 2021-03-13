@@ -112,16 +112,15 @@
 #QA {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  max-height: 100%;
+  max-height: 100vh;
 }
 
 .QA-Header {
   grid-area: 1 / 2 / span 1 / span 3;
-  color: rgba(77,100,154,1);
+  color: black
 }
 
 .QA-SearchBar {
-  /* color:  rgba(77,100,154,1); */
   grid-area: 2 / 2 / span 1 / span 8;
   margin-top: 10px;
 }
@@ -163,14 +162,14 @@
   grid-area: 1 / 1 / span 1 / span 6;
   align-self: center;
   font-weight: bold;
-  color: rgba(77,100,154,1);
+  color: black
 }
 
 .Question-Interactive {
   grid-area: 1 / 8 / span 1 / span 3;
   justify-self: right;
   padding-right: 10px;
-  color: rgba(77,100,154,1);
+  color: black
 }
 
 /* Answer List */
@@ -180,7 +179,7 @@
   grid-area: 2 / 1 / span 4 / span 7;
   max-height: 50vh;
   overflow-y: scroll;
-  color: rgba(134,179,209,1);
+  color: black;
 }
 
 .QA-AnswerListAnchor {
@@ -194,6 +193,10 @@
   grid-area: 1 / 1 / auto / span 1;
 }
 
+.QA-AnswerThumbnails {
+  margin-top: 10px;
+}
+
 .QA-collapseAnswers {
   justify-self: left;
   margin-left: 10px;
@@ -202,11 +205,9 @@
 .AnswerThumbnail {
   height: 50px;
   width: 50px;
-  border: 1px solid #ddd; /* Gray border */
-  border-radius: 25%;  /* Rounded border */
-  padding: 2px; /* Some padding */
-  /* border-radius: 50%; */
-
+  border: 1px solid #ddd;
+  border-radius: 25%;
+  padding: 2px;
 }
 
 .AnswerThumbnail:hover {
@@ -224,7 +225,7 @@
   border-radius: 2%;
   color: white;
   text-align: center;
-  background-color: rgba(6, 39, 131, 0.5);
+  background-color: black;
   padding: 10px;
 }
 
@@ -254,6 +255,8 @@
 
 .QA-Modal {
   position: fixed;
+  width: 50%;
+  height: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -262,56 +265,63 @@
   border-radius: 1%;
   color: white;
   text-align: center;
-  background-color: rgba(6, 39, 131, 0.5);
+  background-color: rgba(0,0,0,0.8);
   padding: 10px;
-}
-/* /*
-.QA-ModalGuts {
-  overflow-y: scroll;
-} */
-
-/* .QA-ModalHeader {
-
 }
 
 .QA-ModalBodyHeader {
-
-}  */
+  margin: 2px 0;
+  padding-left: 2em;
+  text-align: left;
+}
 
 .QA-ModalBody {
   width: 90%;
   color: rgba(6, 39, 131, 0.5);
-  border: 3px solid rgba(77,100,154,1);
+  border: 3px solid grey;
 }
 
 .QA-ModalNameHeader {
+  margin: 2px 0;
+  padding-left: 2em;
   text-align: left;
-
 }
 
 .QA-ModalName {
   color: rgba(6, 39, 131, 0.5);
   width: 90%;
-  border: 3px solid rgba(77,100,154,1);
+  border: 3px solid grey;
+}
+
+.QA-ModalNameMessage {
+  text-align: left;
+  padding-left: 2em;
 }
 
 .QA-ModalEmailHeader {
+  margin: 2px 0;
+  padding-left: 2em;
+  text-align: left;
+}
 
+.QA-ModalNameMessage {
+  text-align: left;
+  padding-left: 2em;
 }
 
 .QA-ModalEmail {
   color: rgba(6, 39, 131, 0.5);
   width: 90%;
-  border: 3px solid rgba(77,100,154,1);
+  border: 3px solid grey;
+}
+.QA-ModalEmailMessage {
+  text-align: left;
+  padding-left: 2em;
 }
 
 .QA-ModalError {
   color: red;
 };
-
-
-
-
 
 /* --------------------------------Ratings and Reviews--------------------------------------------------------------------------------------------------- */
 /* see bottom of cascade for top level div elements */

@@ -1,10 +1,10 @@
 const axios = require('axios');
+const regeneratorRuntime = require('regenerator-runtime');
 const config = require('../config.js');
-const regeneratorRuntime = require("regenerator-runtime");
 
 axios.defaults.headers.common.authorization = config.API_TOKEN;
 
-//get next page helper for both questions/answers
+//  get next page helper for both questions/answers
 const getNextPage = async (url) => {
   const response = await axios.get(url);
   return response.data.results;
@@ -20,15 +20,13 @@ const getQuestions = async (id) => {
 
       var onePage = await getNextPage(url);
       questions.push(onePage);
-      page++;
+      page += 1;
     } while (onePage.length > 0);
 
     return questions.flat();
-  }
-  catch (error) {
+  } catch (error) {
     return error.response.status;
   }
-
 };
 
 const getAnswers = async (id) => {
@@ -41,12 +39,11 @@ const getAnswers = async (id) => {
 
       var onePage = await getNextPage(url);
       answers.push(onePage);
-      page++;
+      page += 1;
     } while (onePage.length > 0);
 
     return answers.flat();
-  }
-  catch (error) {
+  } catch (error) {
     return error.response.status;
   }
 };
@@ -56,8 +53,7 @@ const markQuestionOrAnswerHelpful = async (QorA, id) => {
     const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/${QorA}/${id}/helpful`;
     const response = await axios.put(url);
     return response.status;
-  }
-  catch (error) {
+  } catch (error) {
     return error.response.status;
   }
 };
@@ -67,20 +63,17 @@ const reportQuestionOrAnswer = async (QorA, id) => {
     const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/${QorA}/${id}/report`;
     const response = await axios.put(url);
     return response.status;
-  }
-  catch (error) {
+  } catch (error) {
     return error.response.status;
   }
 };
 
 const submitQuestion = async (params) => {
   try {
-    const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions`;
+    const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions';
     const response = await axios.post(url, params);
-    console.log(response.config.data);
     return response.config.data;
-  }
-  catch (error) {
+  } catch (error) {
     return error.response.status;
   }
 };
@@ -90,8 +83,7 @@ const submitAnswer = async (id, params) => {
     const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${id}/answers`;
     const response = await axios.post(url, params);
     return response.status;
-  }
-  catch (error) {
+  } catch (error) {
     return error.response.status;
   }
 };

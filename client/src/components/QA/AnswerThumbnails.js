@@ -1,19 +1,19 @@
-import React, {useState} from 'react';
+/* eslint-disable react/prop-types */
+import React from 'react';
 
-import Thumbnail from './Thumbnail.js';
+import Thumbnail from './Thumbnail';
 
-const AnswerThumbnails = ({thumbnails}) => {
-  return (
-    <div className="AnswerThumbnails">
-      {
-        thumbnails.map( thumbnail => {
-          return <Thumbnail
+const AnswerThumbnails = ({ thumbnails }) => (
+  <div className="QA-AnswerThumbnails">
+    {
+      thumbnails.map((thumbnail) => (
+        <Thumbnail
           thumbnail={thumbnail.url}
           key={thumbnail.id}
         />
-      })}
-    </div>
-  );
-};
+      ))
+    }
+  </div>
+);
 
 export default AnswerThumbnails;

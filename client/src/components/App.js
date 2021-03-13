@@ -51,7 +51,6 @@ class App extends React.Component {
   updateData(id) {
     this.setState({ isFetching: true });
     const updateStorage = {};
-    this.state.isFetching = true;
 
     Promise.all([
       (api.getProductData(id)),

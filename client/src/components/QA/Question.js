@@ -61,7 +61,6 @@ const Question = ({ question, product }) => {
         {' '}
         (
         {helpfulness}
-        &nbsp;
         ) |
         &nbsp;
         <a href="#" onClick={(event) => toggleModal(event)}>Add Answer</a>

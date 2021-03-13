@@ -24,6 +24,7 @@
   display: grid;
   grid-template-columns: auto 625px auto 525px auto;
   grid-template-rows: 10% 33% auto auto 500px;
+  margin-bottom: 70px;
 }
 
 #product-info {
@@ -113,6 +114,8 @@
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   max-height: 100vh;
+  margin-bottom: 70px;
+  /* border: 1px solid blue; */
 }
 
 .QA-Header {
@@ -357,7 +360,7 @@
 }
 
 .ratingsSummary {
-  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 /* --------------------------------Ratings Breakdown ---------------------------------------------------------------------------------------------------- */
@@ -365,6 +368,10 @@
 .starLabel {
   text-decoration: underline;
 
+}
+.starLabel:hover {
+  box-shadow: 0 0 4px 4px rgba(6, 39, 131, 0.5);
+  cursor: pointer;
 }
 
 .recommendedPer {
@@ -635,14 +642,14 @@
 .RR {
   display: grid;
   grid-template-rows: 800px;
-  grid-template-columns: 0.5fr 1fr;
+  grid-template-columns: 0.2fr 1fr;
   margin-top: 40px;
 
 }
 
 .ratings {
 
-  margin-left: 30px;
+  margin-left: 150px;
 
   /* grid-column: 1 / 2;
   grid-row: 1 / 4;
@@ -654,7 +661,7 @@
 
 .reviews {
   margin-left: 30px;
-  margin-right: 30px;
+  margin-right: 80px;
   overflow-y: auto;
 
 }

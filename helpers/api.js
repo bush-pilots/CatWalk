@@ -48,28 +48,34 @@ const getRelated = async (id) => {
 
 // RATINGS/REVIEWS WIDGET HELPERS
 
-// get onePage helper function
-const getNextPage = async (page, id) => {
-  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/?page=${page}&count=5&product_id=${id}`;
+//get onePage helper function
+const getNextPage = async (page, id, sort) => {
+  // console.log('from inner recursive get next page func: ', sort)
+  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/?sort=${sort}&page=${page}&count=500&product_id=${id}`;
+  // console.log(url)
   const response = await axios.get(url);
   return response.data.results;
 };
 
-const getReviews = async (id) => {
-  const reviews = [];
-  let page = 0;
+const getReviews = async (id, sort) => {
+  // console.log(sort)
 
-  try {
-    do {
-      var onePage = await getNextPage(page + 1, id);
-      reviews.push(onePage);
-      page++;
-    } while (onePage.length > 0);
+    const reviews = [];
+    let page = 0;
 
-    return reviews.flat();
-  } catch (error) {
-    console.log(error);
-  }
+    try {
+      do {
+        var onePage = await getNextPage(page + 1, id, sort);
+        reviews.push(onePage);
+        page++;
+      } while (onePage.length > 0);
+
+      return reviews.flat();
+    }
+    catch (error) {
+      console.log(error);
+    }
+
 };
 
 const getReviewsMeta = async (id) => {
@@ -109,8 +115,8 @@ const addReview = (reviewFormObj, cb) => {
     })
     .catch((err) => {
       cb(err, null);
-    });
-};
+    })
+}
 
 module.exports = {
   getProductData,

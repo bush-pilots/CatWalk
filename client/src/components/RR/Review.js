@@ -3,7 +3,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Modal } from '@material-ui/core'
 const api = require('../../../../helpers/api.js');
 
-var Review = ({ review, reviewsMeta, updateReviews }) => {
+var Review = ({ sortOrder, review, reviewsMeta, updateReviews }) => {
   // body: "Esse qui et nesciunt. Rerum dicta autem placeat. Eligendi amet reiciendis rerum voluptate et quas maxime consectetur."
   // date: "2020-09-09T00:00:00.000Z"
   // helpfulness: 22

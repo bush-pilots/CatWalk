@@ -18,6 +18,11 @@ const withListener = (WrappedComponent, moduleName) => class ClickLogger extends
       time: Date().toLocaleString(),
       widget: moduleName
     };
+    // console.log('*********************************');
+    // console.log('Module: ', clickData.widget);
+    // console.log('E.target:', clickData.element);
+    // console.log('Timestamp: ', clickData.time);
+    // console.log('*********************************');
     if (e.target.id) clickData.element = `Id: ${e.target.id}`;
     else if (e.target.className && typeof e.target.className === 'string') clickData.element = `className: ${e.target.className}`;
     else if (e.target.parentNode.id) clickData.element = `Id of Parent: ${e.target.parentNode.id}`;

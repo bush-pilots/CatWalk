@@ -7,8 +7,7 @@
     "start": "nodemon server",
     "build": "webpack",
     "watch": "webpack -w",
-    "test": "jest --collectCoverage",
-    "seed": "mysql -u root -p <schema.sql"
+    "test": "jest --collectCoverage"
   },
   "keywords": [],
   "author": "Hack Reactor <curriculum.team@hackreactor.com>",

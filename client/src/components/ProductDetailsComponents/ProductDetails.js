@@ -84,7 +84,6 @@ class ProductDetails extends React.Component {
           related={this.props.related}
         />
       </div>
-
     );
   }
 }

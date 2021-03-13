@@ -6,14 +6,12 @@ import StyleSelector from '../../client/src/components/ProductDetailsComponents/
 import AddToCart from '../../client/src/components/ProductDetailsComponents/AddToCart.js';
 import ShareBar from '../../client/src/components/ProductDetailsComponents/ShareBar.js';
 import ImageCarousel from '../../client/src/components/ProductDetailsComponents/ImageCarousel.js';
-import withListener from '../../client/src/components/Tracker.js';
-import StarRatingDisplay from '../../client/src/components/ProductDetailsComponents/StarRatingDisplay.js';
-import LoadingDiv from '../../client/src/components/ProductDetailsComponents/LoadingDiv.js';
 import ThumbnailGallery from '../../client/src/components/ProductDetailsComponents/ThumbnailGallery.js';
 import ZoomedImage from '../../client/src/components/ProductDetailsComponents/ZoomedImage.js';
 import ProductDetails from '../../client/src/components/ProductDetailsComponents/ProductDetails.js';
 import QuantityDropDown from '../../client/src/components/ProductDetailsComponents/QuantityDropDown.js';
 import SizeDropDown from '../../client/src/components/ProductDetailsComponents/SizeDropDown.js';
+import RelatedItemsLinks from '../../client/src/components/ProductDetailsComponents/RelatedItemsLinks.js';
 
 // shallow render tests for Product Details components
 
@@ -45,7 +43,8 @@ let props = {
     results: [{ photos: [{ thumbnail_url: '' }], style_id: '00001' }]
   },
   image: '',
-  fn: () => null
+  fn: () => null,
+  sku: {quantity: 1, size: 'X'}
 };
 
 describe('Product Details components should all successfully render in isolation', () => {
@@ -69,13 +68,38 @@ describe('Product Details components should all successfully render in isolation
     expect(toJSON(wrapper)).toMatchSnapshot();
   });
 
+  it('should render QuantityDropDown', () => {
+    const wrapper = shallow(<QuantityDropDown handleChange={props.fn} item={props.sku} quantity={props.sku.quantity} />);
+    expect(toJSON(wrapper)).toMatchSnapshot();
+  });
+
+  it('should render RelatedItemsLinks', () => {
+    const wrapper = shallow(<RelatedItemsLinks related={[0]} />);
+    expect(toJSON(wrapper)).toMatchSnapshot();
+  });
+
+  it('should render SizeDropDown', () => {
+    const wrapper = shallow(<SizeDropDown handleChange={props.fn} checkForOutOfStock={props.fn} sku={props.name} skus={props.style.skus} />);
+    expect(toJSON(wrapper)).toMatchSnapshot();
+  });
+
   it('should render StyleSelector', () => {
     const wrapper = shallow(<StyleSelector styles={props.styles} currentStyle={props.style} changeStyle={props.fn} />);
     expect(toJSON(wrapper)).toMatchSnapshot();
   });
 
+  it('should render ThumbnailGallery', () => {
+    const wrapper = shallow(<ThumbnailGallery changeImageIndex={props.fn} currentImgIndex={0} thumbnails={[props.image]} />);
+    expect(toJSON(wrapper)).toMatchSnapshot();
+  });
+
   it('should render ShareBar', () => {
     const wrapper = shallow(<ShareBar id={props.id} image={props.image} />);
+    expect(toJSON(wrapper)).toMatchSnapshot();
+  });
+
+  it('should render ZoomedImage', () => {
+    const wrapper = shallow(<ZoomedImage toggleZoomView={props.fn} image={props.image} />);
     expect(toJSON(wrapper)).toMatchSnapshot();
   });
 });

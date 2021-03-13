@@ -16,7 +16,7 @@ class RatingsReviewsParent extends React.Component {
     return (
       <div className="RR">
         <div className="ratings" onClick={this.props.onClick}>
-          <Ratings isFetching={this.props.isFetching} reviewsMeta={this.props.reviewsMeta} reviews={this.props.reviews} />
+          <Ratings filter={this.props.filter} isFetching={this.props.isFetching} reviewsMeta={this.props.reviewsMeta} reviews={this.props.reviews} updateReviews={this.props.updateProductReviews} />
         </div>
         <div className="reviews" onClick={this.props.onClick}>
           <ReviewList reviews={this.props.reviews} reviewsMeta={this.props.reviewsMeta} updateReviews={this.props.updateProductReviews} isFetching={this.props.isFetching} productData={this.props.productData} />

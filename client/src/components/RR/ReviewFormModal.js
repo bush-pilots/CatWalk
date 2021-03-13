@@ -3,7 +3,7 @@ import Rating from '@material-ui/lab/Rating';
 import axios from 'axios';
 import api from '../../../../helpers/api';
 
-const ReviewFormModal = ({ productData, clickClosedReviewForm, reviewsMeta, updateReviews }) => {
+const ReviewFormModal = ({ sortOrder, productData, clickClosedReviewForm, reviewsMeta, updateReviews }) => {
   //prop needed is product name which I can get from app current product
 
   const [state, setState] = useState({

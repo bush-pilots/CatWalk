@@ -7,6 +7,7 @@ class RatingsBreakdown extends React.Component {
       percentage: {},
       percentageRec: 0
     }
+    this.onClickFilter = this.onClickFilter.bind(this);
   }
 
   createStarsObject(reviewsArray) {
@@ -53,6 +54,19 @@ class RatingsBreakdown extends React.Component {
 
     }
   }
+
+  onClickFilter(rating) {
+    //call for new reviews, set app review state for a filter > 0
+    if (this.props.filter === rating) {
+      //set filter to 0
+      console.log('set filter === 0')
+      this.props.updateReviews(this.props.reviewsMeta.product_id, undefined, 0)
+    } else {
+      this.props.updateReviews(this.props.reviewsMeta.product_id, undefined, rating)
+    }
+  }
+
+
   // percentage of reviews that recommend the product
   // the real calculation is # of 5 star reviews / number of reviews to give percentage
   render() {
@@ -64,27 +78,28 @@ class RatingsBreakdown extends React.Component {
         <table>
           <tbody>
             <tr className="ratingsBreakdownRows" >
-              <td className="starLabel">5 stars</td>
+              <td className="starLabel" onClick={() => {this.onClickFilter(5)}}>5 stars</td>
               <td style={{ marginBottom: '2px', marginLeft: '10px', width: '190px', height: '6px', display: 'inline-block', background: `linear-gradient(to right, #00ff00 ${this.state.percentage['5']}%, grey ${this.state.percentage['5']}%)` }}></td>
             </tr>
             <tr className="ratingsBreakdownRows" >
-              <td className="starLabel">4 stars</td>
+              <td className="starLabel" onClick={() => {this.onClickFilter(4)}}>4 stars</td>
               <td style={{ marginBottom: '2px', marginLeft: '10px', width: '190px', height: '6px', display: 'inline-block', background: `linear-gradient(to right, #00ff00 ${this.state.percentage['4']}%, grey ${this.state.percentage['4']}%)` }}></td>
             </tr>
             <tr className="ratingsBreakdownRows" >
-              <td className="starLabel">3 stars</td>
+              <td className="starLabel" onClick={() => {this.onClickFilter(3)}}>3 stars</td>
               <td style={{ marginBottom: '2px', marginLeft: '10px', width: '190px', height: '6px', display: 'inline-block', background: `linear-gradient(to right, #00ff00 ${this.state.percentage['3']}%, grey ${this.state.percentage['3']}%)` }}></td>
             </tr>
             <tr className="ratingsBreakdownRows" >
-              <td className="starLabel">2 stars</td>
+              <td className="starLabel" onClick={() => {this.onClickFilter(2)}}>2 stars</td>
               <td style={{ marginBottom: '2px', marginLeft: '10px', width: '190px', height: '6px', display: 'inline-block', background: `linear-gradient(to right, #00ff00 ${this.state.percentage['2']}%, grey ${this.state.percentage['2']}%)` }}></td>
             </tr>
             <tr className="ratingsBreakdownRows" >
-              <td className="starLabel">1 stars</td>
+              <td className="starLabel" onClick={() => {this.onClickFilter(1)}}>1 stars</td>
               <td style={{ marginBottom: '2px', marginLeft: '10px', width: '190px', height: '6px', display: 'inline-block', background: `linear-gradient(to right, #00ff00 ${this.state.percentage['1']}%, grey ${this.state.percentage['1']}%)` }}></td>
             </tr>
           </tbody>
         </table>
+        {this.props.filter === 0 ? <></> : <div className="small" >*selected filter {this.props.filter} </div> }
       </>
     )
   }

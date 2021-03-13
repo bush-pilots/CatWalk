@@ -355,7 +355,7 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
 }
 
 .ratingsSummary {
-  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 /* --------------------------------Ratings Breakdown ---------------------------------------------------------------------------------------------------- */
@@ -363,6 +363,10 @@ CSS grid and flexbox allows the dev to make HTML into what it was supposed to be
 .starLabel {
   text-decoration: underline;
 
+}
+.starLabel:hover {
+  box-shadow: 0 0 4px 4px rgba(6, 39, 131, 0.5);
+  cursor: pointer;
 }
 
 .recommendedPer {

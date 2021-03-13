@@ -2,6 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Review from './Review';
 import ReviewFormModal from './ReviewFormModal';
 import api from '../../../../helpers/api';
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import Button from '@material-ui/core/Button';
 
 var ReviewList = ({ reviews, reviewsMeta, updateReviews, isFetching, productData }) => {
   //add buttons later
@@ -33,6 +39,7 @@ var ReviewList = ({ reviews, reviewsMeta, updateReviews, isFetching, productData
     //if product id changes, reset upper review range to 2, stop showing form modal if their was one
     setUpperReviewRange(2);
     setShowReviewForm(false);
+    setSortOrder('newest');
   }, [reviewsMeta.product_id])
 
   useEffect(() => {
@@ -61,7 +68,7 @@ var ReviewList = ({ reviews, reviewsMeta, updateReviews, isFetching, productData
       for (var i = 0; i < upperReviewRange; i++) {
         if (reviews[i] !== undefined) {
           // console.log('got reviews at index i=', i)
-          collectReviewsToDisplay.push(<Review key={i} review={reviews[i]} reviewsMeta={reviewsMeta} updateReviews={updateReviews} />);
+          collectReviewsToDisplay.push(<Review sortOrder={sortOrder} key={i} review={reviews[i]} reviewsMeta={reviewsMeta} updateReviews={updateReviews} />);
         } else {
           //we found the current limit of reviews for this product
           //set upperReviewRange to this.  So if those reviews are created, we don't
@@ -87,35 +94,53 @@ var ReviewList = ({ reviews, reviewsMeta, updateReviews, isFetching, productData
 
   }, [reviews, upperReviewRange]);
 
-  // reviews.map((review, i) => (<Review key={i} review={review} reviewsMeta={reviewsMeta} updateReviews={updateReviews}/>))
-  // var testPostClick = () => {
-  //   console.log('Reviews Meta Characteristics per product_id: ', reviewsMeta.characteristics)
-  //   // var obj = {
-  //   //   body: "It's raining it's pouring the old man is snoringgg again",
-  //   //   characteristics: {
-  //   //   14: 1,  //size
-  //   //   15: 2,  //Width
-  //   //   16: 1,  //Comfort
-  //   //   17: 2,  //Qua
-  //   //   18: 1,
-  //   //   19: 1
-  //   //   },
-  //   //   email: "oren@ishi.com",
-  //   //   name: "orehoreho",
-  //   //   photos: [],
-  //   //   product_id: 18201,
-  //   //   rating: 5,
-  //   //   recommend: false,
-  //   //   summary: "ohdosso"
-  //   // }
-  //   // api.addReview(obj)
-  // }
+  const [openDropDown, setOpenDropDown] = useState(false);
+  const [sortOrder, setSortOrder] = useState('newest');
+
+  const onClickOpenDropDown = () => {
+    setOpenDropDown(true);
+  }
+  const onClickCloseDropDown = () => {
+    setOpenDropDown(false);
+  }
+
+  var handleChange = (e) => {
+    setSortOrder(e.target.value);
+  }
+
+  useEffect(() => {
+    //after sortOrder changes and renders call the api for the new reviews
+    if (reviewsMeta.product_id !== undefined) {
+      updateReviews(reviewsMeta.product_id, sortOrder);
+    }
+  }, [sortOrder])
+
 
 
   return (
     <>
       {isReviews && !isFetching ? (showButtons ?
         <>
+          <div className="reviewsSortOptions">
+
+            <span>{`${reviews.length} reviews, sorted by `}</span>
+            <Select
+
+              // labelId="demo-controlled-open-select-label"
+              // id="demo-controlled-open-select"
+              open={openDropDown}
+              onClose={onClickCloseDropDown}
+              onOpen={onClickOpenDropDown}
+              value={sortOrder}
+              onChange={handleChange}
+            >
+
+              <MenuItem className="selectSort" value={'newest'}>Newest</MenuItem>
+              <MenuItem className="selectSort" value={'helpful'}>Helpful</MenuItem>
+              <MenuItem className="selectSort" value={'relevant'}>Relevant</MenuItem>
+            </Select>
+
+          </div>
           <div>{reviewsDisplay}</div>
           <div className="reviewListButtonContainer">
             <button
@@ -127,9 +152,29 @@ var ReviewList = ({ reviews, reviewsMeta, updateReviews, isFetching, productData
               onClick={clickOpenReviewForm}
             >ADD A REVIEW ➕</button>
           </div>
-         {showReviewForm? <ReviewFormModal reviewsMeta={reviewsMeta} updateReviews={updateReviews} clickClosedReviewForm={clickClosedReviewForm} productData={productData} /> : null}
+          {showReviewForm ? <ReviewFormModal sortOrder={sortOrder}reviewsMeta={reviewsMeta} updateReviews={updateReviews} clickClosedReviewForm={clickClosedReviewForm} productData={productData} /> : null}
         </> :
         <>
+          <div className="reviewsSortOptions">
+
+            <span>{`${reviews.length} reviews, sorted by `}</span>
+            <Select
+              className="selectSort"
+              labelId="demo-controlled-open-select-label"
+              id="demo-controlled-open-select"
+              open={openDropDown}
+              onClose={onClickCloseDropDown}
+              onOpen={onClickOpenDropDown}
+              value={sortOrder}
+              onChange={handleChange}
+            >
+
+              <MenuItem className="selectSort" value={'newest'}>Newest</MenuItem>
+              <MenuItem className="selectSort" value={'helpful'}>Helpful</MenuItem>
+              <MenuItem className="selectSort" value={'relevant'}>Relevant</MenuItem>
+            </Select>
+
+          </div>
           <div>{reviewsDisplay}</div>
           <div className="reviewListButtonContainer">
             <button
@@ -137,17 +182,17 @@ var ReviewList = ({ reviews, reviewsMeta, updateReviews, isFetching, productData
               onClick={clickOpenReviewForm}
             >ADD A REVIEW ➕</button>
           </div>
-          {showReviewForm? <ReviewFormModal reviewsMeta={reviewsMeta} updateReviews={updateReviews} clickClosedReviewForm={clickClosedReviewForm} productData={productData} /> : null}
+          {showReviewForm ? <ReviewFormModal sortOrder={sortOrder} reviewsMeta={reviewsMeta} updateReviews={updateReviews} clickClosedReviewForm={clickClosedReviewForm} productData={productData} /> : null}
         </>
       ) : (!isFetching ?
         <>
-        <div className="reviewListButtonContainer">
-          <button
-            className="reviewButton"
-            onClick={clickOpenReviewForm}
-          >ADD A REVIEW ➕</button>
-        </div>
-        {showReviewForm? <ReviewFormModal reviewsMeta={reviewsMeta} updateReviews={updateReviews} clickClosedReviewForm={clickClosedReviewForm} productData={productData} /> : null}
+          <div className="reviewListButtonContainer">
+            <button
+              className="reviewButton"
+              onClick={clickOpenReviewForm}
+            >ADD A REVIEW ➕</button>
+          </div>
+          {showReviewForm ? <ReviewFormModal sortOrder={sortOrder} reviewsMeta={reviewsMeta} updateReviews={updateReviews} clickClosedReviewForm={clickClosedReviewForm} productData={productData} /> : null}
         </>
         : <></>
       )}

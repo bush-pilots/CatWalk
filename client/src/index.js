@@ -16,7 +16,6 @@ ReactDOM.render(
         <Redirect to="/18201" />
       </Route>
     </Router>
-
   </div>,
   document.getElementById('app')
 );

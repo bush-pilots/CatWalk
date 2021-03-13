@@ -1,22 +1,20 @@
 import React from 'react';
-import Question from './Question.js';
+import Question from './Question';
 
-const QuestionList = ({questions, product}) => {
-
-  return (
-    <>
+const QuestionList = ({ questions, product }) => (
+  <>
     <ul className="QA-QuestionList">
-        {
-          questions.map(question => {
-            return <Question
-            question={question}
-            product={product}
-            key={question.question_id}/>
-          })
-        }
+      {
+      questions.map((question) => (
+        <Question
+          question={question}
+          product={product}
+          key={question.question_id}
+        />
+      ))
+      }
     </ul>
-    </>
-  );
-};
+  </>
+);
 
 export default QuestionList;

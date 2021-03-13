@@ -35,8 +35,6 @@ class AddToCart extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state.quantity);
-    console.log(this.state.sku);
     if (this.state.sku === 'Select Size' || !this.state.sku) this.setState({ sizeError: true });
     else if (this.state.quantity === 'Select Quantity' || !this.state.quantity) this.setState({ quantityError: true });
     else {

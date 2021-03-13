@@ -3,7 +3,7 @@
 /* eslint-disable class-methods-use-this */
 import React from 'react';
 
-const api = require('../../../helpers/api')
+const api = require('../../../helpers/api');
 
 const withListener = (WrappedComponent, moduleName) => class ClickLogger extends React.Component {
   constructor(props) {
@@ -29,7 +29,7 @@ const withListener = (WrappedComponent, moduleName) => class ClickLogger extends
     else if (e.target.parentNode.className) clickData.element = `Class of Parent: ${e.target.parentNode.className}`;
     else clickData.element = 'Element identifier not found';
 
-    //post Data to Interactions API
+    // post Data to Interactions API
     api.sendClickData(clickData);
   }
 

@@ -1,9 +1,8 @@
 const axios = require('axios');
+const regeneratorRuntime = require('regenerator-runtime');
 const config = require('../config.js');
 
 axios.defaults.headers.common.authorization = config.API_TOKEN;
-
-// broken down by widget to minimize toe-on-toe action
 
 // INTERACTION WIDGET HELPER
 
@@ -11,7 +10,8 @@ const sendClickData = async (data) => {
   try {
     const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/interactions';
     const response = await axios.post(url, data);
-    console.log(response.status);
+
+
   } catch (error) {
     console.log(error);
   }
@@ -23,8 +23,7 @@ const getProductData = async (id) => {
   try {
     const response = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/${id}`);
     return response.data;
-  }
-  catch (error) {
+  } catch (error) {
     console.log(error);
   }
 };
@@ -33,18 +32,16 @@ const getStyles = async (id) => {
   try {
     const response = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/${id}/styles`);
     return response.data;
-  }
-  catch (error) {
+  } catch (error) {
     console.log(error);
   }
 };
 
 const getRelated = async (id) => {
   try {
-    const response = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/${id}/related`)
+    const response = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/${id}/related`);
     return response.data;
-  }
-  catch (error) {
+  } catch (error) {
     console.log(error);
   }
 };
@@ -85,8 +82,7 @@ const getReviewsMeta = async (id) => {
   try {
     const response = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/meta?product_id=${id}`);
     return response.data;
-  }
-  catch (error) {
+  } catch (error) {
     console.log(error);
   }
 };
@@ -112,7 +108,7 @@ const reportReview = (reviewId, cb) => {
 };
 
 const addReview = (reviewFormObj, cb) => {
-  console.log(reviewFormObj)
+  console.log(reviewFormObj);
   axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews', reviewFormObj)
     .then((response) => {
       cb(null, response);

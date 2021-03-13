@@ -11,6 +11,7 @@ import ShareBar from './ShareBar';
 import ImageCarousel from './ImageCarousel';
 import withListener from '../Tracker';
 import StarRatingDisplay from './StarRatingDisplay';
+import RelatedItemsLinks from './RelatedItemsLinks';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -78,8 +79,11 @@ class ProductDetails extends React.Component {
         )}
         <AddToCart style={this.state.currentStyle} isFetching={this.props.isFetching} />
         <ShareBar id={this.props.id} image={this.state.currentStyle.photos[0].url} />
+        <RelatedItemsLinks
+          updateData={this.props.updateData}
+          related={this.props.related}
+        />
       </div>
-
     );
   }
 }

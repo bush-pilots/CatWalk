@@ -279,7 +279,6 @@
 
 .QA-ModalBody {
   width: 90%;
-  color: rgba(6, 39, 131, 0.5);
   border: 3px solid grey;
 }
 
@@ -290,7 +289,6 @@
 }
 
 .QA-ModalName {
-  color: rgba(6, 39, 131, 0.5);
   width: 90%;
   border: 3px solid grey;
 }
@@ -312,7 +310,6 @@
 }
 
 .QA-ModalEmail {
-  color: rgba(6, 39, 131, 0.5);
   width: 90%;
   border: 3px solid grey;
 }

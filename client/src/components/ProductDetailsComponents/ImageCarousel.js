@@ -103,7 +103,6 @@ class ImageCarousel extends React.Component {
                   <div className="carousel-wrapper">
                     {this.state.currentImgIndex > 0 && <button className="left-arrow" id="carousel-left-arrow" onClick={this.prev}>&lt;</button>}
                     <div className="carousel-content-wrapper">
-
                       {this.state.thumbnails.length > 1 && <ThumbnailGallery thumbnails={this.state.thumbnails} currentImgIndex={this.state.currentImgIndex} changeImageIndex={this.changeImageIndex} />}
                       <button className="expanded-view" onClick={this.handleExpandedViewChange}>
                         <img src={expand} alt="" style={{ height: '20px', width: '20px' }} />

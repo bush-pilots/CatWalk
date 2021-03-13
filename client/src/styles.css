@@ -18,66 +18,6 @@
   font-size: large;
   font-weight: 600;
 }
-/* check to see that css is working */
-.cssCheck {
-  background-color: blue;
-
-}
-
-/* --------------------------------Example---------------------------------------------------------------------------------------------------------------- */
-.container {
-  width: 100%;
-  height: 100vh;
-  background: yellow;
-  display: grid;
-  grid-template-rows: 80px 600px 80px;
-  grid-template-columns: 0.5fr 1fr;
-
-}
-
-/* no more float hacks!!!  it's a 2D grid baby, common sense for the win! */
-/* Use CSS Grid for layout */
-/* Use flexbox for alignment within each row or column */
-
-/* This achieves source order independence... i.e css grid is independent of the order of the html code, this separation makes for cleaner HTML markup
-and more flexibility when it comes to moving items around.  Write content, make it pretty later.
-CSS grid and flexbox allows the dev to make HTML into what it was supposed to be.  Markup of content.  Not visuals, which belong to CSS. */
-
-.header {
-  grid-column: 1 / 3;
-  grid-row: 1 / 2;
-  background: blue;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  padding: 10px;
-}
-
-.aside {
-  grid-column: 1 / 2;
-  grid-row: 2 / 3;
-  background: green;
-
-}
-
-.main {
-  grid-row: 2 / 3;
-  grid-column: 2 / 3;
-  background: pink;
-}
-
-.footer {
-  grid-column: span 12;
-}
-
-.products {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-evenly;
-  background: chartreuse;
-}
 
 /* --------------------------------Product Overview Styles------------------------------------------------------------------------------------------------ */
 #product-details {

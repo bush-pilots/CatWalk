@@ -109,6 +109,39 @@ exports[`Product Details components should all successfully render in isolation 
 </div>
 `;
 
+exports[`Product Details components should all successfully render in isolation should render QuantityDropDown 1`] = `
+<select
+  className="medium add-to-cart-input"
+  id="quantity-drop-down"
+  name="quantity"
+  onChange={[Function]}
+  style={
+    Object {
+      "borderColor": "black",
+    }
+  }
+  value={1}
+>
+  <option
+    default={true}
+  >
+     Select Quantity 
+  </option>
+  <option
+    key="1"
+    value={1}
+  >
+    1
+  </option>
+</select>
+`;
+
+exports[`Product Details components should all successfully render in isolation should render RelatedItemsLinks 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
+`;
+
 exports[`Product Details components should all successfully render in isolation should render ShareBar 1`] = `
 <div
   id="share-bar"
@@ -173,6 +206,34 @@ exports[`Product Details components should all successfully render in isolation 
 </div>
 `;
 
+exports[`Product Details components should all successfully render in isolation should render SizeDropDown 1`] = `
+<select
+  className="medium add-to-cart-input"
+  id="size-drop-down"
+  name="sku"
+  onChange={[Function]}
+  style={
+    Object {
+      "borderColor": "black",
+    }
+  }
+  value="name"
+>
+  <option
+    default={true}
+  >
+    OUT OF STOCK
+  </option>
+  <option
+    key="000"
+    name="sku"
+    value="000"
+  >
+    X
+  </option>
+</select>
+`;
+
 exports[`Product Details components should all successfully render in isolation should render StyleSelector 1`] = `
 <div
   id="style-selector"
@@ -194,6 +255,63 @@ exports[`Product Details components should all successfully render in isolation 
       style={
         Object {
           "backgroundImage": "url(test-file-stub)",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`Product Details components should all successfully render in isolation should render ThumbnailGallery 1`] = `
+<div
+  id="thumbnail-gallery-container"
+>
+  <div
+    id="thumbnail-gallery-content-container"
+  >
+    <div
+      id="thumbnail-gallery"
+      style={
+        Object {
+          "transform": "translateY(0px)",
+        }
+      }
+    >
+      <img
+        alt=""
+        className="thumbnail-gallery-item selected-thumbnail"
+        key="0"
+        name={0}
+        onClick={[Function]}
+        src="test-file-stub"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Product Details components should all successfully render in isolation should render ZoomedImage 1`] = `
+<div
+  className="image-modal"
+>
+  <div
+    className="zoomed-image-container"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    style={
+      Object {
+        "cursor": "zoom-out",
+      }
+    }
+  >
+    <img
+      className="zoomed-image"
+      onMouseMove={[Function]}
+      src=""
+      style={
+        Object {
+          "transform": "translateX(100%) translateY(100%) scale(2)",
         }
       }
     />

@@ -216,6 +216,7 @@
 }
 
 .AnswerExpandedThumbnail {
+  z-index: 1;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -254,6 +255,7 @@
 /* Modal Styling */
 
 .QA-Modal {
+  z-index: 1;
   position: fixed;
   width: 50%;
   height: 50%;

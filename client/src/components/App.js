@@ -41,7 +41,6 @@ class App extends React.Component {
     this.updateData(this.props.match.params.id);
   }
 
-<<<<<<< HEAD
   updateProductReviews(productId, sort, filter) {
     console.log(productId, sort, filter)
     var getReviewCall = (productId, sort) => {
@@ -104,20 +103,6 @@ class App extends React.Component {
 
   updateData (id) {
     this.setState({isFetching: true});
-=======
-  updateProductReviews(productId) {
-    api.getReviews(productId)
-      .then((res) => {
-        this.setState({ reviews: res });
-      })
-      .catch((err) => {
-        console.log('could not update reviews in app: ', err);
-      });
-  }
-
-  updateData(id) {
-    this.setState({ isFetching: true });
->>>>>>> main
     const updateStorage = {};
 
     Promise.all([
@@ -126,7 +111,6 @@ class App extends React.Component {
       (api.getRelated(id)),
       (api.getReviews(id, 'newest')),
       (api.getReviewsMeta(id))])
-<<<<<<< HEAD
         .then((data) => {
           updateStorage.productData = data[0];
           updateStorage.styles = data[1];
@@ -141,20 +125,6 @@ class App extends React.Component {
         })
         .catch((err) => console.log(`Error in promise: ${err}`));
   };
-=======
-      .then((data) => {
-        updateStorage.productData = data[0];
-        updateStorage.styles = data[1];
-        updateStorage.related = data[2];
-        updateStorage.reviews = data[3];
-        updateStorage.reviewsMeta = data[4];
-        updateStorage.isFetching = false;
-        this.setState(updateStorage);
-        this.setState({ isFetching: false });
-      })
-      .catch((err) => console.log(`Error in promise: ${err}`));
-  }
->>>>>>> main
 
   render() {
     return (
@@ -168,25 +138,11 @@ class App extends React.Component {
           related={this.state.related}
           updateData={this.updateData}
         />
-<<<<<<< HEAD
         <QA product={this.state.productData}
           id={this.props.match.params.id} />
 
           <RatingsReviewsParent filter={this.state.filter} isFetching={this.state.isFetching} reviewsMeta={this.state.reviewsMeta} reviews={this.state.reviews} updateProductReviews={this.updateProductReviews} productData={this.state.productData}/>
 
-=======
-        <QA
-          product={this.state.productData}
-          id={this.props.match.params.id}
-        />
-        <RatingsReviewsParent
-          isFetching={this.state.isFetching}
-          reviewsMeta={this.state.reviewsMeta}
-          reviews={this.state.reviews}
-          updateProductReviews={this.updateProductReviews}
-          productData={this.state.productData}
-        />
->>>>>>> main
       </>
     );
   }

@@ -10,6 +10,8 @@ const sendClickData = async (data) => {
   try {
     const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/interactions';
     const response = await axios.post(url, data);
+
+
   } catch (error) {
     console.log(error);
   }

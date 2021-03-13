@@ -4,10 +4,10 @@ const helpers = require('../../client/src/components/QA/componentHelpers.js');
 
   describe('Date format ("DF") helper for answer component should format input date properly',  () => {
 
-    it('formats a date from API to \"full-month day, year\" format', () => {
+    ('formats a date from API to \"full-month day, year\" format', () => {
     const date = '2018-08-18T00:00:00.000Z';
     expect(helpers.formatDate(date)).toMatch('August 18, 2018')
-  })
+  });
 
 });
 

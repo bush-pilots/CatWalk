@@ -1,3 +1,4 @@
+
 # TSVT CatWalk
 
 
@@ -38,11 +39,17 @@ TSVT Catwalk is made up primarily of 3 modules. **Product Overview, Questions an
 ### **Product Overview**
 Here you will see the selected product and style presented. A carousel to the left shows thumbnails of the selected style along with an expanded view and a zoom view modal if you click on the image while it is expanded. Product information is displayed to the right along with pricing. A series of components below that will allow the user to change between styles, choose a size, and add a quantity to their cart.
 
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/76070352/111040768-ee1a7380-83f1-11eb-9386-fa1c592779a1.gif)
+
 ### **Questions and Answers**
 This module allows users to view questions asked by other users and the answers to those questions, as well as post their own! Questions are by default displayed in order of helpfulness, which is a recorded number of times a question is marked helpful by a user. It also supports a search functionality if the user is looking for more specific information, and the ability to report questions and answers.
 
+![screenCap2](https://user-images.githubusercontent.com/76070352/111040916-d099d980-83f2-11eb-941f-ed4dbb63a1aa.gif)
+
 ### **Ratings and Reviews**
 This is where you can see reviews of the selected product as well as check out the rating. Displayed clearly on the left is the average rating as well as the breakdown of how many of each star rating the product has recieved. Below that you can see some tracked properties of the product and how it was rated by other users. To the right are the reviews left by other users. They can be sorted by most recent, most helpful, and most relevant. Users are also allowed to mark reviews as helpful or report them as well as leave their own reviews!
+
+![screenCap3](https://user-images.githubusercontent.com/76070352/111041031-6f263a80-83f3-11eb-84fb-8f438f6d6f58.gif)
 
 ## Authors:
 

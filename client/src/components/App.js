@@ -1,9 +1,5 @@
-/* eslint-disable prefer-destructuring */
-/* eslint-disable import/extensions */
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/no-unused-state */
+/* eslint-disable */
+
 import React from 'react';
 import axios from 'axios';
 import {
@@ -38,6 +34,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    console.log('test');
     this.updateData(this.props.match.params.id);
   }
 

@@ -69,20 +69,6 @@ const getReviews = async (id, sort) => {
   } catch (error) {
     console.log(error);
   }
-
-  // try {
-  //   do {
-  //     var onePage = await getNextPage(page + 1, id, sort);
-
-  //     reviews.push(onePage);
-  //     page++;
-  //   } while (onePage.length > 0);
-
-  //   console.log('reviews: ', reviews.flat());
-  //   return reviews.flat();
-  // } catch (error) {
-  //   console.log(error);
-  // }
 };
 
 const getReviewsMeta = async (id) => {

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import Rating from '@material-ui/lab/Rating';
 import axios from 'axios';
@@ -47,33 +48,7 @@ const ReviewFormModal = ({ sortOrder, productData, clickClosedReviewForm, review
     // console.log(chars)
   }
 
-  //usestate, once reviews metta data changes on render
-  //only render the form
-
-
-
-
-
-  // meta data:
-  // characteristics:
-  // Comfort: {id: 61908, value: "2.2941176470588235"}
-  // Quality: {id: 61909, value: "2.7647058823529412"}
-  // Size: {id: 61906, value: "2.9411764705882353"}
-  // Width: {id: 61907, value: "2.9411764705882353"}
-  // __proto__: Object
-  // product_id: "18445"
-  // ratings:
-  // 1: "7"
-  // 2: "2"
-  // 3: "3"
-  // 4: "2"
-  // 5: "3"
-  // __proto__: Object
-  // recommended: {false: "7", true: "10"}
-
   const submitReview = () => {
-    //does state have all the things it should?
-    //big if statement
     const postBody = { product_id: Number(reviewsMeta.product_id) };
 
     if (state.reviewRatingsValue === undefined) {
@@ -113,17 +88,7 @@ const ReviewFormModal = ({ sortOrder, productData, clickClosedReviewForm, review
                   // '19': Number(state.Fit)
                   postBody.characteristics = chars;
                   postBody.photos = []
-                  // if (state.photos) {
-                  //   process them
-                  //   let formData = new FormData();
-                  //   formData.append('userpic[]', state.photos[0]);
-                  //   for (var key in state.photos) {
-                  //   }
-                  //   console.log(formData)
-                  // }
 
-                  //axios request and exit form
-                  // console.log(postBody)
                   api.addReview(postBody, (err, result) => {
                     if (err) {
                       console.log(err);
@@ -146,13 +111,6 @@ const ReviewFormModal = ({ sortOrder, productData, clickClosedReviewForm, review
     }
   }
 
-
-
-
-  // useEffect(() => {
-  //   let count = state.reviewBodyForm.length;
-  //   console.log('Count: ', count)
-  // }, [state.reviewBodyForm])
 
   return (
     <div className="reviewFormModal">
@@ -373,9 +331,6 @@ const ReviewFormModal = ({ sortOrder, productData, clickClosedReviewForm, review
         &times;
       </span>
     </div>
-
-
-
   )
 
 }

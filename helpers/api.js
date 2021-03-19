@@ -1,3 +1,4 @@
+/* eslint-disable */
 const axios = require('axios');
 const regeneratorRuntime = require('regenerator-runtime');
 const config = require('../config.js');
@@ -10,8 +11,6 @@ const sendClickData = async (data) => {
   try {
     const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/interactions';
     const response = await axios.post(url, data);
-
-
   } catch (error) {
     console.log(error);
   }
@@ -48,39 +47,34 @@ const getRelated = async (id) => {
 
 // RATINGS/REVIEWS WIDGET HELPERS
 
-//get onePage helper function
-const getNextPage = async (page, id, sort) => {
+// get onePage helper function
+const getNextPage = async (id, sort) => {
   // console.log('from inner recursive get next page func: ', sort)
-  const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/?sort=${sort}&page=${page}&count=500&product_id=${id}`;
-  // console.log(url)
+  const url = `http://localhost:3000/reviews/?sort=${sort}&count=5&product_id=${id}`;
+
   const response = await axios.get(url);
-  return response.data.results;
+  return response.data;
 };
 
 const getReviews = async (id, sort) => {
-  // console.log(sort)
+  const reviews = [];
+  let someReviews = [];
 
-    const reviews = [];
-    let page = 0;
+  try {
 
-    try {
-      do {
-        var onePage = await getNextPage(page + 1, id, sort);
-        reviews.push(onePage);
-        page++;
-      } while (onePage.length > 0);
+    someReviews = await getNextPage(id);
+    console.log('someReviews: ', someReviews);
 
-      return reviews.flat();
-    }
-    catch (error) {
-      console.log(error);
-    }
-
+    return someReviews.flat();
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const getReviewsMeta = async (id) => {
   try {
     const response = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/meta?product_id=${id}`);
+    console.log('META RESPONSE: ', response.data);
     return response.data;
   } catch (error) {
     console.log(error);
@@ -115,8 +109,8 @@ const addReview = (reviewFormObj, cb) => {
     })
     .catch((err) => {
       cb(err, null);
-    })
-}
+    });
+};
 
 module.exports = {
   getProductData,
